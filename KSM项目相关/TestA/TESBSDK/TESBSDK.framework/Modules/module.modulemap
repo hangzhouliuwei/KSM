@@ -1,6 +1,0 @@
-framework module TESBSDK {
-  umbrella header "TESBSDK.h"
-  export *
-
-  module * { export * }
-}
