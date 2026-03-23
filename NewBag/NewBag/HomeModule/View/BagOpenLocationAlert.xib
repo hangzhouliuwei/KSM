@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="BagOpenLocationAlert">
+            <rect key="frame" x="0.0" y="0.0" width="382" height="422"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="location_alet" translatesAutoresizingMaskIntoConstraints="NO" id="aYH-jh-aGh">
+                    <rect key="frame" x="0.0" y="142" width="382" height="280"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="280" id="7ue-U3-jV6"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uNX-Ea-4HN">
+                    <rect key="frame" x="20" y="212" width="342" height="71.666666666666686"/>
+                    <string key="text">We use your location data and your phone's code to determin your eligibility for our services.
+We need your permission to continue the process.</string>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" red="0.12941176470588234" green="0.12941176470588234" blue="0.12941176470588234" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FW9-7p-Y5K">
+                    <rect key="frame" x="15" y="311.66666666666669" width="352" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="O9a-74-Xkn"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <state key="normal" title="Agree">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="4"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="agreeAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="Ezg-4D-XFX"/>
+                    </connections>
+                </button>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" red="0.0039215686274509803" green="0.054901960784313725" blue="0.043137254901960784" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="aYH-jh-aGh" secondAttribute="bottom" id="1bF-gv-lEm"/>
+                <constraint firstItem="uNX-Ea-4HN" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="8H2-F6-yKp"/>
+                <constraint firstItem="aYH-jh-aGh" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="D2t-Cp-Omi"/>
+                <constraint firstItem="uNX-Ea-4HN" firstAttribute="top" secondItem="aYH-jh-aGh" secondAttribute="top" constant="70" id="IYg-Ra-f7C"/>
+                <constraint firstItem="uNX-Ea-4HN" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="NXq-hb-4Yp"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="uNX-Ea-4HN" secondAttribute="trailing" constant="20" id="TIB-uA-2fn"/>
+                <constraint firstItem="FW9-7p-Y5K" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="15" id="ohY-Li-k3n"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="FW9-7p-Y5K" secondAttribute="trailing" constant="15" id="q8q-2k-3xg"/>
+                <constraint firstItem="FW9-7p-Y5K" firstAttribute="top" secondItem="uNX-Ea-4HN" secondAttribute="bottom" constant="28" id="qIj-qk-H8Z"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="aYH-jh-aGh" secondAttribute="trailing" id="vRZ-Kl-hrh"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="agreeBtn" destination="FW9-7p-Y5K" id="fAg-Qn-nh0"/>
+            </connections>
+            <point key="canvasLocation" x="88.549618320610676" y="-131.69014084507043"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="location_alet" width="375" height="270"/>
+    </resources>
+</document>

@@ -1,0 +1,20 @@
+target 'PhilipLoanProject' do
+ pod 'AFNetworking', '~> 4.0'
+ pod 'MJRefresh'
+ pod 'TFPopup'
+ pod 'YYModel'
+ pod 'YYText'
+ pod 'YYCategories'
+ pod 'SVProgressHUD'
+ pod 'IQKeyboardManager'
+ pod 'SDWebImage'
+ pod 'MMKV'
+# pod 'Adjust', '~>5.0.0'
+# pod 'SDCycleScrollView', '~> 1.82'
+ pod 'MSCycleScrollView','~>0.0.2'
+ pod 'JXCategoryView', '~> 1.5.9'
+# pod 'Bugly'
+# pod 'AAINetwork', :http => 'https://prod-guardian-cv.oss-ap-southeast-5.aliyuncs.com/sdk/iOS-libraries/AAINetwork/AAINetwork-V1.0.0.tar.bz2', type: :tbz
+# pod 'AAILiveness', :http => 'https://prod-guardian-cv.oss-ap-southeast-5.aliyuncs.com/sdk/iOS-liveness-detection/2.0.6/iOS-Liveness-SDK-V2.0.6.tar.bz2', type: :tbz
+
+end
