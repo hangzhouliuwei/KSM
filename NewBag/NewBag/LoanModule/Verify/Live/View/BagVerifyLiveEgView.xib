@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="BagVerifyLiveEgView">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="live_bg" translatesAutoresizingMaskIntoConstraints="NO" id="52o-xc-SbY">
+                    <rect key="frame" x="0.0" y="0.0" width="393" height="320"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="320" id="cQF-1Q-br1"/>
+                    </constraints>
+                </imageView>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="live_bg2" translatesAutoresizingMaskIntoConstraints="NO" id="ado-uR-bNj">
+                    <rect key="frame" x="43.666666666666657" y="378.66666666666669" width="306" height="88"/>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error example" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="82q-PB-S0k">
+                    <rect key="frame" x="152.66666666666666" y="352" width="88" height="15.666666666666686"/>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
+                    <color key="textColor" red="0.12941176470588234" green="0.12941176470588234" blue="0.12941176470588234" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="82q-PB-S0k" firstAttribute="top" secondItem="52o-xc-SbY" secondAttribute="bottom" constant="32" id="1TY-rH-A6R"/>
+                <constraint firstItem="ado-uR-bNj" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="8Li-Vu-ia7"/>
+                <constraint firstItem="52o-xc-SbY" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="WHB-bX-c8b"/>
+                <constraint firstItem="52o-xc-SbY" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="WZu-NM-ev7"/>
+                <constraint firstItem="82q-PB-S0k" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="j0q-CL-t0j"/>
+                <constraint firstItem="52o-xc-SbY" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="lz1-OB-q9w"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="52o-xc-SbY" secondAttribute="trailing" id="sxo-gZ-2xi"/>
+                <constraint firstItem="ado-uR-bNj" firstAttribute="top" secondItem="82q-PB-S0k" secondAttribute="bottom" constant="11" id="tsb-1a-oUh"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="bgView" destination="52o-xc-SbY" id="7ax-Yc-9M5"/>
+            </connections>
+            <point key="canvasLocation" x="49.618320610687022" y="19.718309859154932"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="live_bg" width="320" height="238"/>
+        <image name="live_bg2" width="306" height="88"/>
+    </resources>
+</document>

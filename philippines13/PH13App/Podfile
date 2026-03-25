@@ -1,0 +1,53 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+#source 'https://mirrors.tuna.tsinghua.edu.cn/git/CocoaPods/Specs.git'
+target 'PesoNow' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  # Pods for PH13App
+  use_frameworks!
+  pod 'SAMKeychain'
+  pod 'AFNetworking', '4.0.1'
+  pod 'YTKNetwork'
+  pod 'SDWebImage', '~> 5.19.1'
+  pod 'ReactiveObjC'#RAC
+  pod 'SDCycleScrollView'#轮播图
+  pod 'Masonry', '1.1.0'
+  pod 'MJRefresh', '3.2.0'
+  pod 'BRPickerView'
+  pod 'BRKit'
+  
+  pod 'MJExtension'
+  pod 'MBProgressHUD', '1.2.0'
+  pod 'YYText', '1.0.7'
+  pod 'IQKeyboardManager'
+  pod 'JXPagingView/Pager'
+  pod 'JXCategoryView'
+  pod 'YYModel', '~> 1.0.4'
+  pod 'YYCache'
+  pod 'QMUIKit' #腾讯开源UI框架
+  pod 'CRBoxInputView', '1.2.1'#密码输入框
+#  pod 'Adjust'
+  pod 'Bugly'#bug统计工具
+  pod 'AAINetwork', :http => 'https://prod-guardian-cv.oss-ap-southeast-5.aliyuncs.com/sdk/iOS-libraries/AAINetwork/AAINetwork-V1.0.2.tar.bz2', type: :tbz
+  pod 'AAILiveness', :http => 'https://prod-guardian-cv.oss-ap-southeast-5.aliyuncs.com/sdk/iOS-liveness-detection/3.1.1/iOS-Liveness-SDK-V3.1.1.tar.bz2', type: :tbz
+
+  # 解决xcode16上传失败的问题 -》bitcode导致
+  post_install do |installer|
+    bitcode_strip_path = `xcrun --find bitcode_strip`.chop!
+    def strip_bitcode_from_framework(bitcode_strip_path, framework_relative_path)
+      framework_path = File.join(Dir.pwd, framework_relative_path)
+      command = "#{bitcode_strip_path} #{framework_path} -r -o #{framework_path}"
+      puts "Stripping bitcode: #{command}"
+      system(command)
+    end
+    framework_paths = [
+      "/Pods/AAINetwork/AAINetwork.xcframework/ios-arm64/AAINetwork.framework/AAINetwork",
+      "/Pods/AAILiveness/AAILivenessSDK/AAILivenessSDK.xcframework/ios-arm64/AAILivenessSDK.framework/AAILivenessSDK",
+      
+    ]
+    framework_paths.each do |framework_relative_path|
+      strip_bitcode_from_framework(bitcode_strip_path, framework_relative_path)
+    end
+  end
+
+end
