@@ -1,0 +1,33 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+
+target 'PTApp' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+  pod 'SAMKeychain'
+  pod 'AFNetworking', '4.0.1'
+  pod 'YTKNetwork'
+  pod 'SDWebImage', '~> 5.19.1'
+  pod 'ReactiveObjC'#RAC
+  pod 'SDCycleScrollView'#轮播图
+  pod 'ReactiveObjC'#RAC
+  pod 'Masonry', '1.1.0'
+  pod 'MJRefresh', '3.2.0'
+  pod 'BRPickerView'
+  
+  pod 'MJExtension'
+  pod 'MBProgressHUD', '1.2.0'
+  pod 'YYText', '1.0.7'
+  pod 'IQKeyboardManager'
+  pod 'JXPagingView/Pager'
+  pod 'JXCategoryView'
+  pod 'YYModel', '~> 1.0.4'
+  pod 'YYCache'
+  pod 'QMUIKit' #腾讯开源UI框架
+  pod 'CRBoxInputView', '1.2.1'#密码输入框
+  pod 'Adjust'
+  pod 'Bugly'#bug统计工具
+  pod 'AAINetwork', :http => 'https://prod-guardian-cv.oss-ap-southeast-5.aliyuncs.com/sdk/iOS-libraries/AAINetwork/AAINetwork-V1.0.0.tar.bz2', type: :tbz
+  pod 'AAILiveness', :http => 'https://prod-guardian-cv.oss-ap-southeast-5.aliyuncs.com/sdk/iOS-liveness-detection/2.0.6/iOS-Liveness-SDK-V2.0.6.tar.bz2', type: :tbz
+
+end
