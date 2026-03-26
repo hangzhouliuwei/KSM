@@ -1,0 +1,30 @@
+# Uncomment the next line to define a global platform for your project
+platform :ios, '11.0'
+
+target 'PeraUBagProject' do
+  pod 'SAMKeychain'
+  pod 'AFNetworking', '4.0.1'
+  pod 'SDWebImage'
+  pod 'SDWebImage/GIF'
+  pod 'SDWebImage/WebP'
+  pod 'Masonry', '1.1.0'
+  pod 'MJRefresh', '3.2.0'
+  pod 'MJExtension'
+  pod 'MBProgressHUD', '1.2.0'
+  pod 'YYText', '1.0.7'
+  pod 'IQKeyboardManager'
+  pod 'JXPagingView/Pager'
+  pod 'JXCategoryView'
+  pod 'AppsFlyerFramework', '6.12.0'
+  pod 'YYModel', '~> 1.0.4'
+  pod 'YYCache'
+  pod 'QMUIKit' #腾讯开源UI框架
+  pod 'IQKeyboardManager'#键盘管理
+  pod 'SDCycleScrollView'#轮播图
+  pod 'JXPagingView/Pager'#滑动选择器
+  pod 'JXCategoryView'#滑动选择器
+  pod 'Bugly'#bug统计工具
+  pod 'AAINetwork', :http => 'https://prod-guardian-cv.oss-ap-southeast-5.aliyuncs.com/sdk/iOS-libraries/AAINetwork/AAINetwork-V1.0.0.tar.bz2', type: :tbz
+  pod 'AAILiveness', :http => 'https://prod-guardian-cv.oss-ap-southeast-5.aliyuncs.com/sdk/iOS-liveness-detection/2.0.6/iOS-Liveness-SDK-V2.0.6.tar.bz2', type: :tbz
+
+end

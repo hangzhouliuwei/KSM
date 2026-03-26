@@ -1,0 +1,34 @@
+//
+//  PrefixHeader.pch
+//  PhilipLoanProject
+//
+//  Created by xiafei zhao on 2024/8/23.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+#import "UIView+Frame.h"
+#import "Header.h"
+#import "PLPCommondTools.h"
+#import "NSString+Category.h"
+#import "NSDictionary+Category.h"
+#import "NSArray+Category.h"
+#import "PLPNetRequestManager.h"
+//#import "HttpManager.h"
+#import <NSAttributedString+YYText.h>
+#import <YYLabel.h>
+#import <YYModel.h>
+#import "PLPCapsuleButton.h"
+#import "EnlargeButton.h"
+#import "PLPLocationManager.h"
+#import "PLPDataManager.h"
+#import <UIImageView+WebCache.h>
+#import <SVProgressHUD.h>
+#import "PLPBaseTableView.h"
+#import <MJRefresh.h>
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#endif /* PrefixHeader_pch */

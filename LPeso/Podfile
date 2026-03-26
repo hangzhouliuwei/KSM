@@ -1,0 +1,15 @@
+
+
+platform :ios, '13.0'
+
+target 'LPeso' do
+
+  pod 'SnapKit'
+  pod 'IQKeyboardManagerSwift'
+  pod 'Kingfisher'
+  pod 'Moya'
+  pod 'FSPagerView'
+  pod 'AAINetwork', :http => 'https://prod-guardian-cv.oss-ap-southeast-5.aliyuncs.com/sdk/iOS-libraries/AAINetwork/AAINetwork-V1.0.2.tar.bz2', type: :tbz
+  pod 'AAILiveness', :http => 'https://prod-guardian-cv.oss-ap-southeast-5.aliyuncs.com/sdk/iOS-liveness-detection/3.1.1/iOS-Liveness-SDK-V3.1.1.tar.bz2', type: :tbz
+end
+ 
