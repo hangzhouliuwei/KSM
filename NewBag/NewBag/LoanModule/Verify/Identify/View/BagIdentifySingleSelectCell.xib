@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="129" id="KGk-i7-Jjw" customClass="BagIdentifySingleSelectCell">
+            <rect key="frame" x="0.0" y="0.0" width="422" height="129"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="422" height="129"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gender" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nff-BD-xFM">
+                        <rect key="frame" x="13.999999999999996" y="0.0" width="52.666666666666657" height="18"/>
+                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                        <color key="textColor" red="0.12941176469999999" green="0.12941176469999999" blue="0.12941176469999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eyM-Uv-bVX">
+                        <rect key="frame" x="14" y="22" width="197" height="48"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                        <state key="normal" title="Male">
+                            <color key="titleColor" red="0.054901960784313725" green="0.70588235294117641" blue="0.47450980392156861" alpha="1" colorSpace="calibratedRGB"/>
+                        </state>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="qmui_borderWidth">
+                                <real key="value" value="1"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="qmui_borderColor">
+                                <color key="value" red="0.054901960780000002" green="0.70588235290000001" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                        <connections>
+                            <action selector="firstClick:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="NAA-Vm-VR4"/>
+                        </connections>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ccY-cv-FS1">
+                        <rect key="frame" x="211" y="22" width="197" height="48"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="48" id="3HD-2A-2a8"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                        <state key="normal" title="Female">
+                            <color key="titleColor" red="0.12941176469999999" green="0.12941176469999999" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                        </state>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="qmui_borderWidth">
+                                <real key="value" value="1"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="qmui_borderColor">
+                                <color key="value" red="0.58039215686274503" green="0.61568627450980395" blue="0.65098039215686276" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                        <connections>
+                            <action selector="secondClick:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Fl7-Jc-Buk"/>
+                        </connections>
+                    </button>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wyr-Mc-DgG">
+                        <rect key="frame" x="210.66666666666666" y="22" width="1" height="48"/>
+                        <color key="backgroundColor" red="0.054901960780000002" green="0.70588235290000001" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="1" id="2qu-X4-K68"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstItem="ccY-cv-FS1" firstAttribute="leading" secondItem="eyM-Uv-bVX" secondAttribute="trailing" id="6b8-9W-SbL"/>
+                    <constraint firstItem="wyr-Mc-DgG" firstAttribute="bottom" secondItem="eyM-Uv-bVX" secondAttribute="bottom" id="LWy-TJ-uJm"/>
+                    <constraint firstItem="ccY-cv-FS1" firstAttribute="width" secondItem="eyM-Uv-bVX" secondAttribute="width" id="O4c-gX-PVq"/>
+                    <constraint firstItem="nff-BD-xFM" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="R8j-eu-Uyx"/>
+                    <constraint firstItem="wyr-Mc-DgG" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="Sry-af-YZe"/>
+                    <constraint firstItem="ccY-cv-FS1" firstAttribute="height" secondItem="eyM-Uv-bVX" secondAttribute="height" id="dUH-fT-jUM"/>
+                    <constraint firstItem="eyM-Uv-bVX" firstAttribute="top" secondItem="nff-BD-xFM" secondAttribute="bottom" constant="4" id="gNy-nu-HBB"/>
+                    <constraint firstItem="eyM-Uv-bVX" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="14" id="mEt-Wk-Edn"/>
+                    <constraint firstItem="ccY-cv-FS1" firstAttribute="centerY" secondItem="eyM-Uv-bVX" secondAttribute="centerY" id="qr7-MC-r0c"/>
+                    <constraint firstAttribute="trailing" secondItem="ccY-cv-FS1" secondAttribute="trailing" constant="14" id="t6W-mO-aPc"/>
+                    <constraint firstItem="wyr-Mc-DgG" firstAttribute="top" secondItem="eyM-Uv-bVX" secondAttribute="top" id="tRg-e7-eE4"/>
+                    <constraint firstItem="nff-BD-xFM" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="14" id="tfx-3l-DZy"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
+            <connections>
+                <outlet property="firstBtn" destination="eyM-Uv-bVX" id="giL-mR-yUi"/>
+                <outlet property="line" destination="wyr-Mc-DgG" id="5bm-5L-7Yq"/>
+                <outlet property="secondBtn" destination="ccY-cv-FS1" id="rKi-6i-EVl"/>
+                <outlet property="titleLabel" destination="nff-BD-xFM" id="haa-cv-x1l"/>
+            </connections>
+            <point key="canvasLocation" x="126.71755725190839" y="49.647887323943664"/>
+        </tableViewCell>
+    </objects>
+</document>

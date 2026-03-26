@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="522" id="KGk-i7-Jjw" customClass="BagHomeBrandCell">
+            <rect key="frame" x="0.0" y="0.0" width="724" height="522"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="724" height="522"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_brand-01" translatesAutoresizingMaskIntoConstraints="NO" id="zMq-uI-bMX">
+                        <rect key="frame" x="14" y="16" width="696" height="206.66666666666666"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="zMq-uI-bMX" secondAttribute="height" multiplier="347:103" id="RiQ-RS-jin"/>
+                        </constraints>
+                    </imageView>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_brand-02" translatesAutoresizingMaskIntoConstraints="NO" id="vCx-Q1-94E">
+                        <rect key="frame" x="14" y="238.66666666666663" width="696" height="128.33333333333337"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="vCx-Q1-94E" secondAttribute="height" multiplier="347:64" id="MoB-YT-KiL"/>
+                        </constraints>
+                    </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mcL-N0-bzW" customClass="YYLabel">
+                        <rect key="frame" x="252" y="367" width="220" height="16"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="16" id="fxJ-Bb-wcE"/>
+                            <constraint firstAttribute="width" constant="220" id="jdW-BK-bDX"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="numberOfLines">
+                                <integer key="value" value="0"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="string" keyPath="text" value="Click to view the Privacy Agreement&gt;&gt;"/>
+                            <userDefinedRuntimeAttribute type="number" keyPath="fontSize_">
+                                <real key="value" value="11"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstItem="mcL-N0-bzW" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="2ev-1a-9uw"/>
+                    <constraint firstItem="vCx-Q1-94E" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="14" id="B2b-4Q-nVn"/>
+                    <constraint firstAttribute="trailing" secondItem="vCx-Q1-94E" secondAttribute="trailing" constant="14" id="H1V-XG-44x"/>
+                    <constraint firstItem="mcL-N0-bzW" firstAttribute="top" secondItem="vCx-Q1-94E" secondAttribute="bottom" id="QL2-jJ-leU"/>
+                    <constraint firstAttribute="trailing" secondItem="zMq-uI-bMX" secondAttribute="trailing" constant="14" id="ZbO-P9-hY3"/>
+                    <constraint firstItem="zMq-uI-bMX" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="14" id="fKk-km-9Pu"/>
+                    <constraint firstItem="vCx-Q1-94E" firstAttribute="top" secondItem="zMq-uI-bMX" secondAttribute="bottom" constant="16" id="lcd-hL-RlV"/>
+                    <constraint firstItem="zMq-uI-bMX" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="xeO-8e-Z5Z"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <connections>
+                <outlet property="protocolLabel" destination="mcL-N0-bzW" id="GCm-bQ-sLk"/>
+            </connections>
+            <point key="canvasLocation" x="309.92366412213738" y="188.02816901408451"/>
+        </tableViewCell>
+    </objects>
+    <designables>
+        <designable name="mcL-N0-bzW">
+            <size key="intrinsicContentSize" width="203" height="13"/>
+        </designable>
+    </designables>
+    <resources>
+        <image name="home_brand-01" width="347" height="103"/>
+        <image name="home_brand-02" width="347" height="64"/>
+    </resources>
+</document>

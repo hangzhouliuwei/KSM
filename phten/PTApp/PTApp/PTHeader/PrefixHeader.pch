@@ -1,0 +1,52 @@
+//
+//  PrefixHeader.pch
+//  PTApp
+//
+//  Created by 刘巍 on 2024/7/15.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+#import "PTHeader.h"
+#import "PTTools.h"
+#import "PTAPIHeader.h"
+
+#import <SDWebImage/UIImageView+WebCache.h>
+#import <SDWebImage/UIButton+WebCache.h>
+#import <Masonry.h>
+#import <MJRefresh/MJRefresh.h>
+#import <YYText.h>
+#import <QMUIKit/QMUIKit.h>
+#import <IQKeyboardManager/IQKeyboardManager.h>
+#import <YYModel/YYModel.h>
+#import <SDCycleScrollView/SDCycleScrollView.h>
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#import <Masonry/Masonry.h>
+#import "MBProgressHUD.h"
+#import <ReactiveObjC.h>
+
+//管理类
+#import "PTCacheManager.h"
+#import "PTVCRouterManager.h"
+#import "PTLocationManger.h"
+#import "PTUserManager.h"
+#import "PTAuthentRouterManager.h"
+#import "PTUploadDeviceInfoManager.h"
+//Base类
+#import "PTBaseRequest.h"
+#import "PTBaseModel.h"
+#import "PTHomeBaseModel.h"
+#import "PTBaseProtocol.h"
+//分类
+#import "UIView+Positioning.h"
+#import "NSDate+BRAdd.h"
+#import "UIColor+BRAdd.h"
+#import "NSString+BRAdd.h"
+#import "UIView+BRAdd.h"
+#import "UIImage+BRAdd.h"
+//设备信息
+#import "PTDeviceInfo.h"
+
+
+#endif /* PrefixHeader_pch */
