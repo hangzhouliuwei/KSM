@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="BagMeSetAlertView">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="810"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dtf-5R-NQn">
+                    <rect key="frame" x="0.0" y="810" width="414" height="189"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bae-LQ-Ij2">
+                            <rect key="frame" x="13.999999999999986" y="25.000000000000004" width="228.66666666666663" height="38.333333333333343"/>
+                            <string key="text">Are you sure 
+you want to leave the software?</string>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <color key="textColor" red="0.23921568627450979" green="0.23921568627450979" blue="0.23921568627450979" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O8l-jN-Wwa">
+                            <rect key="frame" x="14" y="84.333333333333371" width="187.66666666666666" height="40"/>
+                            <color key="backgroundColor" red="0.94117647058823528" green="0.95686274509803915" blue="0.96862745098039216" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="nKk-3J-Fgs"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <state key="normal" title="Confirm">
+                                <color key="titleColor" red="0.14509803921568626" green="0.1803921568627451" blue="0.25490196078431371" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="4"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="confirmAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="dNd-Xc-lak"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aaA-Yw-K8V">
+                            <rect key="frame" x="212.66666666666663" y="84.333333333333371" width="187.33333333333337" height="40"/>
+                            <color key="backgroundColor" red="0.12549019607843137" green="0.36862745098039218" blue="0.6705882352941176" alpha="1" colorSpace="calibratedRGB"/>
+                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <state key="normal" title="Cancel">
+                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="4"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="cancelAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="8ET-IV-eJT"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="O8l-jN-Wwa" firstAttribute="top" secondItem="Bae-LQ-Ij2" secondAttribute="bottom" constant="21" id="6K4-xk-mYR"/>
+                        <constraint firstItem="Bae-LQ-Ij2" firstAttribute="top" secondItem="dtf-5R-NQn" secondAttribute="top" constant="25" id="Jvp-70-8am"/>
+                        <constraint firstItem="aaA-Yw-K8V" firstAttribute="top" secondItem="O8l-jN-Wwa" secondAttribute="top" id="RJ4-2u-slt"/>
+                        <constraint firstItem="O8l-jN-Wwa" firstAttribute="leading" secondItem="dtf-5R-NQn" secondAttribute="leading" constant="14" id="aUk-dp-i10"/>
+                        <constraint firstItem="aaA-Yw-K8V" firstAttribute="leading" secondItem="O8l-jN-Wwa" secondAttribute="trailing" constant="11" id="cTV-cb-xCd"/>
+                        <constraint firstAttribute="trailing" secondItem="aaA-Yw-K8V" secondAttribute="trailing" constant="14" id="eNF-HA-9Ee"/>
+                        <constraint firstAttribute="height" constant="189" id="eVP-UN-xsb"/>
+                        <constraint firstItem="aaA-Yw-K8V" firstAttribute="height" secondItem="O8l-jN-Wwa" secondAttribute="height" id="fG3-Mf-aRv"/>
+                        <constraint firstItem="aaA-Yw-K8V" firstAttribute="width" secondItem="O8l-jN-Wwa" secondAttribute="width" id="nqZ-9X-0cf"/>
+                        <constraint firstItem="Bae-LQ-Ij2" firstAttribute="leading" secondItem="dtf-5R-NQn" secondAttribute="leading" constant="14" id="wjq-Bf-SlX"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" red="0.0039215686274509803" green="0.054901960784313725" blue="0.043137254901960784" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="dtf-5R-NQn" secondAttribute="bottom" constant="-189" id="Gmz-eI-Npk"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="dtf-5R-NQn" secondAttribute="trailing" id="ReQ-Ux-c1h"/>
+                <constraint firstItem="dtf-5R-NQn" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="a8k-OM-eoB"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="bottomConst" destination="Gmz-eI-Npk" id="QL9-rW-CUv"/>
+                <outlet property="bottomVIew" destination="dtf-5R-NQn" id="vyY-3g-e1U"/>
+                <outlet property="cancelBtn" destination="aaA-Yw-K8V" id="bEu-Eb-shK"/>
+                <outlet property="titleLabel" destination="Bae-LQ-Ij2" id="DvS-aG-LLU"/>
+            </connections>
+            <point key="canvasLocation" x="16.793893129770993" y="4.9295774647887329"/>
+        </view>
+    </objects>
+</document>
