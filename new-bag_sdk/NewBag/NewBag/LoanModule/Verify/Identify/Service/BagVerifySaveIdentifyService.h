@@ -1,0 +1,16 @@
+//
+//  BagVerifySaveIdentifyService.h
+//  NewBag
+//
+//  Created by Jacky on 2024/4/8.
+//
+
+#import "BagBaseRequest.h"
+
+NS_ASSUME_NONNULL_BEGIN
+
+@interface BagVerifySaveIdentifyService : BagBaseRequest
+- (instancetype)initWithDic:(NSDictionary *)dic;
+@end
+
+NS_ASSUME_NONNULL_END
