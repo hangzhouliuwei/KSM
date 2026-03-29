@@ -1,0 +1,1000 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		01573C592D5C4520005BF089 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 01573C582D5C4520005BF089 /* PrivacyInfo.xcprivacy */; };
+		3F0132BE2CD336A100943F02 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F0132B32CD336A100943F02 /* AppDelegate.m */; };
+		3F0132BF2CD336A100943F02 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F0132B82CD336A100943F02 /* main.m */; };
+		3F0132C02CD336A100943F02 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F0132BC2CD336A100943F02 /* ViewController.m */; };
+		3F0132C12CD336A100943F02 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F0132B42CD336A100943F02 /* Assets.xcassets */; };
+		3F0132C32CD336A100943F02 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F0132B72CD336A100943F02 /* LaunchScreen.storyboard */; };
+		3F0132C42CD336A100943F02 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F0132BA2CD336A100943F02 /* Main.storyboard */; };
+		3F0132C82CD35CF400943F02 /* PPTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F0132C72CD35CF400943F02 /* PPTabBarController.m */; };
+		3F0132CE2CD35ED500943F02 /* PPBasePageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F0132CD2CD35ED500943F02 /* PPBasePageController.m */; };
+		3F0132D12CD35F0100943F02 /* PPLeftWindowPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F0132D02CD35F0100943F02 /* PPLeftWindowPage.m */; };
+		3F0132D52CD35F2300943F02 /* PPUserInfoProfilePage.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F0132D42CD35F2300943F02 /* PPUserInfoProfilePage.m */; };
+		3F0132D82CD367A700943F02 /* PPBaseWidgetView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F0132D72CD367A700943F02 /* PPBaseWidgetView.m */; };
+		3F0132DD2CD3685A00943F02 /* UIView+Adds.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F0132DC2CD3685A00943F02 /* UIView+Adds.m */; };
+		3F0132E02CD36D1A00943F02 /* PPNavTopStausAndBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F0132DF2CD36D1A00943F02 /* PPNavTopStausAndBar.m */; };
+		3F0132E32CD36DE400943F02 /* PPUserDefaultColorHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F0132E22CD36DE400943F02 /* PPUserDefaultColorHelper.m */; };
+		3F0133172CD3782100943F02 /* NSString+Adds.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F0133162CD3782100943F02 /* NSString+Adds.m */; };
+		3F01331A2CD38D1300943F02 /* PPMiddleCenterToastView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F0133192CD38D1300943F02 /* PPMiddleCenterToastView.m */; };
+		3F01331D2CD38FAF00943F02 /* PPMiddleCenterLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F01331C2CD38FAF00943F02 /* PPMiddleCenterLoadingView.m */; };
+		3F0133202CD3907900943F02 /* PPCacheConfigManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F01331F2CD3907800943F02 /* PPCacheConfigManager.m */; };
+		3F0133242CD394A000943F02 /* PPTimeDown.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F0133232CD394A000943F02 /* PPTimeDown.m */; };
+		3F0133272CD3954E00943F02 /* PPLinkTheViewShow.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F0133262CD3954E00943F02 /* PPLinkTheViewShow.m */; };
+		3F01332A2CD395EC00943F02 /* PPPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F0133292CD395EC00943F02 /* PPPage.m */; };
+		3F0133392CD485B100943F02 /* PPNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F0133382CD485B100943F02 /* PPNetwork.m */; };
+		3F01333C2CD4AD4700943F02 /* PPUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F01333B2CD4AD4700943F02 /* PPUser.m */; };
+		3F0133402CD4C2E200943F02 /* PPLoginPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F01333F2CD4C2E200943F02 /* PPLoginPage.m */; };
+		3F10FC4B2CEAED26002A2706 /* PPIconTitleButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F10FC4A2CEAED26002A2706 /* PPIconTitleButtonView.m */; };
+		3F10FC4E2CEB27BC002A2706 /* JumpMamager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F10FC4D2CEB27BC002A2706 /* JumpMamager.m */; };
+		3F10FC512CEB2C42002A2706 /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F10FC502CEB2C42002A2706 /* DataManager.m */; };
+		3F10FC542CEB2D85002A2706 /* LLUserConfigLocationServiceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F10FC532CEB2D85002A2706 /* LLUserConfigLocationServiceManager.m */; };
+		3F10FC572CEB4436002A2706 /* SettingPPNormalCardPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F10FC562CEB4436002A2706 /* SettingPPNormalCardPage.m */; };
+		3F10FC5A2CEB4B95002A2706 /* PPSelfConfigCenterAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F10FC592CEB4B95002A2706 /* PPSelfConfigCenterAlert.m */; };
+		3F10FC5D2CEB4D2A002A2706 /* PPKingHotConfigView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F10FC5C2CEB4D2A002A2706 /* PPKingHotConfigView.m */; };
+		3F10FC652CEB8989002A2706 /* PPUserTopViewTimeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F10FC642CEB8989002A2706 /* PPUserTopViewTimeView.m */; };
+		3F10FC682CEBA17E002A2706 /* PPNormalCardInputCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F10FC672CEBA17E002A2706 /* PPNormalCardInputCell.m */; };
+		3F10FC6B2CEBA6BF002A2706 /* PPNormalCardInfoAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F10FC6A2CEBA6BF002A2706 /* PPNormalCardInfoAlert.m */; };
+		3F10FC6E2CEBA9F2002A2706 /* DayPPNormalCardAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F10FC6D2CEBA9F2002A2706 /* DayPPNormalCardAlert.m */; };
+		3F10FC712CEC493B002A2706 /* LinkmanPagePPNormalCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F10FC702CEC493B002A2706 /* LinkmanPagePPNormalCard.m */; };
+		3F10FC742CEC5814002A2706 /* PPNormalCardLinkmanCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F10FC732CEC5814002A2706 /* PPNormalCardLinkmanCell.m */; };
+		3F10FC772CEC7D77002A2706 /* PPNormalCardRelationAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F10FC762CEC7D77002A2706 /* PPNormalCardRelationAlert.m */; };
+		3F10FC7A2CEC87DC002A2706 /* PPUserDefaultViewIdCardPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F10FC792CEC87DC002A2706 /* PPUserDefaultViewIdCardPage.m */; };
+		3F10FC7D2CEC8A5D002A2706 /* PPUserDefaultViewIdCardAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F10FC7C2CEC8A5D002A2706 /* PPUserDefaultViewIdCardAlert.m */; };
+		3F10FC802CEC8BE9002A2706 /* PPHaussKingPictureTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F10FC7F2CEC8BE9002A2706 /* PPHaussKingPictureTools.m */; };
+		3F10FC832CEC8EA4002A2706 /* PPNormalCardGenderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F10FC822CEC8EA4002A2706 /* PPNormalCardGenderCell.m */; };
+		3F10FC862CECED33002A2706 /* FacePageUserDefaultView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F10FC852CECED33002A2706 /* FacePageUserDefaultView.m */; };
+		3F8E5C6A2CED03A00098EF60 /* BankPagePPToProcessVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F8E5C692CED03A00098EF60 /* BankPagePPToProcessVC.m */; };
+		3F8E5C6D2CED0BF40098EF60 /* PPUserDefaultViewWalletItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F8E5C6C2CED0BF40098EF60 /* PPUserDefaultViewWalletItem.m */; };
+		3F8E5C702CED0C060098EF60 /* PPUserDefaultViewBankItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F8E5C6F2CED0C060098EF60 /* PPUserDefaultViewBankItem.m */; };
+		3F8E5C732CED0DEF0098EF60 /* PPUserDefaultViewBankAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F8E5C722CED0DEF0098EF60 /* PPUserDefaultViewBankAlert.m */; };
+		3F8E5C762CEDB41F0098EF60 /* DefaultBaseProcessPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F8E5C752CEDB41F0098EF60 /* DefaultBaseProcessPage.m */; };
+		3F8E5C792CEDCFD10098EF60 /* PPNormalCardOrderPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F8E5C782CEDCFD10098EF60 /* PPNormalCardOrderPage.m */; };
+		3F8E5C7C2CEDD0C20098EF60 /* PPNormalCardTabView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F8E5C7B2CEDD0C20098EF60 /* PPNormalCardTabView.m */; };
+		3F8E5C7F2CEDD1250098EF60 /* PPNormalCardRecordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F8E5C7E2CEDD1250098EF60 /* PPNormalCardRecordCell.m */; };
+		3FD180192CE6EB8D006F3106 /* InformationPagePPNormalCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FD180182CE6EB8D006F3106 /* InformationPagePPNormalCard.m */; };
+		3FD1801C2CE6F3E6006F3106 /* PPUserDefaultViewInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FD1801B2CE6F3E6006F3106 /* PPUserDefaultViewInfoCell.m */; };
+		3FF29C3F2CE3098B0086BE6F /* carter_regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3FF29C3E2CE3098B0086BE6F /* carter_regular.ttf */; };
+		3FF29C422CE34D2D0086BE6F /* PPAuthCodePage.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FF29C412CE34D2D0086BE6F /* PPAuthCodePage.m */; };
+		3FF29C452CE354A40086BE6F /* PPAuthCodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FF29C442CE354A40086BE6F /* PPAuthCodeView.m */; };
+		3FF29C482CE36DAD0086BE6F /* PPHandleDevicePhoneInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FF29C472CE36DAD0086BE6F /* PPHandleDevicePhoneInfo.m */; };
+		3FF29C4B2CE36E2C0086BE6F /* PPIDFVManagerTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FF29C4A2CE36E2C0086BE6F /* PPIDFVManagerTools.m */; };
+		3FF29C552CE4455D0086BE6F /* PPLeftNormalCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FF29C542CE4455D0086BE6F /* PPLeftNormalCardView.m */; };
+		3FF29C582CE4457E0086BE6F /* PPRightCardDefaultView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FF29C572CE4457E0086BE6F /* PPRightCardDefaultView.m */; };
+		3FF29C672CE446760086BE6F /* JYPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FF29C612CE446760086BE6F /* JYPageControl.m */; };
+		3FF29C682CE446760086BE6F /* JYWeakTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FF29C652CE446760086BE6F /* JYWeakTimer.m */; };
+		3FF29C692CE446760086BE6F /* JYBanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FF29C5B2CE446760086BE6F /* JYBanner.m */; };
+		3FF29C6A2CE446760086BE6F /* JYTitleLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FF29C632CE446760086BE6F /* JYTitleLabel.m */; };
+		3FF29C6B2CE446760086BE6F /* JYImageDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FF29C5F2CE446760086BE6F /* JYImageDownloader.m */; };
+		3FF29C6C2CE446760086BE6F /* JYConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FF29C5D2CE446760086BE6F /* JYConfiguration.m */; };
+		3FF29C6F2CE490F20086BE6F /* PPWKWebViewControllerPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FF29C6E2CE490F20086BE6F /* PPWKWebViewControllerPage.m */; };
+		3FF29C722CE496870086BE6F /* JSBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FF29C712CE496870086BE6F /* JSBridge.m */; };
+		3FF29C752CE4BC3D0086BE6F /* PPDefaultCardPopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FF29C742CE4BC3D0086BE6F /* PPDefaultCardPopView.m */; };
+		EE305AE6895DA94263664D33 /* Pods_PesoPlus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0799B4F116E41B6D6986B41A /* Pods_PesoPlus.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		01573C582D5C4520005BF089 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		0799B4F116E41B6D6986B41A /* Pods_PesoPlus.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PesoPlus.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3F01326B2CD331F700943F02 /* PesoPlus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PesoPlus.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3F0132B22CD336A100943F02 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		3F0132B32CD336A100943F02 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		3F0132B42CD336A100943F02 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		3F0132B52CD336A100943F02 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3F0132B62CD336A100943F02 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		3F0132B82CD336A100943F02 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		3F0132B92CD336A100943F02 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		3F0132BB2CD336A100943F02 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		3F0132BC2CD336A100943F02 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		3F0132C62CD35CF400943F02 /* PPTabBarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PPTabBarController.h; sourceTree = "<group>"; };
+		3F0132C72CD35CF400943F02 /* PPTabBarController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PPTabBarController.m; sourceTree = "<group>"; };
+		3F0132CC2CD35ED500943F02 /* PPBasePageController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PPBasePageController.h; sourceTree = "<group>"; };
+		3F0132CD2CD35ED500943F02 /* PPBasePageController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PPBasePageController.m; sourceTree = "<group>"; };
+		3F0132CF2CD35F0100943F02 /* PPLeftWindowPage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PPLeftWindowPage.h; sourceTree = "<group>"; };
+		3F0132D02CD35F0100943F02 /* PPLeftWindowPage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PPLeftWindowPage.m; sourceTree = "<group>"; };
+		3F0132D32CD35F2300943F02 /* PPUserInfoProfilePage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PPUserInfoProfilePage.h; sourceTree = "<group>"; };
+		3F0132D42CD35F2300943F02 /* PPUserInfoProfilePage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PPUserInfoProfilePage.m; sourceTree = "<group>"; };
+		3F0132D62CD367A700943F02 /* PPBaseWidgetView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PPBaseWidgetView.h; sourceTree = "<group>"; };
+		3F0132D72CD367A700943F02 /* PPBaseWidgetView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PPBaseWidgetView.m; sourceTree = "<group>"; };
+		3F0132DB2CD3685A00943F02 /* UIView+Adds.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+Adds.h"; sourceTree = "<group>"; };
+		3F0132DC2CD3685A00943F02 /* UIView+Adds.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+Adds.m"; sourceTree = "<group>"; };
+		3F0132DE2CD36D1A00943F02 /* PPNavTopStausAndBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PPNavTopStausAndBar.h; sourceTree = "<group>"; };
+		3F0132DF2CD36D1A00943F02 /* PPNavTopStausAndBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PPNavTopStausAndBar.m; sourceTree = "<group>"; };
+		3F0132E12CD36DE400943F02 /* PPUserDefaultColorHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PPUserDefaultColorHelper.h; sourceTree = "<group>"; };
+		3F0132E22CD36DE400943F02 /* PPUserDefaultColorHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PPUserDefaultColorHelper.m; sourceTree = "<group>"; };
+		3F0132E42CD36EC600943F02 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		3F0133112CD373EC00943F02 /* PPConfuseHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PPConfuseHeader.h; sourceTree = "<group>"; };
+		3F0133122CD3742200943F02 /* PPRequestPath.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PPRequestPath.h; sourceTree = "<group>"; };
+		3F0133132CD3746600943F02 /* PPCommonHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PPCommonHeader.h; sourceTree = "<group>"; };
+		3F0133142CD374EA00943F02 /* PPDefineHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PPDefineHeader.h; sourceTree = "<group>"; };
+		3F0133152CD3782100943F02 /* NSString+Adds.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+Adds.h"; sourceTree = "<group>"; };
+		3F0133162CD3782100943F02 /* NSString+Adds.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+Adds.m"; sourceTree = "<group>"; };
+		3F0133182CD38D1300943F02 /* PPMiddleCenterToastView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PPMiddleCenterToastView.h; sourceTree = "<group>"; };
+		3F0133192CD38D1300943F02 /* PPMiddleCenterToastView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PPMiddleCenterToastView.m; sourceTree = "<group>"; };
+		3F01331B2CD38FAF00943F02 /* PPMiddleCenterLoadingView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PPMiddleCenterLoadingView.h; sourceTree = "<group>"; };
+		3F01331C2CD38FAF00943F02 /* PPMiddleCenterLoadingView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PPMiddleCenterLoadingView.m; sourceTree = "<group>"; };
+		3F01331E2CD3907800943F02 /* PPCacheConfigManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PPCacheConfigManager.h; sourceTree = "<group>"; };
+		3F01331F2CD3907800943F02 /* PPCacheConfigManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PPCacheConfigManager.m; sourceTree = "<group>"; };
+		3F0133222CD394A000943F02 /* PPTimeDown.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PPTimeDown.h; sourceTree = "<group>"; };
+		3F0133232CD394A000943F02 /* PPTimeDown.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PPTimeDown.m; sourceTree = "<group>"; };
+		3F0133252CD3954E00943F02 /* PPLinkTheViewShow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PPLinkTheViewShow.h; sourceTree = "<group>"; };
+		3F0133262CD3954E00943F02 /* PPLinkTheViewShow.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PPLinkTheViewShow.m; sourceTree = "<group>"; };
+		3F0133282CD395EC00943F02 /* PPPage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PPPage.h; sourceTree = "<group>"; };
+		3F0133292CD395EC00943F02 /* PPPage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PPPage.m; sourceTree = "<group>"; };
+		3F0133372CD485B100943F02 /* PPNetwork.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PPNetwork.h; sourceTree = "<group>"; };
+		3F0133382CD485B100943F02 /* PPNetwork.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PPNetwork.m; sourceTree = "<group>"; };
+		3F01333A2CD4AD4700943F02 /* PPUser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PPUser.h; sourceTree = "<group>"; };
+		3F01333B2CD4AD4700943F02 /* PPUser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PPUser.m; sourceTree = "<group>"; };
+		3F01333E2CD4C2E200943F02 /* PPLoginPage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PPLoginPage.h; sourceTree = "<group>"; };
+		3F01333F2CD4C2E200943F02 /* PPLoginPage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PPLoginPage.m; sourceTree = "<group>"; };
+		3F10FC492CEAED26002A2706 /* PPIconTitleButtonView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PPIconTitleButtonView.h; sourceTree = "<group>"; };
+		3F10FC4A2CEAED26002A2706 /* PPIconTitleButtonView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PPIconTitleButtonView.m; sourceTree = "<group>"; };
+		3F10FC4C2CEB27BC002A2706 /* JumpMamager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JumpMamager.h; sourceTree = "<group>"; };
+		3F10FC4D2CEB27BC002A2706 /* JumpMamager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JumpMamager.m; sourceTree = "<group>"; };
+		3F10FC4F2CEB2C42002A2706 /* DataManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataManager.h; sourceTree = "<group>"; };
+		3F10FC502CEB2C42002A2706 /* DataManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DataManager.m; sourceTree = "<group>"; };
+		3F10FC522CEB2D85002A2706 /* LLUserConfigLocationServiceManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LLUserConfigLocationServiceManager.h; sourceTree = "<group>"; };
+		3F10FC532CEB2D85002A2706 /* LLUserConfigLocationServiceManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LLUserConfigLocationServiceManager.m; sourceTree = "<group>"; };
+		3F10FC552CEB4436002A2706 /* SettingPPNormalCardPage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingPPNormalCardPage.h; sourceTree = "<group>"; };
+		3F10FC562CEB4436002A2706 /* SettingPPNormalCardPage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingPPNormalCardPage.m; sourceTree = "<group>"; };
+		3F10FC582CEB4B95002A2706 /* PPSelfConfigCenterAlert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PPSelfConfigCenterAlert.h; sourceTree = "<group>"; };
+		3F10FC592CEB4B95002A2706 /* PPSelfConfigCenterAlert.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PPSelfConfigCenterAlert.m; sourceTree = "<group>"; };
+		3F10FC5B2CEB4D2A002A2706 /* PPKingHotConfigView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PPKingHotConfigView.h; sourceTree = "<group>"; };
+		3F10FC5C2CEB4D2A002A2706 /* PPKingHotConfigView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PPKingHotConfigView.m; sourceTree = "<group>"; };
+		3F10FC632CEB8989002A2706 /* PPUserTopViewTimeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PPUserTopViewTimeView.h; sourceTree = "<group>"; };
+		3F10FC642CEB8989002A2706 /* PPUserTopViewTimeView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PPUserTopViewTimeView.m; sourceTree = "<group>"; };
+		3F10FC662CEBA17E002A2706 /* PPNormalCardInputCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PPNormalCardInputCell.h; sourceTree = "<group>"; };
+		3F10FC672CEBA17E002A2706 /* PPNormalCardInputCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PPNormalCardInputCell.m; sourceTree = "<group>"; };
+		3F10FC692CEBA6BF002A2706 /* PPNormalCardInfoAlert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PPNormalCardInfoAlert.h; sourceTree = "<group>"; };
+		3F10FC6A2CEBA6BF002A2706 /* PPNormalCardInfoAlert.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PPNormalCardInfoAlert.m; sourceTree = "<group>"; };
+		3F10FC6C2CEBA9F2002A2706 /* DayPPNormalCardAlert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DayPPNormalCardAlert.h; sourceTree = "<group>"; };
+		3F10FC6D2CEBA9F2002A2706 /* DayPPNormalCardAlert.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DayPPNormalCardAlert.m; sourceTree = "<group>"; };
+		3F10FC6F2CEC493B002A2706 /* LinkmanPagePPNormalCard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LinkmanPagePPNormalCard.h; sourceTree = "<group>"; };
+		3F10FC702CEC493B002A2706 /* LinkmanPagePPNormalCard.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LinkmanPagePPNormalCard.m; sourceTree = "<group>"; };
+		3F10FC722CEC5814002A2706 /* PPNormalCardLinkmanCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PPNormalCardLinkmanCell.h; sourceTree = "<group>"; };
+		3F10FC732CEC5814002A2706 /* PPNormalCardLinkmanCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PPNormalCardLinkmanCell.m; sourceTree = "<group>"; };
+		3F10FC752CEC7D77002A2706 /* PPNormalCardRelationAlert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PPNormalCardRelationAlert.h; sourceTree = "<group>"; };
+		3F10FC762CEC7D77002A2706 /* PPNormalCardRelationAlert.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PPNormalCardRelationAlert.m; sourceTree = "<group>"; };
+		3F10FC782CEC87DC002A2706 /* PPUserDefaultViewIdCardPage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PPUserDefaultViewIdCardPage.h; sourceTree = "<group>"; };
+		3F10FC792CEC87DC002A2706 /* PPUserDefaultViewIdCardPage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PPUserDefaultViewIdCardPage.m; sourceTree = "<group>"; };
+		3F10FC7B2CEC8A5D002A2706 /* PPUserDefaultViewIdCardAlert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PPUserDefaultViewIdCardAlert.h; sourceTree = "<group>"; };
+		3F10FC7C2CEC8A5D002A2706 /* PPUserDefaultViewIdCardAlert.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PPUserDefaultViewIdCardAlert.m; sourceTree = "<group>"; };
+		3F10FC7E2CEC8BE9002A2706 /* PPHaussKingPictureTools.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PPHaussKingPictureTools.h; sourceTree = "<group>"; };
+		3F10FC7F2CEC8BE9002A2706 /* PPHaussKingPictureTools.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PPHaussKingPictureTools.m; sourceTree = "<group>"; };
+		3F10FC812CEC8EA4002A2706 /* PPNormalCardGenderCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PPNormalCardGenderCell.h; sourceTree = "<group>"; };
+		3F10FC822CEC8EA4002A2706 /* PPNormalCardGenderCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PPNormalCardGenderCell.m; sourceTree = "<group>"; };
+		3F10FC842CECED33002A2706 /* FacePageUserDefaultView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FacePageUserDefaultView.h; sourceTree = "<group>"; };
+		3F10FC852CECED33002A2706 /* FacePageUserDefaultView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FacePageUserDefaultView.m; sourceTree = "<group>"; };
+		3F8E5C682CED03A00098EF60 /* BankPagePPToProcessVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BankPagePPToProcessVC.h; sourceTree = "<group>"; };
+		3F8E5C692CED03A00098EF60 /* BankPagePPToProcessVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BankPagePPToProcessVC.m; sourceTree = "<group>"; };
+		3F8E5C6B2CED0BF40098EF60 /* PPUserDefaultViewWalletItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PPUserDefaultViewWalletItem.h; sourceTree = "<group>"; };
+		3F8E5C6C2CED0BF40098EF60 /* PPUserDefaultViewWalletItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PPUserDefaultViewWalletItem.m; sourceTree = "<group>"; };
+		3F8E5C6E2CED0C060098EF60 /* PPUserDefaultViewBankItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PPUserDefaultViewBankItem.h; sourceTree = "<group>"; };
+		3F8E5C6F2CED0C060098EF60 /* PPUserDefaultViewBankItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PPUserDefaultViewBankItem.m; sourceTree = "<group>"; };
+		3F8E5C712CED0DEF0098EF60 /* PPUserDefaultViewBankAlert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PPUserDefaultViewBankAlert.h; sourceTree = "<group>"; };
+		3F8E5C722CED0DEF0098EF60 /* PPUserDefaultViewBankAlert.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PPUserDefaultViewBankAlert.m; sourceTree = "<group>"; };
+		3F8E5C742CEDB41F0098EF60 /* DefaultBaseProcessPage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DefaultBaseProcessPage.h; sourceTree = "<group>"; };
+		3F8E5C752CEDB41F0098EF60 /* DefaultBaseProcessPage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DefaultBaseProcessPage.m; sourceTree = "<group>"; };
+		3F8E5C772CEDCFD10098EF60 /* PPNormalCardOrderPage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PPNormalCardOrderPage.h; sourceTree = "<group>"; };
+		3F8E5C782CEDCFD10098EF60 /* PPNormalCardOrderPage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PPNormalCardOrderPage.m; sourceTree = "<group>"; };
+		3F8E5C7A2CEDD0C20098EF60 /* PPNormalCardTabView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PPNormalCardTabView.h; sourceTree = "<group>"; };
+		3F8E5C7B2CEDD0C20098EF60 /* PPNormalCardTabView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PPNormalCardTabView.m; sourceTree = "<group>"; };
+		3F8E5C7D2CEDD1250098EF60 /* PPNormalCardRecordCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PPNormalCardRecordCell.h; sourceTree = "<group>"; };
+		3F8E5C7E2CEDD1250098EF60 /* PPNormalCardRecordCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PPNormalCardRecordCell.m; sourceTree = "<group>"; };
+		3FD180172CE6EB8D006F3106 /* InformationPagePPNormalCard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InformationPagePPNormalCard.h; sourceTree = "<group>"; };
+		3FD180182CE6EB8D006F3106 /* InformationPagePPNormalCard.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InformationPagePPNormalCard.m; sourceTree = "<group>"; };
+		3FD1801A2CE6F3E6006F3106 /* PPUserDefaultViewInfoCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PPUserDefaultViewInfoCell.h; sourceTree = "<group>"; };
+		3FD1801B2CE6F3E6006F3106 /* PPUserDefaultViewInfoCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PPUserDefaultViewInfoCell.m; sourceTree = "<group>"; };
+		3FE176F22D5C3E1D001344D3 /* PesoPlus.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PesoPlus.entitlements; sourceTree = "<group>"; };
+		3FF29C3E2CE3098B0086BE6F /* carter_regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = carter_regular.ttf; sourceTree = "<group>"; };
+		3FF29C402CE34D2D0086BE6F /* PPAuthCodePage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PPAuthCodePage.h; sourceTree = "<group>"; };
+		3FF29C412CE34D2D0086BE6F /* PPAuthCodePage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PPAuthCodePage.m; sourceTree = "<group>"; };
+		3FF29C432CE354A40086BE6F /* PPAuthCodeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PPAuthCodeView.h; sourceTree = "<group>"; };
+		3FF29C442CE354A40086BE6F /* PPAuthCodeView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PPAuthCodeView.m; sourceTree = "<group>"; };
+		3FF29C462CE36DAD0086BE6F /* PPHandleDevicePhoneInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PPHandleDevicePhoneInfo.h; sourceTree = "<group>"; };
+		3FF29C472CE36DAD0086BE6F /* PPHandleDevicePhoneInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PPHandleDevicePhoneInfo.m; sourceTree = "<group>"; };
+		3FF29C492CE36E2C0086BE6F /* PPIDFVManagerTools.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PPIDFVManagerTools.h; sourceTree = "<group>"; };
+		3FF29C4A2CE36E2C0086BE6F /* PPIDFVManagerTools.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PPIDFVManagerTools.m; sourceTree = "<group>"; };
+		3FF29C532CE4455D0086BE6F /* PPLeftNormalCardView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PPLeftNormalCardView.h; sourceTree = "<group>"; };
+		3FF29C542CE4455D0086BE6F /* PPLeftNormalCardView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PPLeftNormalCardView.m; sourceTree = "<group>"; };
+		3FF29C562CE4457E0086BE6F /* PPRightCardDefaultView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PPRightCardDefaultView.h; sourceTree = "<group>"; };
+		3FF29C572CE4457E0086BE6F /* PPRightCardDefaultView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PPRightCardDefaultView.m; sourceTree = "<group>"; };
+		3FF29C5A2CE446760086BE6F /* JYBanner.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JYBanner.h; sourceTree = "<group>"; };
+		3FF29C5B2CE446760086BE6F /* JYBanner.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JYBanner.m; sourceTree = "<group>"; };
+		3FF29C5C2CE446760086BE6F /* JYConfiguration.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JYConfiguration.h; sourceTree = "<group>"; };
+		3FF29C5D2CE446760086BE6F /* JYConfiguration.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JYConfiguration.m; sourceTree = "<group>"; };
+		3FF29C5E2CE446760086BE6F /* JYImageDownloader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JYImageDownloader.h; sourceTree = "<group>"; };
+		3FF29C5F2CE446760086BE6F /* JYImageDownloader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JYImageDownloader.m; sourceTree = "<group>"; };
+		3FF29C602CE446760086BE6F /* JYPageControl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JYPageControl.h; sourceTree = "<group>"; };
+		3FF29C612CE446760086BE6F /* JYPageControl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JYPageControl.m; sourceTree = "<group>"; };
+		3FF29C622CE446760086BE6F /* JYTitleLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JYTitleLabel.h; sourceTree = "<group>"; };
+		3FF29C632CE446760086BE6F /* JYTitleLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JYTitleLabel.m; sourceTree = "<group>"; };
+		3FF29C642CE446760086BE6F /* JYWeakTimer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JYWeakTimer.h; sourceTree = "<group>"; };
+		3FF29C652CE446760086BE6F /* JYWeakTimer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JYWeakTimer.m; sourceTree = "<group>"; };
+		3FF29C6D2CE490F20086BE6F /* PPWKWebViewControllerPage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PPWKWebViewControllerPage.h; sourceTree = "<group>"; };
+		3FF29C6E2CE490F20086BE6F /* PPWKWebViewControllerPage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PPWKWebViewControllerPage.m; sourceTree = "<group>"; };
+		3FF29C702CE496870086BE6F /* JSBridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSBridge.h; sourceTree = "<group>"; };
+		3FF29C712CE496870086BE6F /* JSBridge.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSBridge.m; sourceTree = "<group>"; };
+		3FF29C732CE4BC3D0086BE6F /* PPDefaultCardPopView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PPDefaultCardPopView.h; sourceTree = "<group>"; };
+		3FF29C742CE4BC3D0086BE6F /* PPDefaultCardPopView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PPDefaultCardPopView.m; sourceTree = "<group>"; };
+		5ADF39CA6F20BA25E5EDCC76 /* Pods-PesoPlus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PesoPlus.release.xcconfig"; path = "Target Support Files/Pods-PesoPlus/Pods-PesoPlus.release.xcconfig"; sourceTree = "<group>"; };
+		7DE2B371079DD958CDE32D41 /* Pods-PesoPlus.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PesoPlus.debug.xcconfig"; path = "Target Support Files/Pods-PesoPlus/Pods-PesoPlus.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3F0132682CD331F700943F02 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EE305AE6895DA94263664D33 /* Pods_PesoPlus.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3F0132622CD331F700943F02 = {
+			isa = PBXGroup;
+			children = (
+				3F0132BD2CD336A100943F02 /* PesoPlus */,
+				3F01326C2CD331F700943F02 /* Products */,
+				D0725598DA4B980A38F2E0EC /* Pods */,
+				8E6C36292F5038247DD3E82B /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		3F01326C2CD331F700943F02 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3F01326B2CD331F700943F02 /* PesoPlus.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3F0132BD2CD336A100943F02 /* PesoPlus */ = {
+			isa = PBXGroup;
+			children = (
+				3FE176F22D5C3E1D001344D3 /* PesoPlus.entitlements */,
+				3FF29C592CE446330086BE6F /* OtherSdks */,
+				3FF29C3B2CE306810086BE6F /* Fonts */,
+				3F0133212CD390C400943F02 /* PPClass */,
+				3F0132E52CD3729300943F02 /* PPDefineHeader */,
+				3F0132D92CD3680500943F02 /* PPExtension */,
+				3F0132C52CD35C7400943F02 /* PPNormalPageFile */,
+				3F0132C92CD35E5600943F02 /* PPPage */,
+				3F0132B22CD336A100943F02 /* AppDelegate.h */,
+				3F0132B32CD336A100943F02 /* AppDelegate.m */,
+				3F0132B42CD336A100943F02 /* Assets.xcassets */,
+				01573C582D5C4520005BF089 /* PrivacyInfo.xcprivacy */,
+				3F0132B52CD336A100943F02 /* Info.plist */,
+				3F0132B72CD336A100943F02 /* LaunchScreen.storyboard */,
+				3F0132B82CD336A100943F02 /* main.m */,
+				3F0132BA2CD336A100943F02 /* Main.storyboard */,
+				3F0132BB2CD336A100943F02 /* ViewController.h */,
+				3F0132BC2CD336A100943F02 /* ViewController.m */,
+				3F0132E42CD36EC600943F02 /* PrefixHeader.pch */,
+			);
+			path = PesoPlus;
+			sourceTree = "<group>";
+		};
+		3F0132C52CD35C7400943F02 /* PPNormalPageFile */ = {
+			isa = PBXGroup;
+			children = (
+				3F0132C62CD35CF400943F02 /* PPTabBarController.h */,
+				3F0132C72CD35CF400943F02 /* PPTabBarController.m */,
+				3F0132CC2CD35ED500943F02 /* PPBasePageController.h */,
+				3F0132CD2CD35ED500943F02 /* PPBasePageController.m */,
+				3F0132D62CD367A700943F02 /* PPBaseWidgetView.h */,
+				3F0132D72CD367A700943F02 /* PPBaseWidgetView.m */,
+				3F0132DE2CD36D1A00943F02 /* PPNavTopStausAndBar.h */,
+				3F0132DF2CD36D1A00943F02 /* PPNavTopStausAndBar.m */,
+				3F0133182CD38D1300943F02 /* PPMiddleCenterToastView.h */,
+				3F0133192CD38D1300943F02 /* PPMiddleCenterToastView.m */,
+				3F01331B2CD38FAF00943F02 /* PPMiddleCenterLoadingView.h */,
+				3F01331C2CD38FAF00943F02 /* PPMiddleCenterLoadingView.m */,
+				3FF29C6D2CE490F20086BE6F /* PPWKWebViewControllerPage.h */,
+				3FF29C6E2CE490F20086BE6F /* PPWKWebViewControllerPage.m */,
+				3F10FC492CEAED26002A2706 /* PPIconTitleButtonView.h */,
+				3F10FC4A2CEAED26002A2706 /* PPIconTitleButtonView.m */,
+				3F10FC582CEB4B95002A2706 /* PPSelfConfigCenterAlert.h */,
+				3F10FC592CEB4B95002A2706 /* PPSelfConfigCenterAlert.m */,
+				3F10FC5B2CEB4D2A002A2706 /* PPKingHotConfigView.h */,
+				3F10FC5C2CEB4D2A002A2706 /* PPKingHotConfigView.m */,
+			);
+			path = PPNormalPageFile;
+			sourceTree = "<group>";
+		};
+		3F0132C92CD35E5600943F02 /* PPPage */ = {
+			isa = PBXGroup;
+			children = (
+				3FD180152CE6EB1C006F3106 /* Process */,
+				3F01333D2CD4C2C400943F02 /* Login */,
+				3F0132D22CD35F0600943F02 /* User */,
+				3F0132CA2CD35E6700943F02 /* Home */,
+			);
+			path = PPPage;
+			sourceTree = "<group>";
+		};
+		3F0132CA2CD35E6700943F02 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				3F0132CF2CD35F0100943F02 /* PPLeftWindowPage.h */,
+				3F0132D02CD35F0100943F02 /* PPLeftWindowPage.m */,
+				3FF29C522CE4450E0086BE6F /* Views */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		3F0132D22CD35F0600943F02 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				3F0132D32CD35F2300943F02 /* PPUserInfoProfilePage.h */,
+				3F0132D42CD35F2300943F02 /* PPUserInfoProfilePage.m */,
+				3F10FC552CEB4436002A2706 /* SettingPPNormalCardPage.h */,
+				3F10FC562CEB4436002A2706 /* SettingPPNormalCardPage.m */,
+				3F8E5C772CEDCFD10098EF60 /* PPNormalCardOrderPage.h */,
+				3F8E5C782CEDCFD10098EF60 /* PPNormalCardOrderPage.m */,
+				3F8E5C7A2CEDD0C20098EF60 /* PPNormalCardTabView.h */,
+				3F8E5C7B2CEDD0C20098EF60 /* PPNormalCardTabView.m */,
+				3F8E5C7D2CEDD1250098EF60 /* PPNormalCardRecordCell.h */,
+				3F8E5C7E2CEDD1250098EF60 /* PPNormalCardRecordCell.m */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		3F0132D92CD3680500943F02 /* PPExtension */ = {
+			isa = PBXGroup;
+			children = (
+				3F0132DB2CD3685A00943F02 /* UIView+Adds.h */,
+				3F0132DC2CD3685A00943F02 /* UIView+Adds.m */,
+				3F0133152CD3782100943F02 /* NSString+Adds.h */,
+				3F0133162CD3782100943F02 /* NSString+Adds.m */,
+			);
+			path = PPExtension;
+			sourceTree = "<group>";
+		};
+		3F0132E52CD3729300943F02 /* PPDefineHeader */ = {
+			isa = PBXGroup;
+			children = (
+				3F0132E12CD36DE400943F02 /* PPUserDefaultColorHelper.h */,
+				3F0132E22CD36DE400943F02 /* PPUserDefaultColorHelper.m */,
+				3F0133112CD373EC00943F02 /* PPConfuseHeader.h */,
+				3F0133122CD3742200943F02 /* PPRequestPath.h */,
+				3F0133132CD3746600943F02 /* PPCommonHeader.h */,
+				3F0133142CD374EA00943F02 /* PPDefineHeader.h */,
+			);
+			path = PPDefineHeader;
+			sourceTree = "<group>";
+		};
+		3F0133212CD390C400943F02 /* PPClass */ = {
+			isa = PBXGroup;
+			children = (
+				3F01331E2CD3907800943F02 /* PPCacheConfigManager.h */,
+				3F01331F2CD3907800943F02 /* PPCacheConfigManager.m */,
+				3F0133222CD394A000943F02 /* PPTimeDown.h */,
+				3F0133232CD394A000943F02 /* PPTimeDown.m */,
+				3F0133252CD3954E00943F02 /* PPLinkTheViewShow.h */,
+				3F0133262CD3954E00943F02 /* PPLinkTheViewShow.m */,
+				3F0133282CD395EC00943F02 /* PPPage.h */,
+				3F0133292CD395EC00943F02 /* PPPage.m */,
+				3F0133372CD485B100943F02 /* PPNetwork.h */,
+				3F0133382CD485B100943F02 /* PPNetwork.m */,
+				3F01333A2CD4AD4700943F02 /* PPUser.h */,
+				3F01333B2CD4AD4700943F02 /* PPUser.m */,
+				3FF29C462CE36DAD0086BE6F /* PPHandleDevicePhoneInfo.h */,
+				3FF29C472CE36DAD0086BE6F /* PPHandleDevicePhoneInfo.m */,
+				3FF29C492CE36E2C0086BE6F /* PPIDFVManagerTools.h */,
+				3FF29C4A2CE36E2C0086BE6F /* PPIDFVManagerTools.m */,
+				3FF29C702CE496870086BE6F /* JSBridge.h */,
+				3FF29C712CE496870086BE6F /* JSBridge.m */,
+				3F10FC4C2CEB27BC002A2706 /* JumpMamager.h */,
+				3F10FC4D2CEB27BC002A2706 /* JumpMamager.m */,
+				3F10FC4F2CEB2C42002A2706 /* DataManager.h */,
+				3F10FC502CEB2C42002A2706 /* DataManager.m */,
+				3F10FC522CEB2D85002A2706 /* LLUserConfigLocationServiceManager.h */,
+				3F10FC532CEB2D85002A2706 /* LLUserConfigLocationServiceManager.m */,
+				3F10FC7E2CEC8BE9002A2706 /* PPHaussKingPictureTools.h */,
+				3F10FC7F2CEC8BE9002A2706 /* PPHaussKingPictureTools.m */,
+			);
+			path = PPClass;
+			sourceTree = "<group>";
+		};
+		3F01333D2CD4C2C400943F02 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				3F01333E2CD4C2E200943F02 /* PPLoginPage.h */,
+				3F01333F2CD4C2E200943F02 /* PPLoginPage.m */,
+				3FF29C402CE34D2D0086BE6F /* PPAuthCodePage.h */,
+				3FF29C412CE34D2D0086BE6F /* PPAuthCodePage.m */,
+				3FF29C432CE354A40086BE6F /* PPAuthCodeView.h */,
+				3FF29C442CE354A40086BE6F /* PPAuthCodeView.m */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		3F10FC5E2CEB8053002A2706 /* Info */ = {
+			isa = PBXGroup;
+			children = (
+				3FD180172CE6EB8D006F3106 /* InformationPagePPNormalCard.h */,
+				3FD180182CE6EB8D006F3106 /* InformationPagePPNormalCard.m */,
+				3F10FC692CEBA6BF002A2706 /* PPNormalCardInfoAlert.h */,
+				3F10FC6A2CEBA6BF002A2706 /* PPNormalCardInfoAlert.m */,
+				3F10FC6C2CEBA9F2002A2706 /* DayPPNormalCardAlert.h */,
+				3F10FC6D2CEBA9F2002A2706 /* DayPPNormalCardAlert.m */,
+			);
+			path = Info;
+			sourceTree = "<group>";
+		};
+		3F10FC5F2CEB8062002A2706 /* Link */ = {
+			isa = PBXGroup;
+			children = (
+				3FD1801A2CE6F3E6006F3106 /* PPUserDefaultViewInfoCell.h */,
+				3FD1801B2CE6F3E6006F3106 /* PPUserDefaultViewInfoCell.m */,
+				3F10FC662CEBA17E002A2706 /* PPNormalCardInputCell.h */,
+				3F10FC672CEBA17E002A2706 /* PPNormalCardInputCell.m */,
+				3F10FC812CEC8EA4002A2706 /* PPNormalCardGenderCell.h */,
+				3F10FC822CEC8EA4002A2706 /* PPNormalCardGenderCell.m */,
+				3F10FC722CEC5814002A2706 /* PPNormalCardLinkmanCell.h */,
+				3F10FC732CEC5814002A2706 /* PPNormalCardLinkmanCell.m */,
+				3F10FC6F2CEC493B002A2706 /* LinkmanPagePPNormalCard.h */,
+				3F10FC702CEC493B002A2706 /* LinkmanPagePPNormalCard.m */,
+				3F10FC752CEC7D77002A2706 /* PPNormalCardRelationAlert.h */,
+				3F10FC762CEC7D77002A2706 /* PPNormalCardRelationAlert.m */,
+			);
+			path = Link;
+			sourceTree = "<group>";
+		};
+		3F10FC602CEB806F002A2706 /* Card */ = {
+			isa = PBXGroup;
+			children = (
+				3F10FC782CEC87DC002A2706 /* PPUserDefaultViewIdCardPage.h */,
+				3F10FC792CEC87DC002A2706 /* PPUserDefaultViewIdCardPage.m */,
+				3F10FC7B2CEC8A5D002A2706 /* PPUserDefaultViewIdCardAlert.h */,
+				3F10FC7C2CEC8A5D002A2706 /* PPUserDefaultViewIdCardAlert.m */,
+			);
+			path = Card;
+			sourceTree = "<group>";
+		};
+		3F10FC612CEB8082002A2706 /* Face */ = {
+			isa = PBXGroup;
+			children = (
+				3F10FC842CECED33002A2706 /* FacePageUserDefaultView.h */,
+				3F10FC852CECED33002A2706 /* FacePageUserDefaultView.m */,
+			);
+			path = Face;
+			sourceTree = "<group>";
+		};
+		3F10FC622CEB808C002A2706 /* Bank */ = {
+			isa = PBXGroup;
+			children = (
+				3F10FC632CEB8989002A2706 /* PPUserTopViewTimeView.h */,
+				3F10FC642CEB8989002A2706 /* PPUserTopViewTimeView.m */,
+				3F8E5C682CED03A00098EF60 /* BankPagePPToProcessVC.h */,
+				3F8E5C692CED03A00098EF60 /* BankPagePPToProcessVC.m */,
+				3F8E5C6B2CED0BF40098EF60 /* PPUserDefaultViewWalletItem.h */,
+				3F8E5C6C2CED0BF40098EF60 /* PPUserDefaultViewWalletItem.m */,
+				3F8E5C6E2CED0C060098EF60 /* PPUserDefaultViewBankItem.h */,
+				3F8E5C6F2CED0C060098EF60 /* PPUserDefaultViewBankItem.m */,
+				3F8E5C712CED0DEF0098EF60 /* PPUserDefaultViewBankAlert.h */,
+				3F8E5C722CED0DEF0098EF60 /* PPUserDefaultViewBankAlert.m */,
+			);
+			path = Bank;
+			sourceTree = "<group>";
+		};
+		3FD180152CE6EB1C006F3106 /* Process */ = {
+			isa = PBXGroup;
+			children = (
+				3F10FC622CEB808C002A2706 /* Bank */,
+				3F10FC612CEB8082002A2706 /* Face */,
+				3F10FC602CEB806F002A2706 /* Card */,
+				3F10FC5F2CEB8062002A2706 /* Link */,
+				3F10FC5E2CEB8053002A2706 /* Info */,
+				3F8E5C742CEDB41F0098EF60 /* DefaultBaseProcessPage.h */,
+				3F8E5C752CEDB41F0098EF60 /* DefaultBaseProcessPage.m */,
+			);
+			path = Process;
+			sourceTree = "<group>";
+		};
+		3FF29C3B2CE306810086BE6F /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				3FF29C3E2CE3098B0086BE6F /* carter_regular.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		3FF29C522CE4450E0086BE6F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3FF29C532CE4455D0086BE6F /* PPLeftNormalCardView.h */,
+				3FF29C542CE4455D0086BE6F /* PPLeftNormalCardView.m */,
+				3FF29C562CE4457E0086BE6F /* PPRightCardDefaultView.h */,
+				3FF29C572CE4457E0086BE6F /* PPRightCardDefaultView.m */,
+				3FF29C732CE4BC3D0086BE6F /* PPDefaultCardPopView.h */,
+				3FF29C742CE4BC3D0086BE6F /* PPDefaultCardPopView.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		3FF29C592CE446330086BE6F /* OtherSdks */ = {
+			isa = PBXGroup;
+			children = (
+				3FF29C662CE446760086BE6F /* JYCarousel */,
+			);
+			path = OtherSdks;
+			sourceTree = "<group>";
+		};
+		3FF29C662CE446760086BE6F /* JYCarousel */ = {
+			isa = PBXGroup;
+			children = (
+				3FF29C5A2CE446760086BE6F /* JYBanner.h */,
+				3FF29C5B2CE446760086BE6F /* JYBanner.m */,
+				3FF29C5C2CE446760086BE6F /* JYConfiguration.h */,
+				3FF29C5D2CE446760086BE6F /* JYConfiguration.m */,
+				3FF29C5E2CE446760086BE6F /* JYImageDownloader.h */,
+				3FF29C5F2CE446760086BE6F /* JYImageDownloader.m */,
+				3FF29C602CE446760086BE6F /* JYPageControl.h */,
+				3FF29C612CE446760086BE6F /* JYPageControl.m */,
+				3FF29C622CE446760086BE6F /* JYTitleLabel.h */,
+				3FF29C632CE446760086BE6F /* JYTitleLabel.m */,
+				3FF29C642CE446760086BE6F /* JYWeakTimer.h */,
+				3FF29C652CE446760086BE6F /* JYWeakTimer.m */,
+			);
+			path = JYCarousel;
+			sourceTree = "<group>";
+		};
+		8E6C36292F5038247DD3E82B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0799B4F116E41B6D6986B41A /* Pods_PesoPlus.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D0725598DA4B980A38F2E0EC /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7DE2B371079DD958CDE32D41 /* Pods-PesoPlus.debug.xcconfig */,
+				5ADF39CA6F20BA25E5EDCC76 /* Pods-PesoPlus.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3F01326A2CD331F700943F02 /* PesoPlus */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3F0132832CD331F800943F02 /* Build configuration list for PBXNativeTarget "PesoPlus" */;
+			buildPhases = (
+				2224BF16C12E02DC3E5DAE52 /* [CP] Check Pods Manifest.lock */,
+				3F0132672CD331F700943F02 /* Sources */,
+				3F0132682CD331F700943F02 /* Frameworks */,
+				3F0132692CD331F700943F02 /* Resources */,
+				75AF8E10D1747B57CBC18905 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PesoPlus;
+			productName = PesoPlus;
+			productReference = 3F01326B2CD331F700943F02 /* PesoPlus.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3F0132632CD331F700943F02 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastUpgradeCheck = 1600;
+				TargetAttributes = {
+					3F01326A2CD331F700943F02 = {
+						CreatedOnToolsVersion = 16.0;
+					};
+				};
+			};
+			buildConfigurationList = 3F0132662CD331F700943F02 /* Build configuration list for PBXProject "PesoPlus" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 3F0132622CD331F700943F02;
+			productRefGroup = 3F01326C2CD331F700943F02 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3F01326A2CD331F700943F02 /* PesoPlus */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3F0132692CD331F700943F02 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3FF29C3F2CE3098B0086BE6F /* carter_regular.ttf in Resources */,
+				3F0132C12CD336A100943F02 /* Assets.xcassets in Resources */,
+				3F0132C32CD336A100943F02 /* LaunchScreen.storyboard in Resources */,
+				01573C592D5C4520005BF089 /* PrivacyInfo.xcprivacy in Resources */,
+				3F0132C42CD336A100943F02 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2224BF16C12E02DC3E5DAE52 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PesoPlus-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		75AF8E10D1747B57CBC18905 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PesoPlus/Pods-PesoPlus-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PesoPlus/Pods-PesoPlus-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PesoPlus/Pods-PesoPlus-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3F0132672CD331F700943F02 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3F10FC512CEB2C42002A2706 /* DataManager.m in Sources */,
+				3F8E5C6D2CED0BF40098EF60 /* PPUserDefaultViewWalletItem.m in Sources */,
+				3F0132D82CD367A700943F02 /* PPBaseWidgetView.m in Sources */,
+				3F10FC572CEB4436002A2706 /* SettingPPNormalCardPage.m in Sources */,
+				3FF29C552CE4455D0086BE6F /* PPLeftNormalCardView.m in Sources */,
+				3F10FC7A2CEC87DC002A2706 /* PPUserDefaultViewIdCardPage.m in Sources */,
+				3F0133172CD3782100943F02 /* NSString+Adds.m in Sources */,
+				3F01331D2CD38FAF00943F02 /* PPMiddleCenterLoadingView.m in Sources */,
+				3F0132BE2CD336A100943F02 /* AppDelegate.m in Sources */,
+				3F10FC742CEC5814002A2706 /* PPNormalCardLinkmanCell.m in Sources */,
+				3F10FC5A2CEB4B95002A2706 /* PPSelfConfigCenterAlert.m in Sources */,
+				3F0133402CD4C2E200943F02 /* PPLoginPage.m in Sources */,
+				3F0132E32CD36DE400943F02 /* PPUserDefaultColorHelper.m in Sources */,
+				3F0133272CD3954E00943F02 /* PPLinkTheViewShow.m in Sources */,
+				3F8E5C7F2CEDD1250098EF60 /* PPNormalCardRecordCell.m in Sources */,
+				3F8E5C702CED0C060098EF60 /* PPUserDefaultViewBankItem.m in Sources */,
+				3F0132BF2CD336A100943F02 /* main.m in Sources */,
+				3F10FC682CEBA17E002A2706 /* PPNormalCardInputCell.m in Sources */,
+				3F01331A2CD38D1300943F02 /* PPMiddleCenterToastView.m in Sources */,
+				3F0133392CD485B100943F02 /* PPNetwork.m in Sources */,
+				3F0132CE2CD35ED500943F02 /* PPBasePageController.m in Sources */,
+				3F0132D12CD35F0100943F02 /* PPLeftWindowPage.m in Sources */,
+				3F8E5C792CEDCFD10098EF60 /* PPNormalCardOrderPage.m in Sources */,
+				3F8E5C7C2CEDD0C20098EF60 /* PPNormalCardTabView.m in Sources */,
+				3FD180192CE6EB8D006F3106 /* InformationPagePPNormalCard.m in Sources */,
+				3F01332A2CD395EC00943F02 /* PPPage.m in Sources */,
+				3FF29C4B2CE36E2C0086BE6F /* PPIDFVManagerTools.m in Sources */,
+				3F0133242CD394A000943F02 /* PPTimeDown.m in Sources */,
+				3F0132D52CD35F2300943F02 /* PPUserInfoProfilePage.m in Sources */,
+				3FF29C672CE446760086BE6F /* JYPageControl.m in Sources */,
+				3F10FC862CECED33002A2706 /* FacePageUserDefaultView.m in Sources */,
+				3FF29C682CE446760086BE6F /* JYWeakTimer.m in Sources */,
+				3FF29C692CE446760086BE6F /* JYBanner.m in Sources */,
+				3FF29C6A2CE446760086BE6F /* JYTitleLabel.m in Sources */,
+				3F10FC6E2CEBA9F2002A2706 /* DayPPNormalCardAlert.m in Sources */,
+				3FF29C6B2CE446760086BE6F /* JYImageDownloader.m in Sources */,
+				3FF29C6C2CE446760086BE6F /* JYConfiguration.m in Sources */,
+				3F10FC652CEB8989002A2706 /* PPUserTopViewTimeView.m in Sources */,
+				3FD1801C2CE6F3E6006F3106 /* PPUserDefaultViewInfoCell.m in Sources */,
+				3F8E5C6A2CED03A00098EF60 /* BankPagePPToProcessVC.m in Sources */,
+				3F10FC4B2CEAED26002A2706 /* PPIconTitleButtonView.m in Sources */,
+				3FF29C452CE354A40086BE6F /* PPAuthCodeView.m in Sources */,
+				3F10FC5D2CEB4D2A002A2706 /* PPKingHotConfigView.m in Sources */,
+				3F01333C2CD4AD4700943F02 /* PPUser.m in Sources */,
+				3FF29C722CE496870086BE6F /* JSBridge.m in Sources */,
+				3FF29C6F2CE490F20086BE6F /* PPWKWebViewControllerPage.m in Sources */,
+				3F10FC4E2CEB27BC002A2706 /* JumpMamager.m in Sources */,
+				3F0132DD2CD3685A00943F02 /* UIView+Adds.m in Sources */,
+				3FF29C582CE4457E0086BE6F /* PPRightCardDefaultView.m in Sources */,
+				3F8E5C732CED0DEF0098EF60 /* PPUserDefaultViewBankAlert.m in Sources */,
+				3FF29C422CE34D2D0086BE6F /* PPAuthCodePage.m in Sources */,
+				3F8E5C762CEDB41F0098EF60 /* DefaultBaseProcessPage.m in Sources */,
+				3F10FC7D2CEC8A5D002A2706 /* PPUserDefaultViewIdCardAlert.m in Sources */,
+				3F10FC802CEC8BE9002A2706 /* PPHaussKingPictureTools.m in Sources */,
+				3FF29C752CE4BC3D0086BE6F /* PPDefaultCardPopView.m in Sources */,
+				3F10FC542CEB2D85002A2706 /* LLUserConfigLocationServiceManager.m in Sources */,
+				3F10FC712CEC493B002A2706 /* LinkmanPagePPNormalCard.m in Sources */,
+				3F10FC6B2CEBA6BF002A2706 /* PPNormalCardInfoAlert.m in Sources */,
+				3F0132C02CD336A100943F02 /* ViewController.m in Sources */,
+				3F0132C82CD35CF400943F02 /* PPTabBarController.m in Sources */,
+				3F10FC772CEC7D77002A2706 /* PPNormalCardRelationAlert.m in Sources */,
+				3F10FC832CEC8EA4002A2706 /* PPNormalCardGenderCell.m in Sources */,
+				3F0133202CD3907900943F02 /* PPCacheConfigManager.m in Sources */,
+				3FF29C482CE36DAD0086BE6F /* PPHandleDevicePhoneInfo.m in Sources */,
+				3F0132E02CD36D1A00943F02 /* PPNavTopStausAndBar.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		3F0132B72CD336A100943F02 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3F0132B62CD336A100943F02 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		3F0132BA2CD336A100943F02 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3F0132B92CD336A100943F02 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		3F0132842CD331F800943F02 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7DE2B371079DD958CDE32D41 /* Pods-PesoPlus.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = PesoPlus/PesoPlus.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = V9XF58S4MW;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/PesoPlus/PrefixHeader.pch";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PesoPlus/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = FlexiLend;
+				INFOPLIST_KEY_NSCameraUsageDescription = "The app needs access to your camera, media, and storage for OCR processing and certification tasks.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We obtain this information to assess the availability of our services in your region.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "The app needs access to your photos, media, storage, and camera for OCR and certification tasks.";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
+				IPHONEOS_DEPLOYMENT_TARGET = 13;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ksmfafa.ios;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		3F0132852CD331F800943F02 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5ADF39CA6F20BA25E5EDCC76 /* Pods-PesoPlus.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = PesoPlus/PesoPlus.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = V9XF58S4MW;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/PesoPlus/PrefixHeader.pch";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PesoPlus/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = FlexiLend;
+				INFOPLIST_KEY_NSCameraUsageDescription = "The app needs access to your camera, media, and storage for OCR processing and certification tasks.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We obtain this information to assess the availability of our services in your region.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "The app needs access to your photos, media, storage, and camera for OCR and certification tasks.";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
+				IPHONEOS_DEPLOYMENT_TARGET = 13;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ksmfafa.ios;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		3F0132862CD331F800943F02 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		3F0132872CD331F800943F02 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3F0132662CD331F700943F02 /* Build configuration list for PBXProject "PesoPlus" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3F0132862CD331F800943F02 /* Debug */,
+				3F0132872CD331F800943F02 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3F0132832CD331F800943F02 /* Build configuration list for PBXNativeTarget "PesoPlus" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3F0132842CD331F800943F02 /* Debug */,
+				3F0132852CD331F800943F02 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3F0132632CD331F700943F02 /* Project object */;
+}
