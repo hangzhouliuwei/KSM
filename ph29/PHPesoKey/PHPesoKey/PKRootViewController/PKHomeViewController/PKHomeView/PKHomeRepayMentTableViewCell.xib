@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="157" id="KGk-i7-Jjw" customClass="PKHomeRepayMentTableViewCell" customModule="PHPesoKey" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="326" height="157"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="326" height="157"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pk_home_repayBack" translatesAutoresizingMaskIntoConstraints="NO" id="CUU-A1-siz">
+                        <rect key="frame" x="12" y="0.0" width="302" height="80"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="80" id="WZn-Jr-X9E"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="CUU-A1-siz" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="7YQ-NJ-Sj7"/>
+                    <constraint firstAttribute="trailing" secondItem="CUU-A1-siz" secondAttribute="trailing" constant="12" id="E6u-iv-Lq7"/>
+                    <constraint firstItem="CUU-A1-siz" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="xu3-Li-Smi"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="home_RepayMent_image" destination="CUU-A1-siz" id="QxV-QI-rXZ"/>
+            </connections>
+            <point key="canvasLocation" x="-36.641221374045799" y="53.169014084507047"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="pk_home_repayBack" width="351" height="80"/>
+    </resources>
+</document>
