@@ -17,7 +17,7 @@ pod 'YYText'
 pod 'YFPopView','~> 3.0.1'
 # 轮播
 pod 'TYCyclePagerView', '~> 1.2.0'
-pod 'IQKeyboardManager', '6.5.10’
+pod 'IQKeyboardManager', '6.5.10'
 # 验证码
 pod 'CRBoxInputView', '~> 1.2.2'
 # 设备号存储
@@ -27,6 +27,12 @@ pod 'AAINetwork', :http => 'https://prod-guardian-cv.oss-ap-southeast-5.aliyuncs
 pod 'AAILiveness', :http => 'https://prod-guardian-cv.oss-ap-southeast-5.aliyuncs.com/sdk/iOS-liveness-detection/2.0.6/iOS-Liveness-SDK-V2.0.6.tar.bz2', type: :tbz
   
   post_install do |installer|
+     installer.pods_project.targets.each do |target|
+       target.build_configurations.each do |config|
+         config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '12.0'
+       end
+     end
+
      bitcode_strip_path = `xcrun --find bitcode_strip`.chop!
      def strip_bitcode_from_framework(bitcode_strip_path, framework_relative_path)
        framework_path = File.join(Dir.pwd, framework_relative_path)

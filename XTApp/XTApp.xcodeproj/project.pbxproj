@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E10B00012F6D000100000001 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10B00002F6D000100000001 /* AppDelegate.swift */; };
 		0157859F2CA3DF2D00EB782F /* XTUpAdidApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 0157859E2CA3DF2D00EB782F /* XTUpAdidApi.m */; };
 		16029B732CA166A8004F040F /* XTNoticeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 16029B722CA166A8004F040F /* XTNoticeCell.m */; };
 		16029B762CA17610004F040F /* XTPopUpApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 16029B752CA17610004F040F /* XTPopUpApi.m */; };
@@ -389,6 +390,8 @@
 		16F1D46F2C3F65F500BEC3FA /* XTApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XTApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		16F1D4722C3F65F500BEC3FA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		16F1D4732C3F65F500BEC3FA /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		E10B00002F6D000100000001 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		E10B00032F6D000100000001 /* XTApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "XTApp-Bridging-Header.h"; sourceTree = "<group>"; };
 		16F1D47E2C3F65F700BEC3FA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		16F1D4812C3F65F700BEC3FA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		16F1D4832C3F65F700BEC3FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -927,6 +930,8 @@
 				16F47F182C9C261E00F8BD39 /* XTApp.entitlements */,
 				16F1D4722C3F65F500BEC3FA /* AppDelegate.h */,
 				16F1D4732C3F65F500BEC3FA /* AppDelegate.m */,
+				E10B00002F6D000100000001 /* AppDelegate.swift */,
+				E10B00032F6D000100000001 /* XTApp-Bridging-Header.h */,
 				1627AF1F2C3F736D0059AC1E /* XTCommon */,
 				16E7A92A2C3FA5D500B06AC7 /* XTManger */,
 				163061D32C88863000014575 /* XTHtml */,
@@ -1084,7 +1089,7 @@
 				16501D8D2C3FE43700F09727 /* XTFirstViewModel.m in Sources */,
 				16FB32102C9038E500714BB1 /* XTFaceModel.m in Sources */,
 				1608E1712C8AFCAE008E271F /* XTProductCell.m in Sources */,
-				16F1D4742C3F65F500BEC3FA /* AppDelegate.m in Sources */,
+				E10B00012F6D000100000001 /* AppDelegate.swift in Sources */,
 				1608E16E2C8AF68E008E271F /* XTMarqueeView.m in Sources */,
 				16E9833B2C8C060B00F78D81 /* XTVerifyBaseVC.m in Sources */,
 				16E7DA2F2C8D7BA2007A2784 /* XTSelectCell.m in Sources */,
@@ -1169,7 +1174,6 @@
 				160C0CF52C92818400AE88EE /* XTHomeApi.m in Sources */,
 				1608E1612C8AAC71008E271F /* XTLoginOutCell.m in Sources */,
 				16E9DF752C89B8FA00319C8C /* XTAssistiveView.m in Sources */,
-				16F1D4852C3F65F700BEC3FA /* main.m in Sources */,
 				1608E1512C8A9E51008E271F /* XTFirstFootCell.m in Sources */,
 				16E9B9F42C8EB05100C1C6F4 /* XTContactApi.m in Sources */,
 				16E7DA1F2C8D3EAE007A2784 /* XTListModel.m in Sources */,
@@ -1369,7 +1373,9 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "XTApp/XTApp-Bridging-Header.h";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -1410,7 +1416,9 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "XTApp/XTApp-Bridging-Header.h";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
