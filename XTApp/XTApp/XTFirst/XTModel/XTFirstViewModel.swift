@@ -6,120 +6,65 @@
 //
 
 import Foundation
-import YYModel
 
-private func xtViewModelString(_ value: Any?) -> String {
-    guard let value, !(value is NSNull) else { return "" }
-    if let string = value as? String {
-        return string
+final class FirstViewModel {
+    private(set) var indexModel: IndexModel?
+
+    // MARK: - Fetch index page data
+
+    func fetchFirst() async throws {
+        let (data, _) = try await NetworkService.shared.fetchIndex()
+        guard let data else { throw NetworkError.noData }
+        indexModel = try JSONDecoder().decode(IndexModel.self, from: JSONSerialization.data(withJSONObject: data))
     }
-    return "\(value)"
+
+    // MARK: - Fetch popup
+
+    func fetchPopUp() async throws -> (imageURL: String, url: String, buttonText: String) {
+        let (data, _) = try await NetworkService.shared.fetchPopUp()
+        guard let data else { throw NetworkError.noData }
+        let imageURL = XT_Object_To_Stirng(data["meulsixloblastomaNc"])
+        let url = XT_Object_To_Stirng(data["relosixomNc"])
+        let buttonText = XT_Object_To_Stirng(data["maansixNc"])
+        return (imageURL, url, buttonText)
+    }
+
+    // MARK: - Apply for loan
+
+    struct ApplyResult {
+        let uploadType: Int
+        let url: String
+        let isList: Bool
+    }
+
+    func apply(productId: String) async throws -> ApplyResult {
+        let (data, _) = try await NetworkService.shared.apply(productId: productId)
+        guard let data else { throw NetworkError.noData }
+        let uploadType = Int(XT_Object_To_Stirng(data["flcNsixc"])) ?? 0
+        let url = XT_Object_To_Stirng(data["relosixomNc"])
+        let isList: Bool
+        if let boolVal = data["detrsixogyrateNc"] as? Bool {
+            isList = boolVal
+        } else if let intVal = data["detrsixogyrateNc"] as? Int {
+            isList = intVal != 0
+        } else {
+            isList = false
+        }
+        return ApplyResult(uploadType: uploadType, url: url, isList: isList)
+    }
+
+    // MARK: - Fetch product detail
+
+    func fetchDetail(productId: String) async throws -> (code: String?, orderId: String?) {
+        let (data, _) = try await NetworkService.shared.detail(productId: productId)
+        guard let data else { throw NetworkError.noData }
+        let topInfo = data["heissixtopNc"] as? [String: Any]
+        let loanInfo = data["leonsixishNc"] as? [String: Any]
+        let code = topInfo.map { XT_Object_To_Stirng($0["excuse"]) }
+        let orderId = loanInfo.map { XT_Object_To_Stirng($0["cokesixtNc"]) }
+        return (code, orderId)
+    }
 }
 
-private func xtViewModelBool(_ value: Any?) -> Bool {
-    NSString(string: xtViewModelString(value)).boolValue
-}
-
-@objcMembers
-@objc(XTFirstViewModel)
-class XTFirstViewModel: NSObject {
-    dynamic var indexModel: XTIndexModel?
-
-    @objc(getFirstSuccess:failure:)
-    func getFirstSuccess(_ success: XTBlock?, failure: XTBlock?) {
-        let firstApi = XTFirstApi()
-        firstApi.xt_startRequestSuccess { [weak self] dic, _ in
-            if let dic {
-                self?.indexModel = XTIndexModel.yy_model(with: dic)
-            }
-            success?()
-        } failure: { _, str in
-            XTUtility.xt_showTips(str ?? "", view: nil)
-            failure?()
-        } error: { _ in
-            failure?()
-        }
-    }
-
-    @objc(xt_popUpSuccess:failure:)
-    func xt_popUpSuccess(_ success: ((_ imgUrl: String, _ url: String, _ buttonText: String) -> Void)?, failure: XTBlock?) {
-        let api = XTPopUpApi()
-        api.xt_startRequestSuccess { dic, str in
-            if let dic {
-                let imgUrl = xtViewModelString(dic["meulsixloblastomaNc"])
-                let url = xtViewModelString(dic["relosixomNc"])
-                let buttonText = xtViewModelString(dic["maansixNc"])
-                success?(imgUrl, url, buttonText)
-            } else {
-                XTUtility.xt_showTips(str ?? "", view: nil)
-                failure?()
-            }
-        } failure: { _, str in
-            XTUtility.xt_showTips(str ?? "", view: nil)
-            failure?()
-        } error: { _ in
-            failure?()
-        }
-    }
-
-    @objc(xt_apply:success:failure:)
-    func xt_apply(_ productId: String, success: ((_ uploadType: Int, _ url: String, _ isList: Bool) -> Void)?, failure: XTBlock?) {
-        let api = XTApplyApi(productId: productId)
-        api.xt_startRequestSuccess { dic, str in
-            if let dic {
-                let uploadType = Int(xtViewModelString(dic["flcNsixc"])) ?? 0
-                let url = xtViewModelString(dic["relosixomNc"])
-                let isList = xtViewModelBool(dic["detrsixogyrateNc"])
-                success?(uploadType, url, isList)
-            } else {
-                XTUtility.xt_showTips(str ?? "", view: nil)
-                failure?()
-            }
-        } failure: { _, str in
-            XTUtility.xt_showTips(str ?? "", view: nil)
-            failure?()
-        } error: { _ in
-            failure?()
-        }
-    }
-
-    @objc(xt_detail:success:failure:)
-    func xt_detail(_ productId: String, success: ((_ code: String?, _ orderId: String?) -> Void)?, failure: XTBlock?) {
-        let api = XTDetailApi(productId: productId)
-        api.xt_startRequestSuccess { dic, str in
-            if let dic,
-               let loanInfo = dic["leonsixishNc"] as? [AnyHashable: Any] {
-                let topInfo = dic["heissixtopNc"] as? [AnyHashable: Any]
-                let code = topInfo.map { xtViewModelString($0["excuse"]) }
-                let orderId = xtViewModelString(loanInfo["cokesixtNc"])
-                success?(code, orderId)
-            } else {
-                XTUtility.xt_showTips(str ?? "", view: nil)
-                failure?()
-            }
-        } failure: { _, str in
-            XTUtility.xt_showTips(str ?? "", view: nil)
-            failure?()
-        } error: { _ in
-            failure?()
-        }
-    }
-
-    @objc(xt_push:success:failure:)
-    func xt_push(_ orderId: String, success: XTStrBlock?, failure: XTBlock?) {
-        let api = XTPushApi(orderId: orderId)
-        api.xt_startRequestSuccess { dic, str in
-            if let dic {
-                success?(xtViewModelString(dic["relosixomNc"]))
-            } else {
-                XTUtility.xt_showTips(str ?? "", view: nil)
-                failure?()
-            }
-        } failure: { _, str in
-            XTUtility.xt_showTips(str ?? "", view: nil)
-            failure?()
-        } error: { _ in
-            failure?()
-        }
-    }
-}
+// MARK: - Legacy ObjC shim
+typealias XTFirstViewModel = FirstViewModel

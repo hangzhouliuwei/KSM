@@ -6,26 +6,34 @@
 //
 
 import Foundation
-import YYModel
 
-@objcMembers
-@objc(XTMyViewModel)
-class XTMyViewModel: NSObject {
-    dynamic var myModel: XTMyModel?
+final class MyViewModel {
+    private(set) var myModel: MyModel?
 
-    @objc(xt_home:failure:)
-    func xt_home(_ success: XTBlock?, failure: XTBlock?) {
-        let api = XTHomeApi()
-        api.xt_startRequestSuccess { [weak self] dic, _ in
-            if let dic {
-                self?.myModel = XTMyModel.yy_model(with: dic)
-            }
-            success?()
-        } failure: { _, str in
-            XTUtility.xt_showTips(str ?? "", view: nil)
-            failure?()
-        } error: { _ in
-            failure?()
-        }
+    func fetchHome() async throws {
+        let (data, _) = try await NetworkService.shared.fetchHome()
+        guard let data else { throw NetworkError.noData }
+        let jsonData = try JSONSerialization.data(withJSONObject: data)
+        myModel = try JSONDecoder().decode(MyModel.self, from: jsonData)
+    }
+
+    func fetchOrderList(orderType: String, page: Int) async throws -> [OrderModel] {
+        let (data, _) = try await NetworkService.shared.orderList(orderType: orderType, page: page)
+        guard let list = data?["list"] as? [Any] else { return [] }
+        let jsonData = try JSONSerialization.data(withJSONObject: list)
+        return try JSONDecoder().decode([OrderModel].self, from: jsonData)
+    }
+
+    func logout() async throws {
+        try await NetworkService.shared.logout()
+        UserSession.shared.logout()
+    }
+
+    func deleteAccount() async throws {
+        try await NetworkService.shared.deleteAccount()
+        UserSession.shared.logout()
     }
 }
+
+// MARK: - Legacy shim
+typealias XTMyViewModel = MyViewModel

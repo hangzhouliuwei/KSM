@@ -97,10 +97,6 @@ enum PTRequestValue {
     }
 }
 
-func ptValue(_ value: String?) -> String {
-    PTRequestValue.string(value)
-}
-
 @objc(PTDictionaryRequest)
 class PTDictionaryRequest: PTBaseRequest {
     typealias Payload = [String: Any]

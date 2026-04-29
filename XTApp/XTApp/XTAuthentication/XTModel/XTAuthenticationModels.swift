@@ -5,349 +5,364 @@
 //  Created by Codex on 2026/4/26.
 //
 
-import UIKit
+import Foundation
 
-@objcMembers
-@objc(XTNoteModel)
-class XTNoteModel: NSObject {
-    dynamic var xt_name: String?
-    dynamic var xt_type: String?
-    dynamic var xt_icon: String?
+// MARK: - Note Model (selection option)
 
-    @objc class func modelCustomPropertyMapper() -> [String: Any] {
-        [
-            "xt_name": "uporsixnNc",
-            "xt_type": ["itlisixanizeNc", "dempsixhasizeNc", "regnsixNc"],
-            "xt_icon": "ieNcsix"
-        ]
+struct NoteModel: Codable {
+    var name: String?
+    var type: String?
+    var icon: String?
+
+    enum CodingKeys: String, CodingKey {
+        case name = "uporsixnNc"
+        case type = "itlisixanizeNc"
+        case icon = "ieNcsix"
     }
 }
 
-@objcMembers
-@objc(XTOcrNoteModel)
-class XTOcrNoteModel: XTNoteModel {
-    dynamic var xt_bg_img: String?
+// MARK: - OCR Note Model
 
-    override class func modelCustomPropertyMapper() -> [String: Any] {
-        [
-            "xt_bg_img": "ovrpsixunchNc",
-            "xt_name": "roansixizeNc",
-            "xt_type": "ceNcsix"
-        ]
+struct OcrNoteModel: Codable {
+    var backgroundImageURL: String?
+    var name: String?
+    var type: String?
+
+    enum CodingKeys: String, CodingKey {
+        case backgroundImageURL = "ovrpsixunchNc"
+        case name = "roansixizeNc"
+        case type = "ceNcsix"
     }
 }
 
-@objcMembers
-@objc(XTListModel)
-class XTListModel: NSObject {
-    dynamic var xt_id: String?
-    dynamic var xt_title: String?
-    dynamic var xt_subtitle: String?
-    dynamic var xt_code: String?
-    dynamic var xt_cate: String?
-    dynamic var noteList: [XTNoteModel]?
-    dynamic var xt_optional = false
-    dynamic var xt_value: String? {
-        didSet {
-            value = xt_value
-        }
-    }
-    private var nameStorage: String?
-    dynamic var value: String?
-    @objc dynamic weak var cell: UITableViewCell?
-    dynamic var isHiddenCell = false
+// MARK: - List Model (form field)
 
-    dynamic var name: String? {
-        get {
-            if nameStorage == nil {
-                if xt_cate == "AASIXTENBG" || xt_cate == "AASIXTENBL" || xt_cate == "AASIXTENBJ" {
-                    nameStorage = value
-                } else if (Int(value ?? "") ?? 0) > 0 {
-                    nameStorage = noteList?.first { $0.xt_type == value }?.xt_name
-                } else {
-                    nameStorage = ""
-                }
-            }
-            return nameStorage
-        }
-        set {
-            nameStorage = newValue
-        }
+final class ListModel: Codable {
+    var id: String?
+    var title: String?
+    var subtitle: String?
+    var code: String?
+    var category: String?
+    var noteList: [NoteModel]?
+    var isOptional: Bool
+    var value: String?
+    var isHiddenCell: Bool
+
+    // Computed / transient
+    var name: String?
+
+    enum CodingKeys: String, CodingKey {
+        case id = "regnsixNc"
+        case title = "fldgsixeNc"
+        case subtitle = "orinsixarilyNc"
+        case code = "imeasixsurabilityNc"
+        case category = "lebosixardNc"
+        case noteList = "tubosixdrillNc"
+        case value = "darysixmanNc"
+        case isOptional = "tapasixxNc"
     }
 
-    @objc class func modelCustomPropertyMapper() -> [String: Any] {
-        [
-            "xt_id": "regnsixNc",
-            "xt_title": "fldgsixeNc",
-            "xt_subtitle": "orinsixarilyNc",
-            "xt_code": "imeasixsurabilityNc",
-            "xt_cate": "lebosixardNc",
-            "noteList": "tubosixdrillNc",
-            "xt_value": "darysixmanNc",
-            "xt_optional": "tapasixxNc"
-        ]
-    }
+    required init(from decoder: Decoder) throws {
+        let c = try decoder.container(keyedBy: CodingKeys.self)
+        id = try c.decodeIfPresent(String.self, forKey: .id)
+        title = try c.decodeIfPresent(String.self, forKey: .title)
+        subtitle = try c.decodeIfPresent(String.self, forKey: .subtitle)
+        code = try c.decodeIfPresent(String.self, forKey: .code)
+        category = try c.decodeIfPresent(String.self, forKey: .category)
+        noteList = try c.decodeIfPresent([NoteModel].self, forKey: .noteList)
+        value = try c.decodeIfPresent(String.self, forKey: .value)
+        isOptional = (try? c.decode(Bool.self, forKey: .isOptional)) ?? false
+        isHiddenCell = false
 
-    @objc class func modelContainerPropertyGenericClass() -> [String: Any] {
-        ["noteList": XTNoteModel.self]
-    }
-}
-
-@objcMembers
-@objc(XTItemsModel)
-class XTItemsModel: NSObject {
-    dynamic var xt_title: String?
-    dynamic var xt_sub_title: String?
-    dynamic var xt_more = false
-    dynamic var list: [XTListModel]?
-    dynamic var hiddenChild = false
-
-    @objc class func modelCustomPropertyMapper() -> [String: Any] {
-        [
-            "xt_title": "fldgsixeNc",
-            "xt_sub_title": "sub_title",
-            "xt_more": "more",
-            "list": "xathsixosisNc"
-        ]
-    }
-
-    @objc class func modelContainerPropertyGenericClass() -> [String: Any] {
-        ["list": XTListModel.self]
-    }
-}
-
-@objcMembers
-@objc(XTVerifyBaseModel)
-class XTVerifyBaseModel: NSObject {
-    dynamic var xt_countdown = 0
-    dynamic var items: [XTItemsModel]?
-
-    @objc class func modelCustomPropertyMapper() -> [String: Any] {
-        [
-            "xt_countdown": "paeosixgrapherNc",
-            "items": "ovrfsixraughtNc"
-        ]
-    }
-
-    @objc class func modelContainerPropertyGenericClass() -> [String: Any] {
-        ["items": XTItemsModel.self]
-    }
-}
-
-@objcMembers
-@objc(XTContactItemModel)
-class XTContactItemModel: NSObject {
-    dynamic var xt_title: String?
-    dynamic var xt_field: [Any]?
-    dynamic var relation: [XTNoteModel]?
-    dynamic var xt_name: String?
-    dynamic var xt_mobile: String?
-    dynamic var xt_relation: String?
-    private var firstValueStorage: String?
-    private var secondValueStorage: String?
-    private var threeValueStorage: String?
-    private var threeNameStorage: String?
-
-    dynamic var firstValue: String? {
-        get { firstValueStorage ?? xt_name }
-        set { firstValueStorage = newValue }
-    }
-
-    dynamic var secondValue: String? {
-        get { secondValueStorage ?? xt_mobile }
-        set { secondValueStorage = newValue }
-    }
-
-    dynamic var threeValue: String? {
-        get { threeValueStorage ?? xt_relation }
-        set { threeValueStorage = newValue }
-    }
-
-    dynamic var threeName: String? {
-        get {
-            if threeNameStorage == nil {
-                threeNameStorage = relation?.first { $0.xt_type == xt_relation }?.xt_name
-            }
-            return threeNameStorage
-        }
-        set {
-            threeNameStorage = newValue
+        // Compute display name
+        if let cat = category, ["AASIXTENBG", "AASIXTENBL", "AASIXTENBJ"].contains(cat) {
+            name = value
+        } else if let intVal = Int(value ?? ""), intVal > 0 {
+            name = noteList?.first { $0.type == value }?.name
+        } else {
+            name = ""
         }
     }
 
-    @objc class func modelCustomPropertyMapper() -> [String: Any] {
-        [
-            "xt_title": "fldgsixeNc",
-            "xt_field": "inhosixationNc",
-            "relation": "bedisixeNc",
-            "xt_name": "koNcsix.uporsixnNc",
-            "xt_mobile": "koNcsix.halosixwNc",
-            "xt_relation": "koNcsix.bedisixeNc"
-        ]
-    }
-
-    @objc class func modelContainerPropertyGenericClass() -> [String: Any] {
-        ["relation": XTNoteModel.self]
+    func encode(to encoder: Encoder) throws {
+        var c = encoder.container(keyedBy: CodingKeys.self)
+        try c.encodeIfPresent(id, forKey: .id)
+        try c.encodeIfPresent(title, forKey: .title)
+        try c.encodeIfPresent(subtitle, forKey: .subtitle)
+        try c.encodeIfPresent(code, forKey: .code)
+        try c.encodeIfPresent(category, forKey: .category)
+        try c.encodeIfPresent(noteList, forKey: .noteList)
+        try c.encodeIfPresent(value, forKey: .value)
+        try c.encode(isOptional, forKey: .isOptional)
     }
 }
 
-@objcMembers
-@objc(XTVerifyContactModel)
-class XTVerifyContactModel: NSObject {
-    dynamic var xt_countdown = 0
-    dynamic var items: [XTContactItemModel]?
+// MARK: - Items Model (section with fields)
 
-    @objc class func modelCustomPropertyMapper() -> [String: Any] {
-        [
-            "xt_countdown": "paeosixgrapherNc",
-            "items": "ovrfsixraughtNc"
-        ]
+struct ItemsModel: Codable {
+    var title: String?
+    var subTitle: String?
+    var hasMore: Bool
+    var list: [ListModel]?
+    var hiddenChild: Bool
+
+    enum CodingKeys: String, CodingKey {
+        case title = "fldgsixeNc"
+        case subTitle = "sub_title"
+        case hasMore = "more"
+        case list = "xathsixosisNc"
     }
 
-    @objc class func modelContainerPropertyGenericClass() -> [String: Any] {
-        ["items": XTContactItemModel.self]
+    init(from decoder: Decoder) throws {
+        let c = try decoder.container(keyedBy: CodingKeys.self)
+        title = try c.decodeIfPresent(String.self, forKey: .title)
+        subTitle = try c.decodeIfPresent(String.self, forKey: .subTitle)
+        hasMore = (try? c.decode(Bool.self, forKey: .hasMore)) ?? false
+        list = try c.decodeIfPresent([ListModel].self, forKey: .list)
+        hiddenChild = false
+    }
+
+    func encode(to encoder: Encoder) throws {
+        var c = encoder.container(keyedBy: CodingKeys.self)
+        try c.encodeIfPresent(title, forKey: .title)
+        try c.encodeIfPresent(subTitle, forKey: .subTitle)
+        try c.encode(hasMore, forKey: .hasMore)
+        try c.encodeIfPresent(list, forKey: .list)
     }
 }
 
-@objcMembers
-@objc(XTPhotoModel)
-class XTPhotoModel: NSObject {
-    dynamic var xt_relation_id: String?
-    dynamic var xt_img: String?
-    dynamic var xt_type: String?
-    private var xtNameStorage: String?
-    dynamic var note: [XTOcrNoteModel]?
-    dynamic var list: [XTListModel]?
-    dynamic var path: String?
-    dynamic var value: String?
+// MARK: - Verify Base Model
 
-    dynamic var xt_name: String? {
-        get {
-            if xtNameStorage == nil {
-                xtNameStorage = note?.first { $0.xt_type == xt_type }?.xt_name
-            }
-            return xtNameStorage
+struct VerifyBaseModel: Codable {
+    var countdown: Int
+    var items: [ItemsModel]?
+
+    enum CodingKeys: String, CodingKey {
+        case countdown = "paeosixgrapherNc"
+        case items = "ovrfsixraughtNc"
+    }
+}
+
+// MARK: - Contact Item Model
+
+final class ContactItemModel: Codable {
+    var title: String?
+    var fields: [AnyCodable]?
+    var relation: [NoteModel]?
+    var name: String?
+    var mobile: String?
+    var relationType: String?
+
+    var firstValue: String?
+    var secondValue: String?
+    var thirdValue: String?
+    var thirdName: String?
+
+    enum CodingKeys: String, CodingKey {
+        case title = "fldgsixeNc"
+        case fields = "inhosixationNc"
+        case relation = "bedisixeNc"
+        case nameNested = "koNcsix"
+    }
+
+    private enum NestedKeys: String, CodingKey {
+        case name = "uporsixnNc"
+        case mobile = "halosixwNc"
+        case relationType = "bedisixeNc"
+    }
+
+    required init(from decoder: Decoder) throws {
+        let c = try decoder.container(keyedBy: CodingKeys.self)
+        title = try c.decodeIfPresent(String.self, forKey: .title)
+        fields = try c.decodeIfPresent([AnyCodable].self, forKey: .fields)
+        relation = try c.decodeIfPresent([NoteModel].self, forKey: .relation)
+        if let nested = try? c.nestedContainer(keyedBy: NestedKeys.self, forKey: .nameNested) {
+            name = try nested.decodeIfPresent(String.self, forKey: .name)
+            mobile = try nested.decodeIfPresent(String.self, forKey: .mobile)
+            relationType = try nested.decodeIfPresent(String.self, forKey: .relationType)
         }
-        set {
-            xtNameStorage = newValue
+        firstValue = name
+        secondValue = mobile
+        thirdValue = relationType
+        thirdName = relation?.first { $0.type == relationType }?.name
+    }
+
+    func encode(to encoder: Encoder) throws {
+        var c = encoder.container(keyedBy: CodingKeys.self)
+        try c.encodeIfPresent(title, forKey: .title)
+        try c.encodeIfPresent(relation, forKey: .relation)
+    }
+}
+
+// MARK: - Verify Contact Model
+
+struct VerifyContactModel: Codable {
+    var countdown: Int
+    var items: [ContactItemModel]?
+
+    enum CodingKeys: String, CodingKey {
+        case countdown = "paeosixgrapherNc"
+        case items = "ovrfsixraughtNc"
+    }
+}
+
+// MARK: - Photo Model
+
+final class PhotoModel: Codable {
+    var relationId: String?
+    var imageURL: String?
+    var type: String?
+    var notes: [OcrNoteModel]?
+    var list: [ListModel]?
+    var path: String?
+    var value: String?
+    var name: String?
+
+    enum CodingKeys: String, CodingKey {
+        case relationId = "darysixmanNc"
+        case imageURL = "relosixomNc"
+        case type = "decasixleNc"
+        case notes = "tubosixdrillNc"
+        case list = "xathsixosisNc"
+    }
+
+    required init(from decoder: Decoder) throws {
+        let c = try decoder.container(keyedBy: CodingKeys.self)
+        relationId = try c.decodeIfPresent(String.self, forKey: .relationId)
+        imageURL = try c.decodeIfPresent(String.self, forKey: .imageURL)
+        type = try c.decodeIfPresent(String.self, forKey: .type)
+        notes = try c.decodeIfPresent([OcrNoteModel].self, forKey: .notes)
+        list = try c.decodeIfPresent([ListModel].self, forKey: .list)
+        name = notes?.first { $0.type == type }?.name
+    }
+
+    func encode(to encoder: Encoder) throws {
+        var c = encoder.container(keyedBy: CodingKeys.self)
+        try c.encodeIfPresent(relationId, forKey: .relationId)
+        try c.encodeIfPresent(imageURL, forKey: .imageURL)
+        try c.encodeIfPresent(type, forKey: .type)
+        try c.encodeIfPresent(notes, forKey: .notes)
+        try c.encodeIfPresent(list, forKey: .list)
+    }
+}
+
+// MARK: - OCR Model
+
+struct OcrModel: Codable {
+    var countdown: Int
+    var model: PhotoModel?
+
+    enum CodingKeys: String, CodingKey {
+        case countdown = "paeosixgrapherNc"
+        case model = "casasixbNc"
+    }
+}
+
+// MARK: - Face Model
+
+struct FaceModel: Codable {
+    var relationId: String?
+    var url: String?
+    var isLiveness: Bool?
+
+    enum CodingKeys: String, CodingKey {
+        case relationId = "darysixmanNc"
+        case url = "relosixomNc"
+        case isLiveness = "fonNsixc"
+    }
+}
+
+// MARK: - Bank Item Model
+
+final class BankItemModel: Codable {
+    var notes: [NoteModel]?
+    var channel: String?
+    var channelName: String?
+    var account: String?
+
+    enum CodingKeys: String, CodingKey {
+        case notes = "unrdsixerlyNc"
+        case channelNested = "koNcsix"
+    }
+
+    private enum NestedKeys: String, CodingKey {
+        case channel = "blthsixelyNc"
+        case account = "ovrcsixutNc"
+    }
+
+    required init(from decoder: Decoder) throws {
+        let c = try decoder.container(keyedBy: CodingKeys.self)
+        notes = try c.decodeIfPresent([NoteModel].self, forKey: .notes)
+        if let nested = try? c.nestedContainer(keyedBy: NestedKeys.self, forKey: .channelNested) {
+            channel = try nested.decodeIfPresent(String.self, forKey: .channel)
+            let rawAccount = try nested.decodeIfPresent(String.self, forKey: .account)
+            account = rawAccount
+        }
+        channelName = notes?.first { $0.type == channel }?.name
+
+        // Prefix phone with "0" if needed
+        if account == nil || account!.isEmpty {
+            let phone = UserSession.shared.currentUser?.phone ?? ""
+            account = phone.hasPrefix("0") ? phone : "0\(phone)"
         }
     }
 
-    @objc class func modelCustomPropertyMapper() -> [String: Any] {
-        [
-            "xt_relation_id": "darysixmanNc",
-            "xt_img": "relosixomNc",
-            "xt_type": "decasixleNc",
-            "note": "tubosixdrillNc",
-            "list": "xathsixosisNc"
-        ]
-    }
-
-    @objc class func modelContainerPropertyGenericClass() -> [String: Any] {
-        [
-            "note": XTOcrNoteModel.self,
-            "list": XTListModel.self
-        ]
+    func encode(to encoder: Encoder) throws {
+        var c = encoder.container(keyedBy: CodingKeys.self)
+        try c.encodeIfPresent(notes, forKey: .notes)
     }
 }
 
-@objcMembers
-@objc(XTOcrModel)
-class XTOcrModel: NSObject {
-    dynamic var xt_countdown = 0
-    dynamic var model: XTPhotoModel?
+// MARK: - Bank Model
 
-    @objc class func modelCustomPropertyMapper() -> [String: Any] {
-        [
-            "xt_countdown": "paeosixgrapherNc",
-            "model": "casasixbNc"
-        ]
+struct BankModel: Codable {
+    var countdown: Int
+    var bankItem: BankItemModel?
+    var walletItem: BankItemModel?
+
+    enum CodingKeys: String, CodingKey {
+        case countdown = "paeosixgrapherNc"
+        case bankItem = "murasixyNc"
+        case walletItem = "abensixtlyNc"
     }
 }
 
-@objcMembers
-@objc(XTFaceModel)
-class XTFaceModel: NSObject {
-    dynamic var xt_relation_id: String?
-    dynamic var xt_url: String?
-    dynamic var xt_is_huoti: NSNumber?
+// MARK: - Verify List Model
 
-    @objc class func modelCustomPropertyMapper() -> [String: Any] {
-        [
-            "xt_relation_id": "darysixmanNc",
-            "xt_url": "relosixomNc",
-            "xt_is_huoti": "fonNsixc"
-        ]
+struct VerifyListModel: Codable {
+    var stepCode: String?
+    var title: String?
+    var status: String?
+    var isCompleted: Bool
+
+    enum CodingKeys: String, CodingKey {
+        case stepCode = "noassixsessabilityNc"
+        case title = "fldgsixeNc"
+        case status = "doabsixleNc"
+        case isCompleted = "frllsixyNc"
+    }
+
+    init(from decoder: Decoder) throws {
+        let c = try decoder.container(keyedBy: CodingKeys.self)
+        stepCode = try c.decodeIfPresent(String.self, forKey: .stepCode)
+        title = try c.decodeIfPresent(String.self, forKey: .title)
+        status = try c.decodeIfPresent(String.self, forKey: .status)
+        isCompleted = (try? c.decode(Bool.self, forKey: .isCompleted)) ?? false
     }
 }
 
-@objcMembers
-@objc(XTBankItemModel)
-class XTBankItemModel: NSObject {
-    dynamic var note: [XTNoteModel]?
-    dynamic var xt_channel: String?
-    private var channelNameStorage: String?
-    private var accountStorage: String?
+// MARK: - Typealias for legacy call sites
 
-    dynamic var xt_channel_name: String? {
-        get {
-            if channelNameStorage == nil {
-                channelNameStorage = note?.first { $0.xt_type == xt_channel }?.xt_name
-            }
-            return channelNameStorage
-        }
-        set {
-            channelNameStorage = newValue
-        }
-    }
-
-    dynamic var xt_account: String? {
-        get {
-            if accountStorage == nil {
-                let phone = XTUserManger.xt_share().xt_user?.xt_phone ?? ""
-                accountStorage = phone.hasPrefix("0") ? phone : "0\(phone)"
-            }
-            return accountStorage
-        }
-        set {
-            accountStorage = newValue
-        }
-    }
-
-    @objc class func modelCustomPropertyMapper() -> [String: Any] {
-        [
-            "note": "unrdsixerlyNc",
-            "xt_channel": "koNcsix.blthsixelyNc",
-            "xt_account": "koNcsix.ovrcsixutNc"
-        ]
-    }
-
-    @objc class func modelContainerPropertyGenericClass() -> [String: Any] {
-        ["note": XTNoteModel.self]
-    }
-}
-
-@objcMembers
-@objc(XTBankModel)
-class XTBankModel: NSObject {
-    dynamic var xt_countdown = 0
-    dynamic var bankModel: XTBankItemModel?
-    dynamic var walletModel: XTBankItemModel?
-
-    @objc class func modelCustomPropertyMapper() -> [String: Any] {
-        [
-            "xt_countdown": "paeosixgrapherNc",
-            "bankModel": "murasixyNc",
-            "walletModel": "abensixtlyNc"
-        ]
-    }
-}
-
-@objcMembers
-@objc(XTVerifyListModel)
-class XTVerifyListModel: NSObject {
-    dynamic var noassixsessabilityNc: String?
-    dynamic var fldgsixeNc: String?
-    dynamic var doabsixleNc: String?
-    dynamic var frllsixyNc = false
-}
+typealias XTNoteModel = NoteModel
+typealias XTOcrNoteModel = OcrNoteModel
+typealias XTListModel = ListModel
+typealias XTItemsModel = ItemsModel
+typealias XTVerifyBaseModel = VerifyBaseModel
+typealias XTContactItemModel = ContactItemModel
+typealias XTVerifyContactModel = VerifyContactModel
+typealias XTPhotoModel = PhotoModel
+typealias XTOcrModel = OcrModel
+typealias XTFaceModel = FaceModel
+typealias XTBankItemModel = BankItemModel
+typealias XTBankModel = BankModel
+typealias XTVerifyListModel = VerifyListModel

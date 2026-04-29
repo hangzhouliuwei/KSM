@@ -39,7 +39,7 @@ class PTHomeGCePushService: PTDictionaryRequest {
     init(orderId: String?) {
         super.init(
             data: [
-                PTAPIParameterKey.orderId: ptValue(orderId),
+                PTAPIParameterKey.orderId: PTRequestValue.string(orderId),
                 PTAPIParameterKey.pushQueue: PTAPIParameterValue.pushQueue,
                 PTAPIParameterKey.pushScene: PTAPIParameterValue.pushScene
             ],

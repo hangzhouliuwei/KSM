@@ -7,8 +7,6 @@
 
 import UIKit
 
-@objcMembers
-@objc(XTNavigationController)
 class XTNavigationController: UINavigationController, UINavigationControllerDelegate, UIGestureRecognizerDelegate {
     weak var xt_currentVC: UIViewController?
 
@@ -46,8 +44,6 @@ class XTNavigationController: UINavigationController, UINavigationControllerDele
     }
 }
 
-@objcMembers
-@objc(XTTabBarController)
 class XTTabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,7 +74,6 @@ class XTTabBarController: UITabBarController {
         ]
     }
 
-    @objc(xt_childVCWith:title:normalImg:selectedImg:)
     func xt_childVC(with vc: UIViewController, title: String?, normalImg: String, selectedImg: String) -> UIViewController {
         vc.tabBarItem.title = title
         vc.tabBarItem.image = UIImage(named: normalImg)?.withRenderingMode(.alwaysOriginal)

@@ -7,100 +7,113 @@
 
 import Foundation
 
-@objcMembers
-@objc(XTExtendListModel)
-class XTExtendListModel: NSObject {
-    dynamic var xt_title: String?
-    dynamic var xt_icon: String?
-    dynamic var xt_url: String?
+// MARK: - Extend List Model
 
-    @objc class func modelCustomPropertyMapper() -> [String: Any] {
-        [
-            "xt_title": "fldgsixeNc",
-            "xt_icon": "ieNcsix",
-            "xt_url": "relosixomNc"
-        ]
+struct ExtendListModel: Codable {
+    var title: String?
+    var icon: String?
+    var url: String?
+
+    enum CodingKeys: String, CodingKey {
+        case title = "fldgsixeNc"
+        case icon = "ieNcsix"
+        case url = "relosixomNc"
     }
 }
 
-@objcMembers
-@objc(XTMyModel)
-class XTMyModel: NSObject {
-    dynamic var xt_memberUrl: String?
-    dynamic var repayment: XTRepaymentModel?
-    dynamic var extendLists: [XTExtendListModel]?
+// MARK: - Repayment Model
 
-    @objc class func modelCustomPropertyMapper() -> [String: Any] {
-        [
-            "xt_memberUrl": "deensixsiveNc",
-            "repayment": "unqusixalizeNc",
-            "extendLists": "mehasixemoglobinNc"
-        ]
-    }
+struct RepaymentModel: Codable {
+    var orderNo: String?
+    var productId: String?
+    var date: String?
+    var amount: String?
+    var productName: String?
+    var icon: String?
+    var url: String?
 
-    @objc class func modelContainerPropertyGenericClass() -> [String: Any] {
-        ["extendLists": XTExtendListModel.self]
-    }
-}
-
-@objcMembers
-@objc(XTOrderModel)
-class XTOrderModel: NSObject {
-    dynamic var xt_orderId: String?
-    dynamic var xt_productId: String?
-    dynamic var xt_inside: String?
-    dynamic var xt_productName: String?
-    dynamic var xt_productLogo: String?
-    dynamic var xt_orderStatus: String?
-    dynamic var xt_orderStatusDesc: String?
-    dynamic var xt_orderStatusColor: String?
-    dynamic var xt_orderAmount: String?
-    dynamic var xt_loanDetailUrl: String?
-    dynamic var xt_buttonText: String?
-    dynamic var xt_buttonBackground: String?
-    dynamic var xt_repayTime: String?
-    dynamic var xt_showVerification = false
-
-    @objc class func modelCustomPropertyMapper() -> [String: Any] {
-        [
-            "xt_orderId": "sttesixhoodNc",
-            "xt_productId": "munisixumNc",
-            "xt_inside": "quntsixasomeNc",
-            "xt_productName": "moossixyllabismNc",
-            "xt_productLogo": "sihosixuetteNc",
-            "xt_orderStatus": "covisixctiveNc",
-            "xt_orderStatusDesc": "laarsixckianNc",
-            "xt_orderStatusColor": "imotsixenceNc",
-            "xt_orderAmount": "istasixcNc",
-            "xt_loanDetailUrl": "aplisixcableNc",
-            "xt_buttonText": "maansixNc",
-            "xt_buttonBackground": "shkasixriNc",
-            "xt_repayTime": "exersixiencelessNc",
-            "xt_showVerification": "detrsixogyrateNc"
-        ]
+    enum CodingKeys: String, CodingKey {
+        case orderNo = "spsmsixogenicNc"
+        case productId = "lietsixusNc"
+        case date = "acepsixtablyNc"
+        case amount = "geersixalitatNc"
+        case productName = "moossixyllabismNc"
+        case icon = "sihosixuetteNc"
+        case url = "relosixomNc"
     }
 }
 
-@objcMembers
-@objc(XTRepaymentModel)
-class XTRepaymentModel: NSObject {
-    dynamic var xt_order_no: String?
-    dynamic var xt_product_id: String?
-    dynamic var xt_date: String?
-    dynamic var xt_amount: String?
-    dynamic var xt_product_name: String?
-    dynamic var xt_icon: String?
-    dynamic var xt_url: String?
+// MARK: - My Model
 
-    @objc class func modelCustomPropertyMapper() -> [String: Any] {
-        [
-            "xt_order_no": "spsmsixogenicNc",
-            "xt_product_id": "lietsixusNc",
-            "xt_date": "acepsixtablyNc",
-            "xt_amount": "geersixalitatNc",
-            "xt_product_name": "harysixNc",
-            "xt_icon": "ieNcsix",
-            "xt_url": "relosixomNc"
-        ]
+struct MyModel: Codable {
+    var memberURL: String?
+    var repayment: RepaymentModel?
+    var extendLists: [ExtendListModel]?
+
+    enum CodingKeys: String, CodingKey {
+        case memberURL = "deensixsiveNc"
+        case repayment = "unqusixalizeNc"
+        case extendLists = "mehasixemoglobinNc"
     }
 }
+
+// MARK: - Order Model
+
+struct OrderModel: Codable {
+    var orderId: String?
+    var productId: String?
+    var inside: String?
+    var productName: String?
+    var productLogo: String?
+    var orderStatus: String?
+    var orderStatusDesc: String?
+    var orderStatusColor: String?
+    var orderAmount: String?
+    var loanDetailURL: String?
+    var buttonText: String?
+    var buttonBackground: String?
+    var repayTime: String?
+    var showVerification: Bool
+
+    enum CodingKeys: String, CodingKey {
+        case orderId = "sttesixhoodNc"
+        case productId = "munisixumNc"
+        case inside = "quntsixasomeNc"
+        case productName = "moossixyllabismNc"
+        case productLogo = "sihosixuetteNc"
+        case orderStatus = "covisixctiveNc"
+        case orderStatusDesc = "laarsixckianNc"
+        case orderStatusColor = "imotsixenceNc"
+        case orderAmount = "istasixcNc"
+        case loanDetailURL = "aplisixcableNc"
+        case buttonText = "maansixNc"
+        case buttonBackground = "shkasixriNc"
+        case repayTime = "exersixiencelessNc"
+        case showVerification = "detrsixogyrateNc"
+    }
+
+    init(from decoder: Decoder) throws {
+        let c = try decoder.container(keyedBy: CodingKeys.self)
+        orderId = try c.decodeIfPresent(String.self, forKey: .orderId)
+        productId = try c.decodeIfPresent(String.self, forKey: .productId)
+        inside = try c.decodeIfPresent(String.self, forKey: .inside)
+        productName = try c.decodeIfPresent(String.self, forKey: .productName)
+        productLogo = try c.decodeIfPresent(String.self, forKey: .productLogo)
+        orderStatus = try c.decodeIfPresent(String.self, forKey: .orderStatus)
+        orderStatusDesc = try c.decodeIfPresent(String.self, forKey: .orderStatusDesc)
+        orderStatusColor = try c.decodeIfPresent(String.self, forKey: .orderStatusColor)
+        orderAmount = try c.decodeIfPresent(String.self, forKey: .orderAmount)
+        loanDetailURL = try c.decodeIfPresent(String.self, forKey: .loanDetailURL)
+        buttonText = try c.decodeIfPresent(String.self, forKey: .buttonText)
+        buttonBackground = try c.decodeIfPresent(String.self, forKey: .buttonBackground)
+        repayTime = try c.decodeIfPresent(String.self, forKey: .repayTime)
+        showVerification = (try? c.decode(Bool.self, forKey: .showVerification)) ?? false
+    }
+}
+
+// MARK: - Typealias for legacy call sites
+
+typealias XTExtendListModel = ExtendListModel
+typealias XTRepaymentModel = RepaymentModel
+typealias XTMyModel = MyModel
+typealias XTOrderModel = OrderModel

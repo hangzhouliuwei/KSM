@@ -7,85 +7,105 @@
 
 import Foundation
 import UIKit
-import YYModel
 
-private let xtUserPath = (NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first ?? "") + "/XT_USER"
+// MARK: - User Model
 
-@objcMembers
-@objc(XTUserModel)
-class XTUserModel: NSObject {
-    dynamic var xt_isOld: String?
-    dynamic var xt_smsMaxId: String?
-    dynamic var xt_userId: String?
-    dynamic var xt_phone: String?
-    dynamic var xt_realname: String?
-    dynamic var xt_token: String?
-    dynamic var xt_userSessionid: String?
-    dynamic var xt_is_aduit = false
+struct UserModel: Codable {
+    var isOld: String?
+    var smsMaxId: String?
+    var userId: String?
+    var phone: String?
+    var realName: String?
+    var token: String?
+    var sessionId: String?
+    var isAudit: Bool
 
-    @objc class func modelCustomPropertyMapper() -> [String: Any] {
-        [
-            "xt_isOld": "phsisixographicalNc",
-            "xt_smsMaxId": "heersixochromaticNc",
-            "xt_userId": "bamysixNc",
-            "xt_phone": "stwasixrdessNc",
-            "xt_realname": "edNcsix",
-            "xt_token": "tetosixgenesisNc",
-            "xt_userSessionid": "fifosixotedNc",
-            "xt_is_aduit": "aoNcsix"
-        ]
+    enum CodingKeys: String, CodingKey {
+        case isOld = "phsisixographicalNc"
+        case smsMaxId = "heersixochromaticNc"
+        case userId = "bamysixNc"
+        case phone = "stwasixrdessNc"
+        case realName = "edNcsix"
+        case token = "tetosixgenesisNc"
+        case sessionId = "fifosixotedNc"
+        case isAudit = "aoNcsix"
+    }
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        isOld = try container.decodeIfPresent(String.self, forKey: .isOld)
+        smsMaxId = try container.decodeIfPresent(String.self, forKey: .smsMaxId)
+        userId = try container.decodeIfPresent(String.self, forKey: .userId)
+        phone = try container.decodeIfPresent(String.self, forKey: .phone)
+        realName = try container.decodeIfPresent(String.self, forKey: .realName)
+        token = try container.decodeIfPresent(String.self, forKey: .token)
+        sessionId = try container.decodeIfPresent(String.self, forKey: .sessionId)
+        // Server may send Bool or Int (0/1)
+        if let boolVal = try? container.decode(Bool.self, forKey: .isAudit) {
+            isAudit = boolVal
+        } else if let intVal = try? container.decode(Int.self, forKey: .isAudit) {
+            isAudit = intVal != 0
+        } else {
+            isAudit = false
+        }
     }
 }
 
-@objcMembers
-@objc(XTUserManger)
-class XTUserManger: NSObject {
-    private static let shared = XTUserManger()
-    private var storedUser: XTUserModel?
+// MARK: - UserSession Manager
 
-    dynamic var xt_user: XTUserModel? {
+final class UserSession {
+    static let shared = UserSession()
+
+    private let userFilePath: String = AppConstants.documentPath + "/XT_USER"
+    private var cachedUser: UserModel?
+
+    private init() {}
+
+    var currentUser: UserModel? {
         get {
-            if storedUser == nil,
-               FileManager.default.fileExists(atPath: xtUserPath),
-               let dictionary = NSDictionary(contentsOfFile: xtUserPath) as? [AnyHashable: Any] {
-                storedUser = XTUserModel.yy_model(with: dictionary)
+            if cachedUser == nil {
+                cachedUser = loadUserFromDisk()
             }
-            return storedUser
+            return cachedUser
         }
         set {
-            storedUser = newValue
+            cachedUser = newValue
         }
     }
 
-    @objc class func xt_share() -> XTUserManger {
-        shared
-    }
-
-    @objc class func xt_isLogin() -> Bool {
-        guard let user = shared.xt_user,
-              let userId = user.xt_userId,
-              let sessionId = user.xt_userSessionid else {
-            return false
-        }
+    var isLoggedIn: Bool {
+        guard let user = currentUser,
+              let userId = user.userId,
+              let sessionId = user.sessionId else { return false }
         return !userId.isEmpty && !sessionId.isEmpty
     }
 
-    @objc(xt_saveUserDic:)
-    func xt_saveUserDic(_ dic: [AnyHashable: Any]) {
-        let fileManager = FileManager.default
-        if fileManager.fileExists(atPath: xtUserPath) {
-            do {
-                try fileManager.removeItem(atPath: xtUserPath)
-            } catch {
-                NSLog("删除文件失败:%@", "\(error)")
-            }
-        }
-        (dic as NSDictionary).write(toFile: xtUserPath, atomically: true)
+    func saveUser(from dictionary: [String: Any]) {
+        currentUser = try? JSONDecoder().decode(UserModel.self, from: JSONSerialization.data(withJSONObject: dictionary))
+        guard let user = currentUser,
+              let data = try? JSONEncoder().encode(user) else { return }
+        try? data.write(to: URL(fileURLWithPath: userFilePath))
     }
 
-    @objc func xt_loginOut() {
-        XTUtility.xt_share().xt_removeFile(withPath: xtUserPath)
-        xt_user = nil
-        (UIApplication.shared.delegate as? AppDelegate)?.xt_loginView()
+    func logout() {
+        try? FileManager.default.removeItem(atPath: userFilePath)
+        cachedUser = nil
+        DispatchQueue.main.async {
+            XT_AppDelegate?.xt_loginView()
+        }
+    }
+
+    // MARK: - Private
+
+    private func loadUserFromDisk() -> UserModel? {
+        guard FileManager.default.fileExists(atPath: userFilePath),
+              let data = try? Data(contentsOf: URL(fileURLWithPath: userFilePath)) else { return nil }
+        return try? JSONDecoder().decode(UserModel.self, from: data)
     }
 }
+
+// MARK: - Legacy ObjC compatibility shim
+// These typealiases and wrappers allow existing call-sites to migrate incrementally.
+
+typealias XTUserModel = UserModel
+typealias XTUserManger = UserSession

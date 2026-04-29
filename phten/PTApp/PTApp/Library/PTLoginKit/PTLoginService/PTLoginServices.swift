@@ -11,7 +11,7 @@ class PTLoginGetSMSCodeService: PTDictionaryRequest {
     init(phoneNumber: String?) {
         super.init(
             data: [
-                PTAPIParameterKey.phoneNumber: ptValue(phoneNumber),
+                PTAPIParameterKey.phoneNumber: PTRequestValue.string(phoneNumber),
                 PTAPIParameterKey.smsType: PTAPIParameterValue.smsType
             ],
             path: PTAPIEndpoint.loginCode,

@@ -6,28 +6,23 @@
 //
 
 import Foundation
-import YYModel
 
-@objcMembers
-@objc(XTLoginViewModel)
-class XTLoginViewModel: NSObject {
-    @objc(getLogin:success:failure:)
-    func getLogin(_ dic: NSDictionary, success: XTBlock?, failure: XTBlock?) {
-        let codeApi = XTLoginApi(dic: dic)
-        codeApi.xt_startRequestSuccess { result, msg in
-            XTUtility.xt_showTips(msg ?? "", view: nil)
-            if let result,
-               let userDic = result["gugosixyleNc"] as? [AnyHashable: Any] {
-                XTUserManger.xt_share().xt_user = XTUserModel.yy_model(with: userDic)
-                XTUserManger.xt_share().xt_saveUserDic(userDic)
-                success?()
-                return
-            }
-            failure?()
-        } failure: { _, str in
-            XTUtility.xt_showTips(str ?? "", view: nil)
-            failure?()
-        } error: { _ in
+final class LoginViewModel {
+
+    func getPhoneCode(phone: String) async throws -> String? {
+        let (_, message) = try await NetworkService.shared.getPhoneCode(phone: phone)
+        return message
+    }
+
+    func login(params: [String: Any]) async throws {
+        let (data, message) = try await NetworkService.shared.login(params: params)
+        AppToast.show(message ?? "")
+        guard let userDict = data?["gugosixyleNc"] as? [String: Any] else {
+            throw NetworkError.noData
         }
+        UserSession.shared.saveUser(from: userDict)
     }
 }
+
+// MARK: - Legacy shim
+typealias XTLoginViewModel = LoginViewModel
