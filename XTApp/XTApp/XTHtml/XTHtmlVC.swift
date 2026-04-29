@@ -155,55 +155,11 @@ class XTHtmlVC: XTBaseVC, WKUIDelegate, WKNavigationDelegate, WKScriptMessageHan
     }
 
     private func checkApply(_ productId: String) {
-        guard !NSString.xt_isEmpty(productId) else { return }
-        guard XTUserManger.xt_isLogin() else {
-            XTUtility.xt_login { [weak self] in
-                self?.checkApply(productId)
-            }
-            return
-        }
-        if XTUserManger.xt_share().xt_user?.xt_is_aduit == true {
-            goApply(productId)
-            return
-        }
-        guard XTLocationManger.xt_share().xt_canLocation() else {
-            let alert = UIAlertController(title: "Tips", message: "To be able to use our app, please turn on your device location services.", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-            alert.addAction(UIAlertAction(title: "OK", style: .cancel) { _ in
-                if let url = URL(string: UIApplication.openSettingsURLString) {
-                    UIApplication.shared.open(url, options: [:])
-                }
-            })
-            xt_presentViewController(alert, animated: true, completion: nil, modalPresentationStyle: .fullScreen)
-            return
-        }
-        XTUtility.xt_showProgress(view, message: "loading...")
-        XTRequestCenter.xt_share().xt_location { [weak self] success in
-            guard let self else { return }
-            XTUtility.xt_atHideProgress(self.view)
-            if success {
-                self.goApply(productId)
-            }
-        }
+        LoanEntryCoordinator.shared.startApplication(productId: productId, from: self, source: .html)
     }
 
     private func goApply(_ productId: String) {
-        XTUtility.xt_showProgress(view, message: "loading...")
-        LoanFlowCoordinator.shared.loadApplyDecision(productId, success: { [weak self] decision in
-            guard let self else { return }
-            XTUtility.xt_atHideProgress(self.view)
-            if decision.uploadType == 2 {
-                XTRequestCenter.xt_share().xt_device()
-            }
-            if NSString.xt_isValidateUrl(decision.url) {
-                XTRoute.xt_share().goHtml(decision.url, success: nil)
-            } else {
-                LoanFlowCoordinator.shared.continueAfterDetail(productId: productId, loadingView: self.view)
-            }
-        }, failure: { [weak self] in
-            guard let self else { return }
-            XTUtility.xt_atHideProgress(self.view)
-        })
+        LoanEntryCoordinator.shared.performApply(productId: productId, from: self, source: .html)
     }
 
     private func goDetail(_ productId: String) {

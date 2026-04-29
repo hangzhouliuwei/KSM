@@ -44,7 +44,7 @@ class PTDetectionLiveService: PTDictionaryRequest {
         super.init(
             data: PTRequestParameters.product(
                 productId,
-                extra: [PTAPIParameterKey.livenessId: PTRequestValue.string(livenessId)]
+                extra: [PTAPIParameterKey.livenessId: ptValue(livenessId)]
             ),
             path: PTAPIEndpoint.liveDetection,
             showLoading: true
@@ -64,6 +64,6 @@ class PTSaveLiveService: PTDictionaryRequest {
 class PTAuthErrorLiveService: PTDictionaryRequest {
     @objc(initWithError:)
     init(error: String?) {
-        super.init(data: [PTAPIParameterKey.liveError: PTRequestValue.string(error)], path: PTAPIEndpoint.liveError)
+        super.init(data: [PTAPIParameterKey.liveError: ptValue(error)], path: PTAPIEndpoint.liveError)
     }
 }

@@ -176,70 +176,19 @@ class XTFirstVC: XTBaseVC, UITableViewDelegate, UITableViewDataSource {
 
     @objc(checkApply:)
     func checkApply(_ productId: String?) {
-        guard let productId, !NSString.xt_isEmpty(productId) else { return }
-        if !XTUserManger.xt_isLogin() {
-            XTUtility.xt_login { [weak self] in
-                self?.checkApply(productId)
-            }
-            return
-        }
-        goApply(productId)
+        LoanEntryCoordinator.shared.startApplication(productId: productId, from: self, source: .home)
     }
 
     @objc(checkLBS:isList:)
     func checkLBS(_ block: XTBlock?, isList: Bool) {
-        if isList {
+        LoanEntryCoordinator.shared.ensureLocationAccess(from: self, skip: isList) {
             block?()
-            return
-        }
-        if !XTLocationManger.xt_share().xt_canLocation() {
-            let alert = UIAlertController(
-                title: "Tips",
-                message: "To be able to use our app, please turn on your device location services.",
-                preferredStyle: .alert
-            )
-            alert.addAction(UIAlertAction(title: "OK", style: .cancel) { _ in
-                if let url = URL(string: UIApplication.openSettingsURLString) {
-                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
-                }
-            })
-            xt_presentViewController(alert, animated: true, completion: nil, modalPresentationStyle: .fullScreen)
-            return
-        }
-
-        XTUtility.xt_showProgress(view, message: "loading...")
-        XTRequestCenter.xt_share().xt_location { [weak self] success in
-            guard let self else { return }
-            XTUtility.xt_atHideProgress(self.view)
-            if success {
-                block?()
-            }
         }
     }
 
     @objc(goApply:)
     func goApply(_ productId: String) {
-        XTUtility.xt_showProgress(view, message: "loading...")
-        LoanFlowCoordinator.shared.loadApplyDecision(productId, success: { [weak self] decision in
-            guard let self else { return }
-            XTUtility.xt_atHideProgress(self.view)
-            if decision.uploadType == 2 {
-                XTRequestCenter.xt_share().xt_device()
-            }
-            if NSString.xt_isValidateUrl(decision.url) {
-                self.checkLBS({
-                    XTRoute.xt_share().goHtml(decision.url, success: nil)
-                }, isList: decision.isList)
-                return
-            }
-            self.checkLBS({ [weak self] in
-                guard let self else { return }
-                LoanFlowCoordinator.shared.continueAfterDetail(productId: productId, loadingView: self.view)
-            }, isList: decision.isList)
-        }, failure: { [weak self] in
-            guard let self else { return }
-            XTUtility.xt_atHideProgress(self.view)
-        })
+        LoanEntryCoordinator.shared.performApply(productId: productId, from: self, source: .home)
     }
 
     @objc(goDetail:)

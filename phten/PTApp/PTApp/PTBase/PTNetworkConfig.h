@@ -2,8 +2,6 @@
 //  PTNetworkConfig.h
 //  PTApp
 //
-//  Created by Codex on 2026/4/28.
-//
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>

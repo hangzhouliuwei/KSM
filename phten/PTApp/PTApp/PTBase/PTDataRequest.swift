@@ -2,8 +2,6 @@
 //  PTDataRequest.swift
 //  PTApp
 //
-//  Created by Codex on 2026/4/28.
-//
 
 import AFNetworking
 import UIKit
@@ -95,6 +93,10 @@ enum PTRequestValue {
     static func dictionary(_ value: NSDictionary?) -> NSDictionary {
         value ?? emptyDictionary
     }
+}
+
+func ptValue(_ value: String?) -> String {
+    PTRequestValue.string(value)
 }
 
 @objc(PTDictionaryRequest)

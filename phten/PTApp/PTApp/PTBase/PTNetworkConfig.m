@@ -2,8 +2,6 @@
 //  PTNetworkConfig.m
 //  PTApp
 //
-//  Created by Codex on 2026/4/28.
-//
 
 #import "PTNetworkConfig.h"
 #import <YTKNetwork/YTKNetwork.h>
