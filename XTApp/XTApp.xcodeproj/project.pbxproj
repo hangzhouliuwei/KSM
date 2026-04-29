@@ -26,6 +26,7 @@
 		4478E0BC35C8889D3E1D9DA3 /* XTUserSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3FC7704D63D2390E41FE69 /* XTUserSession.swift */; };
 		4CD0BBCEB7665F677A291058 /* XTVerifyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C38AC09D8C11B6A8831C9F6 /* XTVerifyViewModel.swift */; };
 		4CD0BBCFB7665F677A291058 /* XTVerifyListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C38AC0AD8C11B6A8831C9F6 /* XTVerifyListVC.swift */; };
+		4CD0BBD0B7665F677A291058 /* XTVerifyBaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C38AC0BD8C11B6A8831C9F6 /* XTVerifyBaseVC.swift */; };
 		539310ABFF4DC1E702A33916 /* XTBaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900B07EF3A2D51F5ED6BBBFB /* XTBaseVC.swift */; };
 		5E644A290552F1A48F53057E /* XTVerifySmallViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CBED69F4D3D1DCDD338B329 /* XTVerifySmallViews.swift */; };
 		5F015BFBB7153CA86E66D289 /* UIView+XTCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82FE7AD1E44B49BEC5016C9 /* UIView+XTCategory.swift */; };
@@ -70,6 +71,7 @@
 		03C2C4E163D1E11DC9C92844 /* XTMyHeadView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = XTMyHeadView.swift; sourceTree = "<group>"; };
 		053CE8C59948C5236B725DC1 /* XTNavigationTabControllers.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = XTNavigationTabControllers.swift; sourceTree = "<group>"; };
 		0BAA77113C5A7937BBBFF085 /* XTVerifyControllers.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = XTVerifyControllers.swift; sourceTree = "<group>"; };
+		5C38AC0BD8C11B6A8831C9F6 /* XTVerifyBaseVC.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = XTVerifyBaseVC.swift; sourceTree = "<group>"; };
 		5C38AC0AD8C11B6A8831C9F6 /* XTVerifyListVC.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = XTVerifyListVC.swift; sourceTree = "<group>"; };
 		0D5A0FE1DB1CC5CD032C212B /* XTBasicMyCells.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = XTBasicMyCells.swift; sourceTree = "<group>"; };
 		0DD46FE64F0A13F377BBF430 /* NSString+XTCategory.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "NSString+XTCategory.swift"; sourceTree = "<group>"; };
@@ -565,6 +567,7 @@
 				16E9DF512C898A8700319C8C /* XTOCRVC.h */,
 				16E9834B2C8C42F200F78D81 /* XTVerifyFaceVC.h */,
 				16E9834E2C8C433100F78D81 /* XTVerifyBankVC.h */,
+				5C38AC0BD8C11B6A8831C9F6 /* XTVerifyBaseVC.swift */,
 				5C38AC0AD8C11B6A8831C9F6 /* XTVerifyListVC.swift */,
 				0BAA77113C5A7937BBBFF085 /* XTVerifyControllers.swift */,
 			);
@@ -890,6 +893,7 @@
 				1307112E0DE4928CA8D5EA9D /* YYTextAsyncLayer+XTCategory.swift in Sources */,
 				091A9EF52915F8CF6E6C39E8 /* XTDefinitions.swift in Sources */,
 				4CD0BBCEB7665F677A291058 /* XTVerifyViewModel.swift in Sources */,
+				4CD0BBD0B7665F677A291058 /* XTVerifyBaseVC.swift in Sources */,
 				4CD0BBCFB7665F677A291058 /* XTVerifyListVC.swift in Sources */,
 				FFFD2A5599497986FD022EBC /* XTVerifyControllers.swift in Sources */,
 				612A59E287CBF53D393DCF97 /* XTAuthenticationViews.swift in Sources */,
