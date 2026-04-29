@@ -7,6 +7,49 @@
 
 import Foundation
 
+private extension KeyedDecodingContainer {
+    func decodeLossyBool(forKey key: Key) -> Bool {
+        if let boolValue = try? decode(Bool.self, forKey: key) {
+            return boolValue
+        }
+        if let intValue = try? decode(Int.self, forKey: key) {
+            return intValue != 0
+        }
+        if let stringValue = try? decode(String.self, forKey: key) {
+            switch stringValue.trimmingCharacters(in: .whitespacesAndNewlines).lowercased() {
+            case "1", "true", "yes":
+                return true
+            default:
+                return false
+            }
+        }
+        return false
+    }
+
+    func decodeLossyStringArray(forKey key: Key) -> [String]? {
+        if let stringArray = try? decode([String].self, forKey: key) {
+            return stringArray
+        }
+        if let intArray = try? decode([Int].self, forKey: key) {
+            return intArray.map(String.init)
+        }
+        if let doubleArray = try? decode([Double].self, forKey: key) {
+            return doubleArray.map(String.init)
+        }
+        return nil
+    }
+}
+
+private enum XTFirstModelDecoder {
+    static func decode<T: Decodable>(_ type: T.Type, from dictionary: [String: Any]) -> T? {
+        guard JSONSerialization.isValidJSONObject(dictionary),
+              let data = try? JSONSerialization.data(withJSONObject: dictionary) else {
+            return nil
+        }
+        return try? JSONDecoder().decode(T.self, from: data)
+    }
+}
+
 // MARK: - Banner Model
 
 struct BannerModel: Codable {
@@ -35,6 +78,9 @@ struct BannerModel: Codable {
         case inside = "quntsixasomeNc"
         case buttonText = "bukbsixeanNc"
     }
+
+    var routeURL: String? { url }
+    var displayImageURL: String? { type ?? popupImageURL ?? imageURL }
 }
 
 // MARK: - Card Model
@@ -78,6 +124,16 @@ struct CardModel: Codable {
         case memberURL = "deensixsiveNc"
     }
 
+    var amountText: String? { minAmount }
+    var descriptionText: String? { period }
+    var primaryMetricTitle: String? { daysRemaining }
+    var primaryMetricValue: String? { interestRate }
+    var secondaryMetricTitle: String? { type }
+    var secondaryMetricValue: String? { financial }
+    var actionColorHex: String? { maxAmount }
+    var badgeImageURL: String? { buttonBackground }
+    var isActionEnabled: Bool { isPending }
+
     init(from decoder: Decoder) throws {
         let c = try decoder.container(keyedBy: CodingKeys.self)
         productId = try c.decodeIfPresent(String.self, forKey: .productId)
@@ -95,8 +151,8 @@ struct CardModel: Codable {
         statusCode = try c.decodeIfPresent(String.self, forKey: .statusCode)
         buttonBackground = try c.decodeIfPresent(String.self, forKey: .buttonBackground)
         memberURL = try c.decodeIfPresent(String.self, forKey: .memberURL)
-        isApplied = (try? c.decode(Bool.self, forKey: .isApplied)) ?? false
-        isPending = (try? c.decode(Bool.self, forKey: .isPending)) ?? false
+        isApplied = c.decodeLossyBool(forKey: .isApplied)
+        isPending = c.decodeLossyBool(forKey: .isPending)
     }
 }
 
@@ -110,6 +166,9 @@ struct IconModel: Codable {
         case imageURL = "intasixntNc"
         case linkURL = "kichsixiNc"
     }
+
+    var iconURL: String? { imageURL }
+    var targetURL: String? { linkURL }
 }
 
 // MARK: - Lantern (Marquee) Model
@@ -122,6 +181,8 @@ struct LanternModel: Codable {
         case text = "thcksixleafNc"
         case url = "epgysixnyNc"
     }
+
+    var textColorHex: String? { url }
 }
 
 // MARK: - Product Model
@@ -189,6 +250,12 @@ struct ProductModel: Codable {
         case orderStatus = "covisixctiveNc"
     }
 
+    var amountText: String? { minAmount }
+    var descriptionText: String? { period }
+    var actionColorHex: String? { maxAmount }
+    var badgeImageURL: String? { buttonBackground }
+    var isActionEnabled: Bool { isPending }
+
     init(from decoder: Decoder) throws {
         let c = try decoder.container(keyedBy: CodingKeys.self)
         productId = try c.decodeIfPresent(String.self, forKey: .productId)
@@ -215,11 +282,11 @@ struct ProductModel: Codable {
         financial = try c.decodeIfPresent(String.self, forKey: .financial)
         buttonBackground = try c.decodeIfPresent(String.self, forKey: .buttonBackground)
         orderStatus = try c.decodeIfPresent(String.self, forKey: .orderStatus)
-        tags = (try? c.decode([String].self, forKey: .tags))
-        bannerImages = (try? c.decode([String].self, forKey: .bannerImages))
-        images = (try? c.decode([String].self, forKey: .images))
-        isApplied = (try? c.decode(Bool.self, forKey: .isApplied)) ?? false
-        isPending = (try? c.decode(Bool.self, forKey: .isPending)) ?? false
+        tags = c.decodeLossyStringArray(forKey: .tags)
+        bannerImages = c.decodeLossyStringArray(forKey: .bannerImages)
+        images = c.decodeLossyStringArray(forKey: .images)
+        isApplied = c.decodeLossyBool(forKey: .isApplied)
+        isPending = c.decodeLossyBool(forKey: .isPending)
     }
 }
 
@@ -237,6 +304,9 @@ struct RepayModel: Codable {
         case date = "frwnsixNc"
         case url = "relosixomNc"
     }
+
+    var noticeImageURL: String? { date }
+    var routeURL: String? { url }
 }
 
 // MARK: - Index Section
@@ -269,6 +339,10 @@ struct RawJSON: Codable {
     var dictionary: [String: Any] {
         storage.mapValues { $0.value }
     }
+
+    func decode<T: Decodable>(_ type: T.Type) -> T? {
+        XTFirstModelDecoder.decode(T.self, from: dictionary)
+    }
 }
 
 // MARK: - Index Model
@@ -297,29 +371,17 @@ struct IndexModel: Codable {
                 let type = section.type ?? ""
                 switch type {
                 case "AASIXTENAV":
-                    bannerArr = section.values?.compactMap {
-                        try? JSONDecoder().decode(BannerModel.self, from: JSONSerialization.data(withJSONObject: $0.dictionary))
-                    }
+                    bannerArr = section.values?.compactMap { $0.decode(BannerModel.self) }
                 case "AASIXTENAW":
-                    lanternArr = section.values?.compactMap {
-                        try? JSONDecoder().decode(LanternModel.self, from: JSONSerialization.data(withJSONObject: $0.dictionary))
-                    }
+                    lanternArr = section.values?.compactMap { $0.decode(LanternModel.self) }
                 case "AASIXTENAX":
-                    if let first = section.values?.first {
-                        big = try? JSONDecoder().decode(CardModel.self, from: JSONSerialization.data(withJSONObject: first.dictionary))
-                    }
+                    big = section.values?.first.flatMap { $0.decode(CardModel.self) }
                 case "AASIXTENAY":
-                    if let first = section.values?.first {
-                        small = try? JSONDecoder().decode(CardModel.self, from: JSONSerialization.data(withJSONObject: first.dictionary))
-                    }
+                    small = section.values?.first.flatMap { $0.decode(CardModel.self) }
                 case "AASIXTENAZ":
-                    productArr = section.values?.compactMap {
-                        try? JSONDecoder().decode(ProductModel.self, from: JSONSerialization.data(withJSONObject: $0.dictionary))
-                    }
+                    productArr = section.values?.compactMap { $0.decode(ProductModel.self) }
                 case "REPAY_NOTICE":
-                    if let first = section.values?.first {
-                        noticeModel = try? JSONDecoder().decode(RepayModel.self, from: JSONSerialization.data(withJSONObject: first.dictionary))
-                    }
+                    noticeModel = section.values?.first.flatMap { $0.decode(RepayModel.self) }
                 default:
                     break
                 }

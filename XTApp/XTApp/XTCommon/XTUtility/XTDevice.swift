@@ -6,7 +6,6 @@
 //
 
 import AdSupport
-import AFNetworking
 import AppTrackingTransparency
 import CoreTelephony
 import Foundation
@@ -15,115 +14,102 @@ import SystemConfiguration
 import SystemConfiguration.CaptiveNetwork
 import UIKit
 
-@objcMembers
-@objc(XTDevice)
-class XTDevice: NSObject {
-    private static let shared = XTDevice()
+final class XTDevice {
+    static let shared = XTDevice()
     private var firstTimeStorage: String?
 
-    dynamic lazy var xt_language: String = {
+    private init() {}
+
+    // MARK: - Identity
+
+    lazy var language: String = {
         (UserDefaults.standard.object(forKey: "AppleLanguages") as? [String])?.first ?? ""
     }()
 
-    dynamic lazy var xt_idfv: String = {
-        let service = XT_App_BundleId
-        if let value = SAMKeychain.password(forService: service, account: "xt_idfv"), !value.isEmpty {
-            return value
-        }
-        let value = UIDevice.current.identifierForVendor?.uuidString ?? UUID().uuidString
-        SAMKeychain.setPassword(value, forService: service, account: "xt_idfv")
-        return value
+    lazy var idfv: String = {
+        let service = AppConstants.bundleId
+        if let v = SAMKeychain.password(forService: service, account: "xt_idfv"), !v.isEmpty { return v }
+        let v = UIDevice.current.identifierForVendor?.uuidString ?? UUID().uuidString
+        SAMKeychain.setPassword(v, forService: service, account: "xt_idfv")
+        return v
     }()
 
-    dynamic lazy var xt_uuid: String = {
-        let service = XT_App_BundleId
-        if let value = SAMKeychain.password(forService: service, account: "xt_uuid"), !value.isEmpty {
-            return value
-        }
-        let value = UUID().uuidString
-        SAMKeychain.setPassword(value, forService: service, account: "xt_uuid")
-        return value
+    lazy var uuid: String = {
+        let service = AppConstants.bundleId
+        if let v = SAMKeychain.password(forService: service, account: "xt_uuid"), !v.isEmpty { return v }
+        let v = UUID().uuidString
+        SAMKeychain.setPassword(v, forService: service, account: "xt_uuid")
+        return v
     }()
 
-    dynamic var xt_networkType: String {
-        AFNetworkReachabilityManager.shared().isReachableViaWiFi ? "wifi" : (AFNetworkReachabilityManager.shared().isReachableViaWWAN ? "4g" : "")
-    }
+    // MARK: - System Info
 
-    dynamic lazy var xt_sysVersion: String = UIDevice.current.systemVersion
+    lazy var sysVersion: String = UIDevice.current.systemVersion
 
-    dynamic lazy var xt_mobileStyle: String = {
-        var systemInfo = utsname()
-        uname(&systemInfo)
-        let mirror = Mirror(reflecting: systemInfo.machine)
-        let identifier = mirror.children.reduce(into: "") { result, child in
-            guard let value = child.value as? Int8, value != 0 else { return }
-            result.append(String(UnicodeScalar(UInt8(value))))
+    lazy var mobileStyle: String = {
+        var info = utsname(); uname(&info)
+        let id = Mirror(reflecting: info.machine).children.reduce(into: "") { r, c in
+            guard let v = c.value as? Int8, v != 0 else { return }
+            r.append(String(UnicodeScalar(UInt8(v))))
         }
         if let url = Bundle.main.url(forResource: "XTMobile.plist", withExtension: nil),
-           let dictionary = NSDictionary(contentsOf: url),
-           let model = dictionary[identifier] {
+           let dict = NSDictionary(contentsOf: url), let model = dict[id] {
             return XT_Object_To_Stirng(model)
         }
-        return identifier
+        return id
     }()
 
-    dynamic lazy var xt_usableDiskSize: String = {
-        let attributes = try? FileManager.default.attributesOfFileSystem(forPath: NSHomeDirectory())
-        return XT_Object_To_Stirng(attributes?[.systemFreeSize])
+    lazy var usableDiskSize: String = {
+        let a = try? FileManager.default.attributesOfFileSystem(forPath: NSHomeDirectory())
+        return XT_Object_To_Stirng(a?[.systemFreeSize])
     }()
 
-    dynamic lazy var xt_totalDiskSize: String = {
-        let attributes = try? FileManager.default.attributesOfFileSystem(forPath: NSHomeDirectory())
-        return XT_Object_To_Stirng(attributes?[.systemSize])
+    lazy var totalDiskSize: String = {
+        let a = try? FileManager.default.attributesOfFileSystem(forPath: NSHomeDirectory())
+        return XT_Object_To_Stirng(a?[.systemSize])
     }()
 
-    dynamic lazy var xt_usableMemorySize: String = {
+    lazy var usableMemorySize: String = {
         var info = mach_task_basic_info()
         var count = mach_msg_type_number_t(MemoryLayout<mach_task_basic_info>.size) / 4
-        let result: kern_return_t = withUnsafeMutablePointer(to: &info) {
+        let r: kern_return_t = withUnsafeMutablePointer(to: &info) {
             $0.withMemoryRebound(to: integer_t.self, capacity: Int(count)) {
                 task_info(mach_task_self_, task_flavor_t(MACH_TASK_BASIC_INFO), $0, &count)
             }
         }
-        guard result == KERN_SUCCESS else { return "0" }
-        return "\(info.resident_size)"
+        return r == KERN_SUCCESS ? "\(info.resident_size)" : "0"
     }()
 
-    dynamic lazy var xt_totalMemorySize: String = "\(ProcessInfo.processInfo.physicalMemory)"
+    lazy var totalMemorySize: String = "\(ProcessInfo.processInfo.physicalMemory)"
 
-    dynamic var xt_usableQuantity: String {
+    var usableQuantity: String {
         UIDevice.current.isBatteryMonitoringEnabled = true
         return String(format: "%.2f", UIDevice.current.batteryLevel * 100)
     }
 
-    dynamic var xt_isFullQuantity: String {
+    var isFullQuantity: String {
         UIDevice.current.isBatteryMonitoringEnabled = true
         return UIDevice.current.batteryState == .full ? "1" : "0"
     }
 
-    dynamic var xt_isCharging: String {
+    var isCharging: String {
         UIDevice.current.isBatteryMonitoringEnabled = true
         return UIDevice.current.batteryState == .charging ? "1" : "0"
     }
 
-    dynamic lazy var xt_screenHeight: NSNumber = NSNumber(value: Double(UIScreen.main.nativeBounds.height))
-    dynamic lazy var xt_screenWidth: NSNumber = NSNumber(value: Double(UIScreen.main.nativeBounds.width))
+    lazy var screenHeight: Double = Double(UIScreen.main.nativeBounds.height)
+    lazy var screenWidth: Double = Double(UIScreen.main.nativeBounds.width)
 
-    dynamic lazy var xt_physicalSize: String = {
-        let width = xt_screenWidth.doubleValue
-        let height = xt_screenHeight.doubleValue
-        return String(format: "%.1f", sqrt(width * width + height * height))
+    lazy var physicalSize: String = {
+        String(format: "%.1f", sqrt(screenWidth * screenWidth + screenHeight * screenHeight))
     }()
 
-    dynamic lazy var xt_deliveryTime: NSNumber = {
-        let attributes = try? FileManager.default.attributesOfFileSystem(forPath: NSHomeDirectory())
-        if let date = attributes?[.creationDate] as? Date {
-            return NSNumber(value: date.timeIntervalSince1970)
-        }
-        return 0
+    lazy var deliveryTime: TimeInterval = {
+        let a = try? FileManager.default.attributesOfFileSystem(forPath: NSHomeDirectory())
+        return (a?[.creationDate] as? Date)?.timeIntervalSince1970 ?? 0
     }()
 
-    dynamic lazy var xt_simulator: String = {
+    lazy var isSimulator: String = {
         #if targetEnvironment(simulator)
         return "1"
         #else
@@ -131,124 +117,39 @@ class XTDevice: NSObject {
         #endif
     }()
 
-    dynamic lazy var xt_localTimeZone: String = TimeZone.current.abbreviation() ?? ""
+    lazy var localTimeZone: String = TimeZone.current.abbreviation() ?? ""
 
-    dynamic var xt_isProxy: String {
+    var networkType: String {
+        let mgr = NetworkReachabilityManager.shared
+        return mgr.isReachableViaWiFi ? "wifi" : (mgr.isReachableViaWWAN ? "4g" : "")
+    }
+
+    var isProxy: String {
         guard let settings = CFNetworkCopySystemProxySettings()?.takeRetainedValue(),
-              let proxies = CFNetworkCopyProxiesForURL(URL(string: "http://www.google.com")! as CFURL, settings).takeRetainedValue() as? [[AnyHashable: Any]],
-              let first = proxies.first,
-              let type = first[kCFProxyTypeKey as String] as? String else {
-            return "0"
-        }
-        return type == kCFProxyTypeNone as String ? "0" : "1"
+              let proxies = CFNetworkCopyProxiesForURL(URL(string: "http://www.google.com")! as CFURL, settings)
+                .takeRetainedValue() as? [[AnyHashable: Any]],
+              let type = proxies.first?[kCFProxyTypeKey as String] as? String else { return "0" }
+        return type == (kCFProxyTypeNone as String) ? "0" : "1"
     }
 
-    dynamic var xt_isVPN: String {
+    var isVPN: String {
         guard let settings = CFNetworkCopySystemProxySettings()?.takeRetainedValue() as? [String: Any],
-              let scoped = settings["__SCOPED__"] as? [String: Any] else {
-            return "0"
-        }
-        let keys = scoped.keys
-        let found = keys.contains { key in
-            key.contains("tap") || key.contains("tun") || key.contains("ipsec") || key.contains("ppp")
-        }
-        return found ? "1" : "0"
+              let scoped = settings["__SCOPED__"] as? [String: Any] else { return "0" }
+        return scoped.keys.contains { $0.contains("tap") || $0.contains("tun") || $0.contains("ipsec") || $0.contains("ppp") } ? "1" : "0"
     }
 
-    dynamic var xt_phoneOperator: String {
-        let provider = CTTelephonyNetworkInfo().subscriberCellularProvider
-        return provider?.isoCountryCode == nil ? "" : (provider?.carrierName ?? "")
+    var phoneOperator: String {
+        let p = CTTelephonyNetworkInfo().subscriberCellularProvider
+        return p?.isoCountryCode == nil ? "" : (p?.carrierName ?? "")
     }
 
-    dynamic var xt_ipAddress: String {
-        guard let url = URL(string: "https://pv.sohu.com/cityjson?ie=utf-8"),
-              var string = try? String(contentsOf: url, encoding: .utf8),
-              string.hasPrefix("var returnCitySN = ") else {
-            return ""
-        }
-        string.removeFirst("var returnCitySN = ".count)
-        if string.hasSuffix(";") {
-            string.removeLast()
-        }
-        guard let data = string.data(using: .utf8),
-              let dic = try? JSONSerialization.jsonObject(with: data) as? [String: Any] else {
-            return ""
-        }
-        return dic["cip"] as? String ?? ""
-    }
+    // MARK: - First App Time
 
-    @objc class func xt_share() -> XTDevice {
-        shared
-    }
-
-    @objc(xt_checkNetWork:)
-    func xt_checkNetWork(_ block: XTBoolBlock?) {
-        let manager = AFNetworkReachabilityManager.shared()
-        manager.startMonitoring()
-        manager.setReachabilityStatusChange { status in
-            switch status {
-            case .reachableViaWiFi, .reachableViaWWAN:
-                block?(true)
-            default:
-                block?(false)
-            }
-        }
-    }
-
-    @available(iOS 14.0, *)
-    @objc(xt_requestTrackingAuthorizationWithCompletion:)
-    class func xt_requestTrackingAuthorization(completion: ((ATTrackingManager.AuthorizationStatus) -> Void)?) {
-        ATTrackingManager.requestTrackingAuthorization { status in
-            if status == .denied && ATTrackingManager.trackingAuthorizationStatus == .notDetermined {
-                if #available(iOS 15.0, *) {
-                    var observer: NSObjectProtocol?
-                    observer = NotificationCenter.default.addObserver(
-                        forName: UIApplication.didBecomeActiveNotification,
-                        object: nil,
-                        queue: nil
-                    ) { _ in
-                        if let observer {
-                            NotificationCenter.default.removeObserver(observer)
-                        }
-                        xt_requestTrackingAuthorization(completion: completion)
-                    }
-                }
-            } else {
-                completion?(status)
-            }
-        }
-    }
-
-    @objc(xt_getIdfaShowAlt:block:)
-    class func xt_getIdfaShowAlt(_ showAlt: Bool, block: ((String) -> Void)?) {
-        if #available(iOS 14.0, *) {
-            xt_requestTrackingAuthorization { status in
-                if status == .authorized {
-                    block?(ASIdentifierManager.shared().advertisingIdentifier.uuidString)
-                } else {
-                    block?("")
-                    if showAlt {
-                        XTLog("请在设置-隐私-跟踪中允许App请求跟踪")
-                    }
-                }
-            }
-        } else {
-            if ASIdentifierManager.shared().isAdvertisingTrackingEnabled {
-                block?(ASIdentifierManager.shared().advertisingIdentifier.uuidString)
-            } else {
-                block?("")
-                if showAlt {
-                    XTLog("请在设置-隐私-广告中打开广告跟踪功能")
-                }
-            }
-        }
-    }
-
-    @objc func xt_firstAppTime() -> String {
+    func firstAppTime() -> String {
         if firstTimeStorage == nil {
-            let service = XT_App_BundleId
-            if let value = SAMKeychain.password(forService: service, account: "firstAppTime"), !value.isEmpty {
-                firstTimeStorage = value
+            let service = AppConstants.bundleId
+            if let v = SAMKeychain.password(forService: service, account: "firstAppTime"), !v.isEmpty {
+                firstTimeStorage = v
             } else {
                 firstTimeStorage = "\(UInt64(Date().timeIntervalSince1970))000"
                 SAMKeychain.setPassword(firstTimeStorage ?? "", forService: service, account: "xt_firstAppTime")
@@ -257,51 +158,75 @@ class XTDevice: NSObject {
         return firstTimeStorage ?? ""
     }
 
-    @objc func xt_deviceInfoDic() -> NSDictionary {
+    // MARK: - Network Check
+
+    func checkNetwork(_ completion: @escaping (Bool) -> Void) {
+        NetworkReachabilityManager.shared.startMonitoring(completion: completion)
+    }
+
+    // MARK: - IDFA
+
+    func getIDFA(showAlert: Bool, completion: @escaping (String) -> Void) {
+        if #available(iOS 14.0, *) {
+            ATTrackingManager.requestTrackingAuthorization { status in
+                DispatchQueue.main.async {
+                    completion(status == .authorized ? ASIdentifierManager.shared().advertisingIdentifier.uuidString : "")
+                }
+            }
+        } else {
+            let idfa = ASIdentifierManager.shared().isAdvertisingTrackingEnabled
+                ? ASIdentifierManager.shared().advertisingIdentifier.uuidString : ""
+            completion(idfa)
+        }
+    }
+
+    // MARK: - Device Info Dictionary (for /device API)
+
+    func deviceInfoDictionary() -> [String: Any] {
+        var idfa = ""
+        getIDFA(showAlert: false) { idfa = $0 }
+
         let storage: [String: Any] = [
-            "chyssixalidesNc": XT_Object_To_Stirng(xt_usableDiskSize),
-            "ebdisixcNc": XT_Object_To_Stirng(xt_totalDiskSize),
-            "sclisixmazelNc": XT_Object_To_Stirng(xt_totalMemorySize),
-            "hiacsixkNc": XT_Object_To_Stirng(xt_usableMemorySize)
+            "chyssixalidesNc": usableDiskSize,
+            "ebdisixcNc": totalDiskSize,
+            "sclisixmazelNc": totalMemorySize,
+            "hiacsixkNc": usableMemorySize
         ]
         let battery: [String: Any] = [
-            "delasixsseNc": XT_Object_To_Stirng(xt_usableQuantity),
-            "battery_status": XT_Object_To_Stirng(xt_isFullQuantity),
-            "akavsixitNc": XT_Object_To_Stirng(xt_isCharging)
+            "delasixsseNc": usableQuantity,
+            "battery_status": isFullQuantity,
+            "akavsixitNc": isCharging
         ]
         let hardware: [String: Any] = [
-            "xeotsiximeNc": XT_Object_To_Stirng(xt_sysVersion),
+            "xeotsiximeNc": sysVersion,
             "prtusixbercularNc": "iPhone",
-            "bauvsixrihiNc": XT_Object_To_Stirng(xt_mobileStyle),
-            "pemesixanceNc": xt_screenHeight,
-            "sttusixsNc": xt_screenWidth,
-            "soensixoidNc": XT_Object_To_Stirng(xt_physicalSize),
-            "terasixNc": xt_deliveryTime
+            "bauvsixrihiNc": mobileStyle,
+            "pemesixanceNc": screenHeight,
+            "sttusixsNc": screenWidth,
+            "soensixoidNc": physicalSize,
+            "terasixNc": deliveryTime
         ]
         let signal: [String: Any] = [
             "brezsixinessNc": "0",
-            "deissixableNc": XT_Object_To_Stirng(xt_simulator),
+            "deissixableNc": isSimulator,
             "sinmsixanNc": 0
         ]
-        let carrier = NSMutableDictionary(dictionary: [
-            "ovresixxertNc": XT_Object_To_Stirng(xt_localTimeZone),
-            "pltisixniferousNc": XT_Object_To_Stirng(xt_isProxy),
-            "sumesixrgibleNc": XT_Object_To_Stirng(xt_isVPN),
-            "conssixellorNc": XT_Object_To_Stirng(xt_phoneOperator),
-            "manisixcideNc": XT_Object_To_Stirng(xt_idfv),
-            "tuedsixoNc": XT_Object_To_Stirng(xt_language),
-            "leelsixlingNc": XT_Object_To_Stirng(xt_networkType),
+        let carrier: [String: Any] = [
+            "ovresixxertNc": localTimeZone,
+            "pltisixniferousNc": isProxy,
+            "sumesixrgibleNc": isVPN,
+            "conssixellorNc": phoneOperator,
+            "manisixcideNc": idfv,
+            "tuedsixoNc": language,
+            "leelsixlingNc": networkType,
             "bahlsixykNc": 1,
-            "deodsixulateNc": XT_Object_To_Stirng(xt_ipAddress)
-        ])
-        XTDevice.xt_getIdfaShowAlt(false) { idfa in
-            carrier["patusixrageNc"] = XT_Object_To_Stirng(idfa)
-        }
+            "patusixrageNc": idfa
+        ]
         let wifi: [String: Any] = [
-            "mitisixmeNc": XT_Object_To_Stirng(xt_bssidString()),
-            "frscsixatiNc": XT_Object_To_Stirng(xt_wifiName()),
-            "koobsixehNc": XT_Object_To_Stirng(xt_bssidString()),
-            "uporsixnNc": XT_Object_To_Stirng(xt_wifiName())
+            "mitisixmeNc": bssidString() ?? "",
+            "frscsixatiNc": wifiName() ?? "",
+            "koobsixehNc": bssidString() ?? "",
+            "uporsixnNc": wifiName() ?? ""
         ]
         return [
             "zoaisixsmNc": storage,
@@ -314,57 +239,73 @@ class XTDevice: NSObject {
         ]
     }
 
-    private func xt_bssidString() -> String? {
-        currentWiFiInfo(key: "BSSID").map { xt_getFormateMAC($0) }
+    // MARK: - WiFi Helpers
+
+    private func bssidString() -> String? {
+        currentWiFiInfo(key: "BSSID").map { formattedMAC($0) }
     }
 
-    private func xt_wifiName() -> String? {
+    private func wifiName() -> String? {
         currentWiFiInfo(key: "SSID")
     }
 
     private func currentWiFiInfo(key: String) -> String? {
         guard let interfaces = CNCopySupportedInterfaces() as? [String] else { return nil }
-        for interface in interfaces {
-            guard let info = CNCopyCurrentNetworkInfo(interface as CFString) as? [String: Any],
-                  let value = info[key] as? String else { continue }
-            return value
+        for iface in interfaces {
+            if let info = CNCopyCurrentNetworkInfo(iface as CFString) as? [String: Any],
+               let v = info[key] as? String { return v }
         }
         return nil
     }
 
-    private func xt_getFormateMAC(_ mac: String) -> String {
-        mac.components(separatedBy: CharacterSet(charactersIn: ":-")).map { part in
-            part.count == 1 ? "0\(part)" : part
-        }.joined(separator: ":").uppercased()
+    private func formattedMAC(_ mac: String) -> String {
+        mac.components(separatedBy: CharacterSet(charactersIn: ":-"))
+            .map { $0.count == 1 ? "0\($0)" : $0 }
+            .joined(separator: ":").uppercased()
+    }
+}
+
+// MARK: - Network Reachability (replaces AFNetworkReachabilityManager)
+
+final class NetworkReachabilityManager {
+    static let shared = NetworkReachabilityManager()
+    private var reachability: SCNetworkReachability?
+    private(set) var isReachableViaWiFi = false
+    private(set) var isReachableViaWWAN = false
+    var isReachable: Bool { isReachableViaWiFi || isReachableViaWWAN }
+
+    private init() {
+        reachability = SCNetworkReachabilityCreateWithName(nil, "www.apple.com")
     }
 
+    func startMonitoring(completion: @escaping (Bool) -> Void) {
+        guard let r = reachability else { completion(false); return }
+        var flags = SCNetworkReachabilityFlags()
+        SCNetworkReachabilityGetFlags(r, &flags)
+        let reachable = flags.contains(.reachable) && !flags.contains(.connectionRequired)
+        isReachableViaWiFi = reachable && !flags.contains(.isWWAN)
+        isReachableViaWWAN = reachable && flags.contains(.isWWAN)
+        DispatchQueue.main.async { completion(reachable) }
+    }
+}
+
+// MARK: - Legacy shim
+
+extension XTDevice {
+    // Keep old call sites compiling while migration proceeds
+    static func xt_share() -> XTDevice { shared }
+    static func xt_getIdfaShowAlt(_ show: Bool, block: ((String) -> Void)?) {
+        shared.getIDFA(showAlert: show) { block?($0) }
+    }
     @available(iOS 14.0, *)
-    @objc(fixTrackingAuthorizationWithCompletion:)
-    class func fixTrackingAuthorization(completion: ((ATTrackingManager.AuthorizationStatus) -> Void)?) {
+    static func fixTrackingAuthorization(completion: ((ATTrackingManager.AuthorizationStatus) -> Void)?) {
         ATTrackingManager.requestTrackingAuthorization { status in
-            if status == .denied && ATTrackingManager.trackingAuthorizationStatus == .notDetermined {
-                if #available(iOS 15.0, *) {
-                    var observer: NSObjectProtocol?
-                    observer = NotificationCenter.default.addObserver(
-                        forName: UIApplication.didBecomeActiveNotification,
-                        object: nil,
-                        queue: .main
-                    ) { _ in
-                        if let observer {
-                            NotificationCenter.default.removeObserver(observer)
-                        }
-                        fixTrackingAuthorization(completion: completion)
-                    }
-                } else {
-                    DispatchQueue.main.async {
-                        completion?(status)
-                    }
-                }
-            } else {
-                DispatchQueue.main.async {
-                    completion?(status)
-                }
-            }
+            DispatchQueue.main.async { completion?(status) }
         }
     }
+    var xt_idfv: String { idfv }
+    var xt_sysVersion: String { sysVersion }
+    var xt_mobileStyle: String { mobileStyle }
+    func xt_checkNetWork(_ block: ((Bool) -> Void)?) { checkNetwork { block?($0) } }
+    func xt_deviceInfoDic() -> NSDictionary { deviceInfoDictionary() as NSDictionary }
 }

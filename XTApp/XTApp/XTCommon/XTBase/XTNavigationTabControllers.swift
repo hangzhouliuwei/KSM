@@ -33,8 +33,9 @@ class XTNavigationController: UINavigationController, UINavigationControllerDele
 
     func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
         if gestureRecognizer == interactivePopGestureRecognizer {
-            let className = visibleViewController.map { NSStringFromClass(type(of: $0)) } ?? ""
-            if ["XTVerifyBaseVC", "XTVerifyContactVC", "XTOCRVC", "XTVerifyBankVC", "XTHtmlVC"].contains(className) {
+            let blockedTypes: [XTBaseVC.Type] = [XTVerifyBaseVC.self, XTVerifyContactVC.self, XTOCRVC.self, XTVerifyBankVC.self, XTHtmlVC.self]
+            let isBlocked = blockedTypes.contains { visibleViewController?.isKind(of: $0) == true }
+            if isBlocked {
                 (visibleViewController as? XTBaseVC)?.xt_back()
                 return false
             }
@@ -69,8 +70,8 @@ class XTTabBarController: UITabBarController {
         UITabBar.appearance().backgroundColor = .white
 
         viewControllers = [
-            xt_childVC(with: xtController("XTFirstVC"), title: nil, normalImg: "xt_tabbar_item_first_no", selectedImg: "xt_tabbar_item_first_yes"),
-            xt_childVC(with: xtController("XTMyVC"), title: nil, normalImg: "xt_tabbar_item_my_no", selectedImg: "xt_tabbar_item_my_yes")
+            xt_childVC(with: XTFirstVC(), title: nil, normalImg: "xt_tabbar_item_first_no", selectedImg: "xt_tabbar_item_first_yes"),
+            xt_childVC(with: XTMyVC(), title: nil, normalImg: "xt_tabbar_item_my_no", selectedImg: "xt_tabbar_item_my_yes")
         ]
     }
 
@@ -79,10 +80,6 @@ class XTTabBarController: UITabBarController {
         vc.tabBarItem.image = UIImage(named: normalImg)?.withRenderingMode(.alwaysOriginal)
         vc.tabBarItem.selectedImage = UIImage(named: selectedImg)?.withRenderingMode(.alwaysOriginal)
         return vc
-    }
-
-    private func xtController(_ name: String) -> UIViewController {
-        (NSClassFromString(name) as? NSObject.Type)?.init() as? UIViewController ?? UIViewController()
     }
 
     private func xtColor(_ rgbValue: Int, alpha: CGFloat) -> UIColor {

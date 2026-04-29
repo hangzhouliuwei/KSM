@@ -11,7 +11,7 @@ import UIKit
 @objcMembers
 @objc(XTBannerCell)
 class XTBannerCell: XTCell, TYCyclePagerViewDataSource, TYCyclePagerViewDelegate {
-    private var bannerList: [XTBannerModel] = []
+    private var bannerList: [BannerModel] = []
 
     private lazy var banner: TYCyclePagerView = {
         let view = TYCyclePagerView(frame: CGRect(x: 15, y: 0, width: UIScreen.main.bounds.width - 30, height: 115))
@@ -24,7 +24,7 @@ class XTBannerCell: XTCell, TYCyclePagerViewDataSource, TYCyclePagerViewDelegate
 
     override var xt_data: Any? {
         didSet {
-            guard let array = xt_data as? [XTBannerModel] else { return }
+            guard let array = xt_data as? [BannerModel] else { return }
             bannerList = array
             banner.autoScrollInterval = array.count > 1 ? 3 : 0
             banner.reloadData()
@@ -71,6 +71,6 @@ class XTBannerCell: XTCell, TYCyclePagerViewDataSource, TYCyclePagerViewDelegate
     @objc(pagerView:didSelectedItemCell:atIndex:)
     func pagerView(_ pageView: TYCyclePagerView, didSelectedItemCell cell: UICollectionViewCell, at index: Int) {
         guard bannerList.indices.contains(index) else { return }
-        XTRoute.xt_share().goHtml(bannerList[index].relosixomNc ?? "", success: nil)
+        XTRoute.xt_share().goHtml(bannerList[index].routeURL ?? "", success: nil)
     }
 }

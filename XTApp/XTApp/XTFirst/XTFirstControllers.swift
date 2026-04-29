@@ -111,14 +111,14 @@ class XTFirstVC: XTBaseVC, UITableViewDelegate, UITableViewDataSource {
     @objc func creatCellModel() {
         guard let indexModel = viewModel.indexModel else { return }
         if let icon = indexModel.iconModel {
-            XTAssistiveView.xt_share().xt_showIcon(icon.intasixntNc ?? "", url: icon.kichsixiNc ?? "")
+            XTAssistiveView.xt_share().xt_showIcon(icon.iconURL ?? "", url: icon.targetURL ?? "")
         }
         listArr.removeAll()
 
         if let big = indexModel.big {
             let model = XTCellModel.xt_cellClassName("XTBigCell", height: 420, model: big)
             (model.indexCell as? XTBigCell)?.nextBlock = { [weak self] in
-                self?.checkApply(big.regnsixNc)
+                self?.checkApply(big.productId)
             }
             listArr.append(model)
             listArr.append(XTCellModel.xt_cellClassName("XTSpaceCell", height: 10, model: nil))
@@ -136,7 +136,7 @@ class XTFirstVC: XTBaseVC, UITableViewDelegate, UITableViewDataSource {
             }
             let model = XTCellModel.xt_cellClassName("XTSmallCell", height: height, model: indexModel)
             (model.indexCell as? XTSmallCell)?.nextBlock = { [weak self] in
-                self?.checkApply(indexModel.small?.regnsixNc)
+                self?.checkApply(indexModel.small?.productId)
             }
             listArr.append(model)
 
@@ -149,7 +149,7 @@ class XTFirstVC: XTBaseVC, UITableViewDelegate, UITableViewDataSource {
             for item in indexModel.productArr ?? [] {
                 let product = XTCellModel.xt_cellClassName("XTProductCell", height: 113, model: item)
                 (product.indexCell as? XTProductCell)?.nextBlock = { [weak self] in
-                    self?.checkApply(item.regnsixNc)
+                    self?.checkApply(item.productId)
                 }
                 listArr.append(product)
                 listArr.append(XTCellModel.xt_cellClassName("XTSpaceCell", height: 12, model: nil))
@@ -270,7 +270,7 @@ class XTFirstVC: XTBaseVC, UITableViewDelegate, UITableViewDataSource {
 @objc(XTBigCell)
 class XTBigCell: XTCell {
     dynamic var nextBlock: XTBlock?
-    private var model: XTCardModel?
+    private var model: CardModel?
     private let nameLab = UILabel()
     private let img = UIImageView()
     private let priceLab = UILabel()
@@ -284,18 +284,18 @@ class XTBigCell: XTCell {
 
     override var xt_data: Any? {
         didSet {
-            guard let model = xt_data as? XTCardModel else { return }
+            guard let model = xt_data as? CardModel else { return }
             self.model = model
-            nameLab.text = model.moossixyllabismNc
-            img.sd_setImage(with: URL(string: model.sihosixuetteNc ?? ""), placeholderImage: XT_Img("xt_img_def"))
-            priceLab.text = model.eahosixleNc
-            descLab.text = model.cotesixnderNc
-            item1TitLab.text = model.paadsixosNc
-            item1Lab.text = model.urtesixrNc
-            item2TitLab.text = model.fatisixshNc
-            item2Lab.text = model.fiansixcialNc
-            submitBtn.setTitle(model.maansixNc, for: .normal)
-            submitBtn.backgroundColor = xtFirstHexColor(model.spffsixlicateNc)
+            nameLab.text = model.productName
+            img.sd_setImage(with: URL(string: model.logo ?? ""), placeholderImage: XT_Img("xt_img_def"))
+            priceLab.text = model.amountText
+            descLab.text = model.descriptionText
+            item1TitLab.text = model.primaryMetricTitle
+            item1Lab.text = model.primaryMetricValue
+            item2TitLab.text = model.secondaryMetricTitle
+            item2Lab.text = model.secondaryMetricValue
+            submitBtn.setTitle(model.buttonText, for: .normal)
+            submitBtn.backgroundColor = xtFirstHexColor(model.actionColorHex)
         }
     }
 
@@ -440,7 +440,7 @@ class XTBigCell: XTCell {
     }
 
     @objc private func submitTap() {
-        guard model?.pacasixrditisNc == true else { return }
+        guard model?.isActionEnabled == true else { return }
         nextBlock?()
     }
 }
@@ -449,7 +449,7 @@ class XTBigCell: XTCell {
 @objc(XTProductCell)
 class XTProductCell: XTCell {
     dynamic var nextBlock: XTBlock?
-    private var model: XTProductModel?
+    private var model: ProductModel?
     private let iconImg = UIImageView()
     private let priceLab = UILabel()
     private let nameLab = UILabel()
@@ -458,14 +458,14 @@ class XTProductCell: XTCell {
 
     override var xt_data: Any? {
         didSet {
-            guard let model = xt_data as? XTProductModel else { return }
+            guard let model = xt_data as? ProductModel else { return }
             self.model = model
-            iconImg.sd_setImage(with: URL(string: model.sihosixuetteNc ?? ""))
-            nameLab.text = model.moossixyllabismNc
-            priceLab.text = model.eahosixleNc
-            descLab.text = model.cotesixnderNc
-            submitBtn.setTitle(model.maansixNc, for: .normal)
-            submitBtn.backgroundColor = xtFirstHexColor(model.spffsixlicateNc)
+            iconImg.sd_setImage(with: URL(string: model.logo ?? ""))
+            nameLab.text = model.productName
+            priceLab.text = model.amountText
+            descLab.text = model.descriptionText
+            submitBtn.setTitle(model.buttonText, for: .normal)
+            submitBtn.backgroundColor = xtFirstHexColor(model.actionColorHex)
         }
     }
 
@@ -568,7 +568,7 @@ class XTProductCell: XTCell {
     }
 
     @objc private func submitTap() {
-        guard model?.pacasixrditisNc == true else { return }
+        guard model?.isActionEnabled == true else { return }
         nextBlock?()
     }
 }
@@ -577,7 +577,7 @@ class XTProductCell: XTCell {
 @objc(XTSmallCell)
 class XTSmallCell: XTCell, XTMarqueeViewDelegate, TYCyclePagerViewDataSource, TYCyclePagerViewDelegate {
     dynamic var nextBlock: XTBlock?
-    private var small: XTCardModel?
+    private var small: CardModel?
     private let contentImg = UIImageView()
     private let nameLab = UILabel()
     private let img = UIImageView()
@@ -587,22 +587,22 @@ class XTSmallCell: XTCell, XTMarqueeViewDelegate, TYCyclePagerViewDataSource, TY
     private let submitBtn = UIButton.xt_btn("", font: XT_Font_M(20), textColor: .black, cornerRadius: 24, tag: 0)
     private let lanternView = UIView()
     private let marqueeView = XTMarqueeView(frame: CGRect(x: 40, y: 0, width: xtFirstLanternW, height: xtFirstLanternH))
-    private var lanternArray: [XTLanternModel] = []
+    private var lanternArray: [LanternModel] = []
     private let bannerView = UIView()
     private let banner = TYCyclePagerView(frame: CGRect(x: 15, y: 0, width: XT_Screen_Width - 30, height: 115))
-    private var bannerList: [XTBannerModel] = []
+    private var bannerList: [BannerModel] = []
 
     override var xt_data: Any? {
         didSet {
-            guard let model = xt_data as? XTIndexModel, let small = model.small else { return }
+            guard let model = xt_data as? IndexModel, let small = model.small else { return }
             self.small = small
-            nameLab.text = small.moossixyllabismNc
-            img.sd_setImage(with: URL(string: small.sihosixuetteNc ?? ""), placeholderImage: XT_Img("xt_img_def"))
-            priceLab.text = small.eahosixleNc
-            descLab.text = small.cotesixnderNc
-            rightImg.sd_setImage(with: URL(string: small.brvasixdoNc ?? ""))
-            submitBtn.setTitle(small.maansixNc, for: .normal)
-            submitBtn.backgroundColor = xtFirstHexColor(small.spffsixlicateNc)
+            nameLab.text = small.productName
+            img.sd_setImage(with: URL(string: small.logo ?? ""), placeholderImage: XT_Img("xt_img_def"))
+            priceLab.text = small.amountText
+            descLab.text = small.descriptionText
+            rightImg.sd_setImage(with: URL(string: small.badgeImageURL ?? ""))
+            submitBtn.setTitle(small.buttonText, for: .normal)
+            submitBtn.backgroundColor = xtFirstHexColor(small.actionColorHex)
 
             lanternArray = model.lanternArr ?? []
             lanternView.isHidden = lanternArray.isEmpty
@@ -724,7 +724,7 @@ class XTSmallCell: XTCell, XTMarqueeViewDelegate, TYCyclePagerViewDataSource, TY
     }
 
     @objc private func submitTap() {
-        guard small?.pacasixrditisNc == true else { return }
+        guard small?.isActionEnabled == true else { return }
         nextBlock?()
     }
 
@@ -749,8 +749,8 @@ class XTSmallCell: XTCell, XTMarqueeViewDelegate, TYCyclePagerViewDataSource, TY
         guard Int(index) < lanternArray.count,
               let label = itemView.viewWithTag(xtFirstLanternLabelTag) as? UILabel else { return }
         let model = lanternArray[Int(index)]
-        label.textColor = xtFirstHexColor(model.epgysixnyNc, fallback: .white)
-        label.text = model.thcksixleafNc
+        label.textColor = xtFirstHexColor(model.textColorHex, fallback: .white)
+        label.text = model.text
     }
 
     func itemViewHeight(at index: UInt, for marqueeView: XTMarqueeView) -> CGFloat {
@@ -781,7 +781,7 @@ class XTSmallCell: XTCell, XTMarqueeViewDelegate, TYCyclePagerViewDataSource, TY
     }
 
     func pagerView(_ pageView: TYCyclePagerView, didSelectedItemCell cell: UICollectionViewCell, at index: Int) {
-        XTRoute.xt_share().goHtml(bannerList[index].relosixomNc ?? "", success: nil)
+        XTRoute.xt_share().goHtml(bannerList[index].routeURL ?? "", success: nil)
     }
 }
 

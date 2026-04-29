@@ -11,9 +11,9 @@ import UIKit
 @objcMembers
 @objc(XTBannerChildCell)
 class XTBannerChildCell: UICollectionViewCell {
-    weak dynamic var model: XTBannerModel? {
+    var model: BannerModel? {
         didSet {
-            bgImg.sd_setImage(with: URL(string: model?.arissixNc ?? ""), placeholderImage: UIImage(named: "xt_img_def"))
+            bgImg.sd_setImage(with: URL(string: model?.displayImageURL ?? ""), placeholderImage: UIImage(named: "xt_img_def"))
         }
     }
 
@@ -122,7 +122,7 @@ class XTPopUpView: UIView {
 @objcMembers
 @objc(XTNoticeCell)
 class XTNoticeCell: XTCell {
-    private weak var model: XTRepayModel?
+    private var model: RepayModel?
 
     private lazy var bgImg: UIImageView = {
         let imageView = UIImageView()
@@ -134,9 +134,9 @@ class XTNoticeCell: XTCell {
 
     override var xt_data: Any? {
         didSet {
-            guard let repayModel = xt_data as? XTRepayModel else { return }
+            guard let repayModel = xt_data as? RepayModel else { return }
             model = repayModel
-            bgImg.sd_setImage(with: URL(string: repayModel.frwnsixNc ?? ""), placeholderImage: UIImage(named: "xt_img_def"))
+            bgImg.sd_setImage(with: URL(string: repayModel.noticeImageURL ?? ""), placeholderImage: UIImage(named: "xt_img_def"))
         }
     }
 
@@ -173,6 +173,6 @@ class XTNoticeCell: XTCell {
     }
 
     @objc private func openNotice() {
-        XTRoute.xt_share().goHtml(model?.relosixomNc ?? "", success: nil)
+        XTRoute.xt_share().goHtml(model?.routeURL ?? "", success: nil)
     }
 }
