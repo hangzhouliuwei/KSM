@@ -207,23 +207,7 @@ class XTVerifyContactVC: XTBaseVC, UITableViewDelegate, UITableViewDataSource, C
 
     @objc(goNext:)
     func goNext(_ str: String?) {
-        if NSString.xt_isEmpty(str) {
-            XTUtility.xt_showProgress(view, message: "loading...")
-            viewModel.xt_push(orderId, success: { [weak self] url in
-                guard let self else { return }
-                XTUtility.xt_atHideProgress(self.view)
-                XTRoute.xt_share().goHtml(url ?? "", success: { [weak self] success in
-                    if success { self?.xtVerifyRemoveSelf() }
-                })
-            }, failure: { [weak self] in
-                guard let self else { return }
-                XTUtility.xt_atHideProgress(self.view)
-            })
-            return
-        }
-        XTRoute.xt_share().goVerifyItem(str ?? "", productId: productId, orderId: orderId, success: { [weak self] success in
-            if success { self?.xtVerifyRemoveSelf() }
-        })
+        LoanFlowCoordinator.shared.routeNext(code: str, productId: productId, orderId: orderId, loadingView: view, removeCurrentController: self)
     }
 }
 
@@ -456,23 +440,7 @@ class XTOCRVC: XTBaseVC, UITableViewDelegate, UITableViewDataSource, UIImagePick
 
     @objc(goNext:)
     func goNext(_ str: String?) {
-        if NSString.xt_isEmpty(str) {
-            XTUtility.xt_showProgress(view, message: "loading...")
-            viewModel.xt_push(orderId, success: { [weak self] url in
-                guard let self else { return }
-                XTUtility.xt_atHideProgress(self.view)
-                XTRoute.xt_share().goHtml(url ?? "", success: { [weak self] success in
-                    if success { self?.xtVerifyRemoveSelf() }
-                })
-            }, failure: { [weak self] in
-                guard let self else { return }
-                XTUtility.xt_atHideProgress(self.view)
-            })
-            return
-        }
-        XTRoute.xt_share().goVerifyItem(str ?? "", productId: productId, orderId: orderId, success: { [weak self] success in
-            if success { self?.xtVerifyRemoveSelf() }
-        })
+        LoanFlowCoordinator.shared.routeNext(code: str, productId: productId, orderId: orderId, loadingView: view, removeCurrentController: self)
     }
 }
 
@@ -668,23 +636,7 @@ class XTVerifyFaceVC: XTBaseVC {
 
     @objc(goNext:)
     func goNext(_ str: String?) {
-        if NSString.xt_isEmpty(str) {
-            XTUtility.xt_showProgress(view, message: "loading...")
-            viewModel.xt_push(orderId, success: { [weak self] url in
-                guard let self else { return }
-                XTUtility.xt_atHideProgress(self.view)
-                XTRoute.xt_share().goHtml(url ?? "", success: { [weak self] success in
-                    if success { self?.xtVerifyRemoveSelf() }
-                })
-            }, failure: { [weak self] in
-                guard let self else { return }
-                XTUtility.xt_atHideProgress(self.view)
-            })
-            return
-        }
-        XTRoute.xt_share().goVerifyItem(str ?? "", productId: productId, orderId: orderId, success: { [weak self] success in
-            if success { self?.xtVerifyRemoveSelf() }
-        })
+        LoanFlowCoordinator.shared.routeNext(code: str, productId: productId, orderId: orderId, loadingView: view, removeCurrentController: self)
     }
 }
 
@@ -879,27 +831,11 @@ class XTVerifyBankVC: XTBaseVC {
 
     @objc(goNext:)
     func goNext(_ str: String?) {
-        if NSString.xt_isEmpty(str) {
-            XTUtility.xt_showProgress(view, message: "loading...")
-            viewModel.xt_push(orderId, success: { [weak self] url in
-                guard let self else { return }
-                XTUtility.xt_atHideProgress(self.view)
-                XTRoute.xt_share().goHtml(url ?? "", success: { [weak self] success in
-                    if success { self?.xtVerifyRemoveSelf() }
-                })
-            }, failure: { [weak self] in
-                guard let self else { return }
-                XTUtility.xt_atHideProgress(self.view)
-            })
-            return
-        }
-        XTRoute.xt_share().goVerifyItem(str ?? "", productId: productId, orderId: orderId, success: { [weak self] success in
-            if success { self?.xtVerifyRemoveSelf() }
-        })
+        LoanFlowCoordinator.shared.routeNext(code: str, productId: productId, orderId: orderId, loadingView: view, removeCurrentController: self)
     }
 }
 
-private func xtVerifyTable(style: UITableView.Style) -> UITableView {
+func xtVerifyTable(style: UITableView.Style) -> UITableView {
     let tableView = UITableView(frame: .zero, style: style)
     tableView.contentInsetAdjustmentBehavior = .never
     tableView.estimatedRowHeight = 50
@@ -911,7 +847,7 @@ private func xtVerifyTable(style: UITableView.Style) -> UITableView {
     return tableView
 }
 
-private func xtVerifySubmitButton(title: String, target: Any, action: Selector) -> UIButton {
+func xtVerifySubmitButton(title: String, target: Any, action: Selector) -> UIButton {
     let button = UIButton.xt_btn(title, font: XT_Font_B(title == "Start" ? 20 : 24), textColor: .white, cornerRadius: 24, tag: 0)
     button.backgroundColor = XT_RGB(0x02CC56, 1.0)
     button.addTarget(target, action: action, for: .touchUpInside)

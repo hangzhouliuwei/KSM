@@ -808,32 +808,12 @@ class XTOrderView: UIView, UITableViewDelegate, UITableViewDataSource {
             XTRoute.xt_share().goHtml(model.xt_loanDetailUrl ?? "", success: nil)
             return
         }
-        XTUtility.xt_showProgress(self, message: "loading...")
-        viewModel.xt_detail(model.xt_productId ?? "", success: { [weak self] code, orderId in
-            guard let self else { return }
-            XTUtility.xt_atHideProgress(self)
-            if !NSString.xt_isEmpty(code) {
-                XTRoute.xt_share().goVerifyItem(code ?? "", productId: model.xt_productId ?? "", orderId: orderId ?? "", success: nil)
-            } else {
-                self.xt_push_productId(model.xt_productId, orderId: orderId)
-            }
-        }, failure: { [weak self] in
-            guard let self else { return }
-            XTUtility.xt_atHideProgress(self)
-        })
+        LoanFlowCoordinator.shared.continueAfterDetail(productId: model.xt_productId ?? "", loadingView: self)
     }
 
     @objc(xt_push_productId:orderId:)
     func xt_push_productId(_ productId: String?, orderId: String?) {
-        XTUtility.xt_showProgress(self, message: "loading...")
-        viewModel.xt_push(orderId ?? "", success: { [weak self] str in
-            guard let self else { return }
-            XTUtility.xt_atHideProgress(self)
-            XTRoute.xt_share().goHtml(str ?? "", success: nil)
-        }, failure: { [weak self] in
-            guard let self else { return }
-            XTUtility.xt_atHideProgress(self)
-        })
+        LoanFlowCoordinator.shared.openPush(orderId: orderId ?? "", loadingView: self)
     }
 
     @objc private func applyNow() {

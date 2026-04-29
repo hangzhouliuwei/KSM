@@ -71,38 +71,15 @@ final class MyViewModel {
     }
 
     func xt_detail(_ productId: String, success: ((String?, String?) -> Void)?, failure: XTBlock?) {
-        NetworkService.shared.detail(productId: productId) { result in
-            switch result {
-            case .success(let response):
-                guard let data = response.data else {
-                    failure?()
-                    return
-                }
-                let topInfo = data["heissixtopNc"] as? [String: Any]
-                let loanInfo = data["leonsixishNc"] as? [String: Any]
-                success?(
-                    topInfo.map { XT_Object_To_Stirng($0["excuse"]) },
-                    loanInfo.map { XT_Object_To_Stirng($0["cokesixtNc"]) }
-                )
-            case .failure:
-                failure?()
-            }
-        }
+        LoanFlowCoordinator.shared.loadDetail(productId, success: { code, orderId in
+            success?(code, orderId)
+        }, failure: failure)
     }
 
     func xt_push(_ orderId: String, success: ((String?) -> Void)?, failure: XTBlock?) {
-        NetworkService.shared.push(orderId: orderId) { result in
-            switch result {
-            case .success(let response):
-                guard let data = response.data else {
-                    failure?()
-                    return
-                }
-                success?(XT_Object_To_Stirng(data["relosixomNc"]))
-            case .failure:
-                failure?()
-            }
-        }
+        LoanFlowCoordinator.shared.loadPushURL(orderId, success: { url in
+            success?(url)
+        }, failure: failure)
     }
 }
 

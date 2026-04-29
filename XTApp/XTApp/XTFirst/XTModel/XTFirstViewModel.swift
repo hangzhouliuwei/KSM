@@ -55,63 +55,17 @@ final class FirstViewModel {
     }
 
     func xt_apply(_ productId: String, success: ((Int, String, Bool) -> Void)?, failure: XTBlock?) {
-        NetworkService.shared.apply(productId: productId) { result in
-            switch result {
-            case .success(let response):
-                guard let data = response.data else {
-                    failure?()
-                    return
-                }
-                let uploadType = Int(XT_Object_To_Stirng(data["flcNsixc"])) ?? 0
-                let url = XT_Object_To_Stirng(data["relosixomNc"])
-                let isList: Bool
-                if let boolVal = data["detrsixogyrateNc"] as? Bool {
-                    isList = boolVal
-                } else if let intVal = data["detrsixogyrateNc"] as? Int {
-                    isList = intVal != 0
-                } else {
-                    isList = false
-                }
-                success?(uploadType, url, isList)
-            case .failure:
-                failure?()
-            }
-        }
+        LoanFlowCoordinator.shared.loadApplyDecision(productId, success: { decision in
+            success?(decision.uploadType, decision.url, decision.isList)
+        }, failure: failure)
     }
 
     func xt_detail(_ productId: String, success: ((String, String) -> Void)?, failure: XTBlock?) {
-        NetworkService.shared.detail(productId: productId) { result in
-            switch result {
-            case .success(let response):
-                guard let data = response.data else {
-                    failure?()
-                    return
-                }
-                let topInfo = data["heissixtopNc"] as? [String: Any]
-                let loanInfo = data["leonsixishNc"] as? [String: Any]
-                success?(
-                    XT_Object_To_Stirng(topInfo?["excuse"]),
-                    XT_Object_To_Stirng(loanInfo?["cokesixtNc"])
-                )
-            case .failure:
-                failure?()
-            }
-        }
+        LoanFlowCoordinator.shared.loadDetail(productId, success: success, failure: failure)
     }
 
     func xt_push(_ orderId: String, success: ((String) -> Void)?, failure: XTBlock?) {
-        NetworkService.shared.push(orderId: orderId) { result in
-            switch result {
-            case .success(let response):
-                guard let data = response.data else {
-                    failure?()
-                    return
-                }
-                success?(XT_Object_To_Stirng(data["relosixomNc"]))
-            case .failure:
-                failure?()
-            }
-        }
+        LoanFlowCoordinator.shared.loadPushURL(orderId, success: success, failure: failure)
     }
 }
 

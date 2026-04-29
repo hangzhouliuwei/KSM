@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		E10B20012F6F000100000001 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10B20002F6F000100000001 /* NetworkService.swift */; };
 		E10B20032F6F000100000001 /* AppAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10B20022F6F000100000001 /* AppAPI.swift */; };
+		E10B10072F70000100000001 /* LoanFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10B10082F70000100000001 /* LoanFlowCoordinator.swift */; };
 		E10B10012F6E000100000001 /* AppDependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10B10002F6E000100000001 /* AppDependencyContainer.swift */; };
 		E10B10032F6E000100000001 /* LaunchCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10B10022F6E000100000001 /* LaunchCoordinator.swift */; };
 		E10B10052F6E000100000001 /* RootRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10B10042F6E000100000001 /* RootRouter.swift */; };
@@ -249,6 +250,7 @@
 		E10B10002F6E000100000001 /* AppDependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDependencyContainer.swift; sourceTree = "<group>"; };
 		E10B10022F6E000100000001 /* LaunchCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchCoordinator.swift; sourceTree = "<group>"; };
 		E10B10042F6E000100000001 /* RootRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootRouter.swift; sourceTree = "<group>"; };
+		E10B10082F70000100000001 /* LoanFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanFlowCoordinator.swift; sourceTree = "<group>"; };
 		E10B20002F6F000100000001 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		E10B20022F6F000100000001 /* AppAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAPI.swift; sourceTree = "<group>"; };
 		E10B00102F6D000100000001 /* XTFirstModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XTFirstModels.swift; sourceTree = "<group>"; };
@@ -282,6 +284,7 @@
 				E10B10002F6E000100000001 /* AppDependencyContainer.swift */,
 				E10B10022F6E000100000001 /* LaunchCoordinator.swift */,
 				E10B10042F6E000100000001 /* RootRouter.swift */,
+				E10B10082F70000100000001 /* LoanFlowCoordinator.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -850,6 +853,7 @@
 			files = (
 				E10B20012F6F000100000001 /* NetworkService.swift in Sources */,
 				E10B20032F6F000100000001 /* AppAPI.swift in Sources */,
+				E10B10072F70000100000001 /* LoanFlowCoordinator.swift in Sources */,
 				E10B10012F6E000100000001 /* AppDependencyContainer.swift in Sources */,
 				E10B10032F6E000100000001 /* LaunchCoordinator.swift in Sources */,
 				E10B10052F6E000100000001 /* RootRouter.swift in Sources */,

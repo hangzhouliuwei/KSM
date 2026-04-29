@@ -56,17 +56,7 @@ class XTVerifyListVC: XTBaseVC {
     }
 
     @objc func xt_push() {
-        XTUtility.xt_showProgress(view, message: "loading...")
-        viewModel.xt_push(orderId, success: { [weak self] str in
-            guard let self else { return }
-            XTUtility.xt_atHideProgress(self.view)
-            XTRoute.xt_share().goHtml(str ?? "", success: { [weak self] success in
-                if success { self?.xtVerifyRemoveSelf() }
-            })
-        }, failure: { [weak self] in
-            guard let self else { return }
-            XTUtility.xt_atHideProgress(self.view)
-        })
+        LoanFlowCoordinator.shared.openPush(orderId: orderId, loadingView: view, removeCurrentController: self)
     }
 
     @objc func xt_UI() {

@@ -226,26 +226,6 @@ class XTVerifyBaseVC: XTBaseVC, UITableViewDelegate, UITableViewDataSource {
 
     @objc(goNext:)
     func goNext(_ str: String?) {
-        xtVerifyGoNext(str, viewModel: viewModel, orderId: orderId, productId: productId)
-    }
-
-    private func xtVerifyGoNext(_ str: String?, viewModel: XTVerifyViewModel, orderId: String, productId: String) {
-        if NSString.xt_isEmpty(str) {
-            XTUtility.xt_showProgress(view, message: "loading...")
-            viewModel.xt_push(orderId, success: { [weak self] url in
-                guard let self else { return }
-                XTUtility.xt_atHideProgress(self.view)
-                XTRoute.xt_share().goHtml(url ?? "", success: { [weak self] success in
-                    if success { self?.xtVerifyRemoveSelf() }
-                })
-            }, failure: { [weak self] in
-                guard let self else { return }
-                XTUtility.xt_atHideProgress(self.view)
-            })
-            return
-        }
-        XTRoute.xt_share().goVerifyItem(str ?? "", productId: productId, orderId: orderId, success: { [weak self] success in
-            if success { self?.xtVerifyRemoveSelf() }
-        })
+        LoanFlowCoordinator.shared.routeNext(code: str, productId: productId, orderId: orderId, loadingView: view, removeCurrentController: self)
     }
 }

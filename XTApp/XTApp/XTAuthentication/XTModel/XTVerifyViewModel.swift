@@ -226,18 +226,9 @@ final class VerifyViewModel {
     }
 
     func xt_push(_ orderId: String, success: ((String?) -> Void)?, failure: XTBlock?) {
-        network.push(orderId: orderId) { result in
-            switch result {
-            case .success(let response):
-                guard let data = response.data else {
-                    failure?()
-                    return
-                }
-                success?(XT_Object_To_Stirng(data["relosixomNc"]))
-            case .failure:
-                failure?()
-            }
-        }
+        LoanFlowCoordinator.shared.loadPushURL(orderId, success: { url in
+            success?(url)
+        }, failure: failure)
     }
 }
 

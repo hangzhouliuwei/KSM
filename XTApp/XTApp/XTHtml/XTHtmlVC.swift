@@ -189,41 +189,24 @@ class XTHtmlVC: XTBaseVC, WKUIDelegate, WKNavigationDelegate, WKScriptMessageHan
 
     private func goApply(_ productId: String) {
         XTUtility.xt_showProgress(view, message: "loading...")
-        viewModel.xt_apply(productId) { [weak self] uploadType, url, _ in
+        LoanFlowCoordinator.shared.loadApplyDecision(productId, success: { [weak self] decision in
             guard let self else { return }
             XTUtility.xt_atHideProgress(self.view)
-            if uploadType == 2 {
+            if decision.uploadType == 2 {
                 XTRequestCenter.xt_share().xt_device()
             }
-            if NSString.xt_isValidateUrl(url) {
-                XTRoute.xt_share().goHtml(url, success: nil)
+            if NSString.xt_isValidateUrl(decision.url) {
+                XTRoute.xt_share().goHtml(decision.url, success: nil)
             } else {
-                self.goDetail(productId)
+                LoanFlowCoordinator.shared.continueAfterDetail(productId: productId, loadingView: self.view)
             }
-        } failure: { [weak self] in
+        }, failure: { [weak self] in
             guard let self else { return }
             XTUtility.xt_atHideProgress(self.view)
-        }
+        })
     }
 
     private func goDetail(_ productId: String) {
-        XTUtility.xt_showProgress(view, message: "loading...")
-        viewModel.xt_detail(productId) { [weak self] code, orderId in
-            guard let self else { return }
-            if !NSString.xt_isEmpty(code) {
-                XTUtility.xt_atHideProgress(self.view)
-                XTRoute.xt_share().goVerifyItem(code, productId: productId, orderId: orderId, success: nil)
-            } else if !NSString.xt_isEmpty(orderId) {
-                self.viewModel.xt_push(orderId) { url in
-                    XTUtility.xt_atHideProgress(self.view)
-                    XTRoute.xt_share().goHtml(url, success: nil)
-                } failure: {
-                    XTUtility.xt_atHideProgress(self.view)
-                }
-            }
-        } failure: { [weak self] in
-            guard let self else { return }
-            XTUtility.xt_atHideProgress(self.view)
-        }
+        LoanFlowCoordinator.shared.continueAfterDetail(productId: productId, loadingView: view)
     }
 }
