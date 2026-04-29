@@ -9,14 +9,10 @@
 #import <AFNetworking/AFNetworking.h>
 #import "PTDeviceInfo.h"
 
-@interface PTRequestUrlArgumentsFilter()
-@property(nonatomic, copy) NSDictionary *arguments;;
-@end
-
 @implementation PTRequestUrlArgumentsFilter
 
 + (PTRequestUrlArgumentsFilter *)filterWithArguments{
-    return [[self alloc] initWithArguments:[PTRequestUrlArgumentsFilter getURLParam]];
+    return [[self alloc] init];
 }
 
 + (NSDictionary *)getURLParam{
@@ -43,16 +39,8 @@
     return dic.mutableCopy;
 }
 
-- (id)initWithArguments:(NSDictionary *)arguments {
-    self = [super init];
-    if (self) {
-        _arguments = arguments;
-    }
-    return self;
-}
-
 - (nonnull NSString *)filterUrl:(nonnull NSString *)originUrl withRequest:(nonnull YTKBaseRequest *)request { 
-    return [self urlStringWithOriginUrlString:originUrl appendParameters:_arguments];
+    return [self urlStringWithOriginUrlString:originUrl appendParameters:[PTRequestUrlArgumentsFilter getURLParam]];
 }
 
 

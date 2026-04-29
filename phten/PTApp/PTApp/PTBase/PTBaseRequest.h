@@ -15,9 +15,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) BOOL isShowLoading;
 @property (nonatomic, copy) NSString *loadingText;
 
-@property (nonatomic, assign) NSInteger response_code;
-@property (nonatomic, copy) NSString *response_message;
-@property (nonatomic, copy) NSDictionary *response_dic;
+@property (nonatomic, assign, readonly) NSInteger response_code;
+@property (nonatomic, copy, readonly) NSString *response_message;
+@property (nonatomic, copy, readonly) NSDictionary *response_dic;
 
 - (void)hiddenLoading;
 

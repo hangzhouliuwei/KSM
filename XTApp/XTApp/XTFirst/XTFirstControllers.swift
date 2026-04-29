@@ -91,7 +91,7 @@ class XTFirstVC: XTBaseVC, UITableViewDelegate, UITableViewDataSource {
 
     @objc(xt_popImg:url:text:)
     func xt_popImg(_ img: String, url: String, text: String) {
-        let pop = XTPopUpView(img: img, url: url, text: text)
+        let pop = XTPopUpView(imgUrl: img, url: url, text: text)
         pop.center = view.center
         view.addSubview(pop)
         pop.closeBlock = { [weak pop] in
@@ -111,7 +111,7 @@ class XTFirstVC: XTBaseVC, UITableViewDelegate, UITableViewDataSource {
     @objc func creatCellModel() {
         guard let indexModel = viewModel.indexModel else { return }
         if let icon = indexModel.iconModel {
-            XTAssistiveView.xt_share().xt_showIcon(icon.intasixntNc, url: icon.kichsixiNc)
+            XTAssistiveView.xt_share().xt_showIcon(icon.intasixntNc ?? "", url: icon.kichsixiNc ?? "")
         }
         listArr.removeAll()
 
@@ -248,12 +248,12 @@ class XTFirstVC: XTBaseVC, UITableViewDelegate, UITableViewDataSource {
             guard let self else { return }
             if !NSString.xt_isEmpty(code) {
                 XTUtility.xt_atHideProgress(self.view)
-                XTRoute.xt_share().goVerifyItem(code, productId: productId, orderId: orderId, success: nil)
+                XTRoute.xt_share().goVerifyItem(code ?? "", productId: productId, orderId: orderId ?? "", success: nil)
             } else {
                 self.viewModel.xt_push(orderId ?? "", success: { [weak self] str in
                     guard let self else { return }
                     XTUtility.xt_atHideProgress(self.view)
-                    XTRoute.xt_share().goHtml(str, success: nil)
+                    XTRoute.xt_share().goHtml(str ?? "", success: nil)
                 }, failure: { [weak self] in
                     guard let self else { return }
                     XTUtility.xt_atHideProgress(self.view)
@@ -781,7 +781,7 @@ class XTSmallCell: XTCell, XTMarqueeViewDelegate, TYCyclePagerViewDataSource, TY
     }
 
     func pagerView(_ pageView: TYCyclePagerView, didSelectedItemCell cell: UICollectionViewCell, at index: Int) {
-        XTRoute.xt_share().goHtml(bannerList[index].relosixomNc, success: nil)
+        XTRoute.xt_share().goHtml(bannerList[index].relosixomNc ?? "", success: nil)
     }
 }
 

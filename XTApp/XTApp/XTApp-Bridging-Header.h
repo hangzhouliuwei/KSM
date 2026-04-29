@@ -10,6 +10,5 @@
 
 #import "XTAPIHeader.h"
 #import "XTDefineHeader.h"
-#import "XTRoute.h"
 
 #endif /* XTApp_Bridging_Header_h */

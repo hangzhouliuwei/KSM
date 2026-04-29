@@ -50,6 +50,7 @@
 		E10B00132F6D000100000001 /* XTMyModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10B00122F6D000100000001 /* XTMyModels.swift */; };
 		E2299951831A9971AC352B73 /* UIView+XTToast.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28B5A5929D21A31BB39D241 /* UIView+XTToast.swift */; };
 		E253418598B4F43C41D35164 /* XTLocationManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D5BA1BADA8B8B8A4BF75C9 /* XTLocationManger.swift */; };
+		E264132F26EAC3852DE447D6 /* XTRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = B384EFDEEB39F8B7152E673F /* XTRoute.swift */; };
 		E561A45B3246FB17C2E1355F /* XTFirstSimpleViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61730EF3EF6D2298EE17381A /* XTFirstSimpleViews.swift */; };
 		F2A0B325B77C66A1E76B61F1 /* XTFirstViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9E3CE9E2C87D637C8429ABC /* XTFirstViewModel.swift */; };
 		F883D656462D66869A5EEACE /* XTCodeAltView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7F75F64AFB6EA83F7CFB59 /* XTCodeAltView.swift */; };
@@ -129,7 +130,6 @@
 		16E7A9272C3FA5A200B06AC7 /* XTLoginVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XTLoginVC.h; sourceTree = "<group>"; };
 		16E7A92B2C3FA61C00B06AC7 /* XTUserModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XTUserModel.h; sourceTree = "<group>"; };
 		16E7A92F2C3FA65400B06AC7 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
-		16E7A9302C3FA65400B06AC7 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		16E7A9322C3FA67200B06AC7 /* XTMobile.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = XTMobile.plist; sourceTree = "<group>"; };
 		16E7A9342C3FA6A300B06AC7 /* XTDevice.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XTDevice.h; sourceTree = "<group>"; };
 		16E7A9372C3FAF2300B06AC7 /* XTUtility.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XTUtility.h; sourceTree = "<group>"; };
@@ -221,7 +221,6 @@
 		5C38AC09D8C11B6A8831C9F6 /* XTVerifyViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = XTVerifyViewModel.swift; sourceTree = "<group>"; };
 		61730EF3EF6D2298EE17381A /* XTFirstSimpleViews.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = XTFirstSimpleViews.swift; sourceTree = "<group>"; };
 		6CBED69F4D3D1DCDD338B329 /* XTVerifySmallViews.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = XTVerifySmallViews.swift; sourceTree = "<group>"; };
-		8A6CD20CBE62A03D2D55F294 /* XTRoute.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = XTRoute.m; sourceTree = "<group>"; };
 		8C7BC0A332F1CF78FB51D864 /* XTBaseApi.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = XTBaseApi.swift; sourceTree = "<group>"; };
 		900B07EF3A2D51F5ED6BBBFB /* XTBaseVC.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = XTBaseVC.swift; sourceTree = "<group>"; };
 		9D3FC7704D63D2390E41FE69 /* XTUserSession.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = XTUserSession.swift; sourceTree = "<group>"; };
@@ -231,6 +230,7 @@
 		A82FE7AD1E44B49BEC5016C9 /* UIView+XTCategory.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIView+XTCategory.swift"; sourceTree = "<group>"; };
 		A9E3CE9E2C87D637C8429ABC /* XTFirstViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = XTFirstViewModel.swift; sourceTree = "<group>"; };
 		AA2936D431EF15536BA90ED6 /* XTWebViewProgressView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = XTWebViewProgressView.swift; sourceTree = "<group>"; };
+		B384EFDEEB39F8B7152E673F /* XTRoute.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = XTRoute.swift; sourceTree = "<group>"; };
 		B7BF4B8310FB0164C4DF33B9 /* XTCommonCells.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = XTCommonCells.swift; sourceTree = "<group>"; };
 		C5D7C68A3F77BA746D0670B7 /* XTSetViews.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = XTSetViews.swift; sourceTree = "<group>"; };
 		C8E37414149BA53236C9C86D /* UIView+XTPositioning.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIView+XTPositioning.swift"; sourceTree = "<group>"; };
@@ -506,7 +506,6 @@
 			children = (
 				16E7A9322C3FA67200B06AC7 /* XTMobile.plist */,
 				16E7A92F2C3FA65400B06AC7 /* Reachability.h */,
-				16E7A9302C3FA65400B06AC7 /* Reachability.m */,
 				16E7A9342C3FA6A300B06AC7 /* XTDevice.h */,
 				16E7A9372C3FAF2300B06AC7 /* XTUtility.h */,
 				16E9DF4E2C8956F300319C8C /* XTLocationManger.h */,
@@ -516,7 +515,7 @@
 				5A1F1C5A9ABF8BBC73CE2ABC /* XTAssistiveView.swift */,
 				2352C6DA8712C718FE827559 /* XTDevice.swift */,
 				F509B0277B66EEC0FFCA9E5A /* XTUtility.swift */,
-				8A6CD20CBE62A03D2D55F294 /* XTRoute.m */,
+				B384EFDEEB39F8B7152E673F /* XTRoute.swift */,
 			);
 			path = XTUtility;
 			sourceTree = "<group>";
@@ -864,6 +863,7 @@
 				612A59E287CBF53D393DCF97 /* XTAuthenticationViews.swift in Sources */,
 				C09ADABF1FEE1201163E3E93 /* XTFirstControllers.swift in Sources */,
 				6C60B542342EC1A115AA4B23 /* XTMyControllers.swift in Sources */,
+				E264132F26EAC3852DE447D6 /* XTRoute.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

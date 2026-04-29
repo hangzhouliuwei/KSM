@@ -6,10 +6,10 @@
 //
 
 #import "PTLoginController.h"
-#import "PTPhoneInputView.h"
+#import "PTLoginView/PTPhoneInputView.h"
 #import "PTLoginCodeController.h"
 #import "PTWebViewController.h"
-#import "PTLoginTipView.h"
+#import "PTLoginView/PTLoginTipView.h"
 @interface PTLoginController ()
 @property(nonatomic, strong) PTPhoneInputView *phoneTextField;
 @property(nonatomic, strong) QMUIButton *protocolBtn;

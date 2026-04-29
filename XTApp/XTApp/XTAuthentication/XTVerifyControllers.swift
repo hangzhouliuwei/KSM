@@ -110,7 +110,7 @@ class XTVerifyListVC: XTBaseVC {
             self.orderId = orderId ?? ""
             self.xt_UI()
             if goNext, !NSString.xt_isEmpty(code) {
-                XTRoute.xt_share().goVerifyItem(code, productId: self.productId, orderId: self.orderId, success: nil)
+                XTRoute.xt_share().goVerifyItem(code ?? "", productId: self.productId, orderId: self.orderId, success: nil)
             } else if goNext {
                 self.xt_push()
             }
@@ -127,7 +127,7 @@ class XTVerifyListVC: XTBaseVC {
         viewModel.xt_push(orderId, success: { [weak self] str in
             guard let self else { return }
             XTUtility.xt_atHideProgress(self.view)
-            XTRoute.xt_share().goHtml(str, success: { [weak self] success in
+            XTRoute.xt_share().goHtml(str ?? "", success: { [weak self] success in
                 if success { self?.xtVerifyRemoveSelf() }
             })
         }, failure: { [weak self] in
@@ -174,14 +174,8 @@ class XTVerifyListVC: XTBaseVC {
         var haveSuccess = false
         for (index, model) in (viewModel.list ?? []).enumerated() {
             let row = XTVerifyListRow(index: index + 1, model: model)
-            row.addAction(UIAction { [weak self, weak model] _ in
-                guard let self, let model else { return }
-                if model.frllsixyNc {
-                    XTRoute.xt_share().goVerifyItem(model.noassixsessabilityNc, productId: self.productId, orderId: self.orderId, success: nil)
-                } else {
-                    self.xt_detail(true, showProgress: true)
-                }
-            }, for: .touchUpInside)
+            row.tag = index
+            row.addTarget(self, action: #selector(listRowTap(_:)), for: .touchUpInside)
             xtVerifyAddHeight(row, 92)
             stack.addArrangedSubview(row)
             if model.frllsixyNc {
@@ -212,6 +206,16 @@ class XTVerifyListVC: XTBaseVC {
 
     @objc private func applyTap() {
         xt_detail(true, showProgress: true)
+    }
+
+    @objc private func listRowTap(_ sender: UIButton) {
+        guard let list = viewModel.list, list.indices.contains(sender.tag) else { return }
+        let model = list[sender.tag]
+        if model.frllsixyNc {
+            XTRoute.xt_share().goVerifyItem(model.noassixsessabilityNc ?? "", productId: productId, orderId: orderId, success: nil)
+        } else {
+            xt_detail(true, showProgress: true)
+        }
     }
 }
 
@@ -490,7 +494,7 @@ class XTVerifyBaseVC: XTBaseVC, UITableViewDelegate, UITableViewDataSource {
             viewModel.xt_push(orderId, success: { [weak self] url in
                 guard let self else { return }
                 XTUtility.xt_atHideProgress(self.view)
-                XTRoute.xt_share().goHtml(url, success: { [weak self] success in
+                XTRoute.xt_share().goHtml(url ?? "", success: { [weak self] success in
                     if success { self?.xtVerifyRemoveSelf() }
                 })
             }, failure: { [weak self] in
@@ -499,7 +503,7 @@ class XTVerifyBaseVC: XTBaseVC, UITableViewDelegate, UITableViewDataSource {
             })
             return
         }
-        XTRoute.xt_share().goVerifyItem(str, productId: productId, orderId: orderId, success: { [weak self] success in
+        XTRoute.xt_share().goVerifyItem(str ?? "", productId: productId, orderId: orderId, success: { [weak self] success in
             if success { self?.xtVerifyRemoveSelf() }
         })
     }
@@ -643,7 +647,7 @@ class XTVerifyContactVC: XTBaseVC, UITableViewDelegate, UITableViewDataSource, C
             viewModel.xt_push(orderId, success: { [weak self] url in
                 guard let self else { return }
                 XTUtility.xt_atHideProgress(self.view)
-                XTRoute.xt_share().goHtml(url, success: { [weak self] success in
+                XTRoute.xt_share().goHtml(url ?? "", success: { [weak self] success in
                     if success { self?.xtVerifyRemoveSelf() }
                 })
             }, failure: { [weak self] in
@@ -652,7 +656,7 @@ class XTVerifyContactVC: XTBaseVC, UITableViewDelegate, UITableViewDataSource, C
             })
             return
         }
-        XTRoute.xt_share().goVerifyItem(str, productId: productId, orderId: orderId, success: { [weak self] success in
+        XTRoute.xt_share().goVerifyItem(str ?? "", productId: productId, orderId: orderId, success: { [weak self] success in
             if success { self?.xtVerifyRemoveSelf() }
         })
     }
@@ -892,7 +896,7 @@ class XTOCRVC: XTBaseVC, UITableViewDelegate, UITableViewDataSource, UIImagePick
             viewModel.xt_push(orderId, success: { [weak self] url in
                 guard let self else { return }
                 XTUtility.xt_atHideProgress(self.view)
-                XTRoute.xt_share().goHtml(url, success: { [weak self] success in
+                XTRoute.xt_share().goHtml(url ?? "", success: { [weak self] success in
                     if success { self?.xtVerifyRemoveSelf() }
                 })
             }, failure: { [weak self] in
@@ -901,7 +905,7 @@ class XTOCRVC: XTBaseVC, UITableViewDelegate, UITableViewDataSource, UIImagePick
             })
             return
         }
-        XTRoute.xt_share().goVerifyItem(str, productId: productId, orderId: orderId, success: { [weak self] success in
+        XTRoute.xt_share().goVerifyItem(str ?? "", productId: productId, orderId: orderId, success: { [weak self] success in
             if success { self?.xtVerifyRemoveSelf() }
         })
     }
@@ -941,7 +945,7 @@ class XTVerifyFaceVC: XTBaseVC {
         xt_title = "Facial Recognition"
         xt_title_color = .white
         view.backgroundColor = XT_RGB(0xF2F5FA, 1.0)
-        AAILivenessSDK.initWithMarket(.philippines)
+        AAILivenessSDK.initWith(.philippines)
         viewModel.xt_auth(productId, success: { [weak self] in
             self?.xt_UI()
         }, failure: {
@@ -1012,7 +1016,7 @@ class XTVerifyFaceVC: XTBaseVC {
             goSubmit(viewModel.faceModel?.xt_relation_id)
             return
         }
-        AAILivenessSDK.initWithMarket(.philippines)
+        AAILivenessSDK.initWith(.philippines)
         AAILivenessSDK.configResultPictureSize(800)
         AAILivenessSDK.additionalConfig().detectionLevel = .easy
         XTUtility.xt_showProgress(view, message: "loading...")
@@ -1104,7 +1108,7 @@ class XTVerifyFaceVC: XTBaseVC {
             viewModel.xt_push(orderId, success: { [weak self] url in
                 guard let self else { return }
                 XTUtility.xt_atHideProgress(self.view)
-                XTRoute.xt_share().goHtml(url, success: { [weak self] success in
+                XTRoute.xt_share().goHtml(url ?? "", success: { [weak self] success in
                     if success { self?.xtVerifyRemoveSelf() }
                 })
             }, failure: { [weak self] in
@@ -1113,7 +1117,7 @@ class XTVerifyFaceVC: XTBaseVC {
             })
             return
         }
-        XTRoute.xt_share().goVerifyItem(str, productId: productId, orderId: orderId, success: { [weak self] success in
+        XTRoute.xt_share().goVerifyItem(str ?? "", productId: productId, orderId: orderId, success: { [weak self] success in
             if success { self?.xtVerifyRemoveSelf() }
         })
     }
@@ -1127,7 +1131,10 @@ class XTVerifyBankVC: XTBaseVC {
     private var orderId = ""
     private var startTime = ""
     private lazy var submitBtn: UIButton = xtVerifySubmitButton(title: "Next", target: self, action: #selector(goCheck))
-    private let segList: [[String: String]] = [["value": "2", "name": "E-Wallet"], ["value": "1", "name": "Bank"]]
+    private let segList: [NSDictionary] = [
+        ["value": "2", "name": "E-Wallet"] as NSDictionary,
+        ["value": "1", "name": "Bank"] as NSDictionary
+    ]
     private var walletView = XTWalletView()
     private var bankView = XTBankView()
 
@@ -1193,7 +1200,7 @@ class XTVerifyBankVC: XTBaseVC {
             $0.translatesAutoresizingMaskIntoConstraints = false
             view.addSubview($0)
         }
-        seg.block = { [weak self] _ in
+        seg.block = { [weak self] (_: Int) in
             guard let self else { return }
             self.walletView.isHidden.toggle()
             self.bankView.isHidden.toggle()
@@ -1312,7 +1319,7 @@ class XTVerifyBankVC: XTBaseVC {
             viewModel.xt_push(orderId, success: { [weak self] url in
                 guard let self else { return }
                 XTUtility.xt_atHideProgress(self.view)
-                XTRoute.xt_share().goHtml(url, success: { [weak self] success in
+                XTRoute.xt_share().goHtml(url ?? "", success: { [weak self] success in
                     if success { self?.xtVerifyRemoveSelf() }
                 })
             }, failure: { [weak self] in
@@ -1321,7 +1328,7 @@ class XTVerifyBankVC: XTBaseVC {
             })
             return
         }
-        XTRoute.xt_share().goVerifyItem(str, productId: productId, orderId: orderId, success: { [weak self] success in
+        XTRoute.xt_share().goVerifyItem(str ?? "", productId: productId, orderId: orderId, success: { [weak self] success in
             if success { self?.xtVerifyRemoveSelf() }
         })
     }

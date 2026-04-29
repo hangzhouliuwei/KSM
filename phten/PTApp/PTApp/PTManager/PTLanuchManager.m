@@ -13,6 +13,7 @@
 #import <AdjustSdk/AdjustSdk.h>
 #import "PTUploadAdidService.h"
 #import <Bugly/Bugly.h>
+#import "PTNetworkConfig.h"
 
 @interface PTLanuchManager()
 
@@ -27,7 +28,7 @@ SINGLETON_M(PTLanuchManager)
     [IQKeyboardManager sharedManager].toolbarDoneBarButtonItemText = @"Confirm";
 //    //键盘弹出时，点击背景，键盘收回
 //    [IQKeyboardManager sharedManager].shouldResignOnTouchOutside = YES;
-    [YTKNetworkConfig sharedConfig].baseUrl = PTbaseUrl;
+    [PTNetworkConfig configureWithBaseURL:PTbaseUrl];
     [Bugly startWithAppId:PTBuglyKey];
 }
 

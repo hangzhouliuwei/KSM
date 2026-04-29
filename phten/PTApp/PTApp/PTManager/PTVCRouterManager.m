@@ -8,7 +8,7 @@
 #import "PTVCRouterManager.h"
 #import "PTTabBarViewController.h"
 #import "PTNavigationController.h"
-#import "PTLoginController.h"
+#import "PTLoginKit.h"
 
 @interface PTVCRouterManager()
 @property(nonatomic, strong) PTTabBarViewController *tabBarVC;
@@ -42,13 +42,7 @@ SINGLETON_M(PTVCRouterManager)
 
 -(void)jumpLoginWithSuccessBlock:(PTBlock)block
 {
-    PTLoginController *loginVC = [[PTLoginController alloc] init];
-    PTNavigationController *nav = [[PTNavigationController alloc] initWithRootViewController:loginVC];
-    nav.modalPresentationStyle = UIModalPresentationFullScreen;
-    if(block){
-        loginVC.loginResultBlock = block;
-    }
-    [self.navVC presentViewController:nav animated:YES completion:nil];
+    [PTLoginKit presentLoginFromViewController:self.navVC success:block];
 }
 
 

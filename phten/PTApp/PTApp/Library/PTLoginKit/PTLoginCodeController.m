@@ -6,11 +6,10 @@
 //
 
 #import "PTLoginCodeController.h"
-#import "PTCountDownButton.h"
-#import "PTCountDownButton.h"
+#import "PTLoginView/PTCountDownButton.h"
 #import <CRBoxInputView/CRBoxInputView.h>
-#import "PTLoginGetSMSCodeService.h"
-#import "PTLoginService.h"
+#import "PTLoginService/PTLoginGetSMSCodeService.h"
+#import "PTLoginService/PTLoginService.h"
 
 @interface PTLoginCodeController ()
 //@property(nonatomic, copy) NSString *startTime;

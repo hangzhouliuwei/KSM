@@ -395,7 +395,8 @@ class XTMyVC: XTBaseVC {
     }
 
     @objc private func openExtendItem(_ sender: UIButton) {
-        guard let model = viewModel.myModel?.extendLists?[safe: sender.tag] else { return }
+        guard let list = viewModel.myModel?.extendLists, list.indices.contains(sender.tag) else { return }
+        let model = list[sender.tag]
         XTRoute.xt_share().goHtml(model.xt_url ?? "", success: nil)
     }
 

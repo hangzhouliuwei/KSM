@@ -4,51 +4,12 @@
 //
 
 import Foundation
-import YTKNetwork
-
-class PTDictionaryRequest: PTBaseRequest {
-    private let data: NSDictionary
-    private let path: String
-    private let method: YTKRequestMethod
-
-    @objc(initWithData:path:)
-    init(data: NSDictionary, path: String) {
-        self.data = data
-        self.path = path
-        self.method = .POST
-        super.init()
-    }
-
-    init(data: NSDictionary = [:], path: String, method: YTKRequestMethod = .POST, showLoading: Bool = false) {
-        self.data = data
-        self.path = path
-        self.method = method
-        super.init()
-        isShowLoading = showLoading
-    }
-
-    override func requestUrl() -> String {
-        path
-    }
-
-    override func requestTimeoutInterval() -> TimeInterval {
-        30
-    }
-
-    override func requestMethod() -> YTKRequestMethod {
-        method
-    }
-
-    override func requestArgument() -> Any {
-        data
-    }
-}
 
 @objc(PTLanuchService)
 class PTLanuchService: PTDictionaryRequest {
     @objc(initWithData:)
     init(data: NSDictionary) {
-        super.init(data: data, path: "tencr/market")
+        super.init(data: data, path: PTAPIEndpoint.googleMarket)
     }
 }
 
@@ -56,7 +17,7 @@ class PTLanuchService: PTDictionaryRequest {
 class PTDeviceService: PTDictionaryRequest {
     @objc(initWithData:)
     init(data: NSDictionary) {
-        super.init(data: data, path: "tencr/device")
+        super.init(data: data, path: PTAPIEndpoint.updateDevice)
     }
 }
 
@@ -64,7 +25,7 @@ class PTDeviceService: PTDictionaryRequest {
 class PTLocationService: PTDictionaryRequest {
     @objc(initWithData:)
     init(data: NSDictionary) {
-        super.init(data: data, path: "tencr/location")
+        super.init(data: data, path: PTAPIEndpoint.updateLocation)
     }
 }
 
@@ -72,6 +33,6 @@ class PTLocationService: PTDictionaryRequest {
 class PTUploadAdidService: PTDictionaryRequest {
     @objc(initWithData:)
     init(data: NSDictionary) {
-        super.init(data: data, path: "tencr/aio")
+        super.init(data: data, path: PTAPIEndpoint.uploadAdid)
     }
 }
