@@ -91,7 +91,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0157859D2CA3DF2D00EB782F /* XTUpAdidApi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XTUpAdidApi.h; sourceTree = "<group>"; };
 		01CCAA1C2D706036062673F2 /* XTBannerCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = XTBannerCell.swift; sourceTree = "<group>"; };
 		03C2C4E163D1E11DC9C92844 /* XTMyHeadView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = XTMyHeadView.swift; sourceTree = "<group>"; };
 		053CE8C59948C5236B725DC1 /* XTNavigationTabControllers.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = XTNavigationTabControllers.swift; sourceTree = "<group>"; };
@@ -145,7 +144,6 @@
 		1627AF2D2C3F74BA0059AC1E /* XTImportHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XTImportHeader.h; sourceTree = "<group>"; };
 		1627AF2E2C3F751F0059AC1E /* XTPrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XTPrefixHeader.pch; sourceTree = "<group>"; };
 		1627AF302C3F76920059AC1E /* YYTextAsyncLayer+XTCategory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "YYTextAsyncLayer+XTCategory.h"; sourceTree = "<group>"; };
-		163061D02C88714500014575 /* XTMarketApi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XTMarketApi.h; sourceTree = "<group>"; };
 		163061D42C88864C00014575 /* XTHtmlVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XTHtmlVC.h; sourceTree = "<group>"; };
 		163061D82C888B3B00014575 /* XTCodeAltView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XTCodeAltView.h; sourceTree = "<group>"; };
 		16501D822C3FDE3500F09727 /* XTLoginApi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XTLoginApi.h; sourceTree = "<group>"; };
@@ -175,9 +173,7 @@
 		16E7DA2A2C8D5895007A2784 /* XTVerifyHeadView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XTVerifyHeadView.h; sourceTree = "<group>"; };
 		16E7DA332C8D8C72007A2784 /* NSDate+XTCategory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDate+XTCategory.h"; sourceTree = "<group>"; };
 		16E7DA3C2C8DAED1007A2784 /* XTSelectViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XTSelectViewCell.h; sourceTree = "<group>"; };
-		16E9832D2C8BF1B900F78D81 /* XTLocationApi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XTLocationApi.h; sourceTree = "<group>"; };
 		16E983302C8BF6F100F78D81 /* XTApplyApi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XTApplyApi.h; sourceTree = "<group>"; };
-		16E983332C8C00B200F78D81 /* XTDeviceApi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XTDeviceApi.h; sourceTree = "<group>"; };
 		16E983452C8C3F3F00F78D81 /* XTDetailApi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XTDetailApi.h; sourceTree = "<group>"; };
 		16E983512C8C4C1D00F78D81 /* XTPushApi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XTPushApi.h; sourceTree = "<group>"; };
 		16E983552C8C5D4200F78D81 /* XTVerifyViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XTVerifyViewModel.h; sourceTree = "<group>"; };
@@ -485,10 +481,6 @@
 		163061CF2C88710E00014575 /* XTAPi */ = {
 			isa = PBXGroup;
 			children = (
-				163061D02C88714500014575 /* XTMarketApi.h */,
-				16E9832D2C8BF1B900F78D81 /* XTLocationApi.h */,
-				16E983332C8C00B200F78D81 /* XTDeviceApi.h */,
-				0157859D2CA3DF2D00EB782F /* XTUpAdidApi.h */,
 				E10B70002F74000100000001 /* XTApiShared.swift */,
 				E10B70022F74000100000001 /* XTAuthenticationApis.swift */,
 				E10B70042F74000100000001 /* XTDeviceTrackingApis.swift */,
