@@ -26,7 +26,7 @@ final class LoanEntryCoordinator {
         case .home:
             performApply(productId: productId, from: controller, source: source)
         case .html:
-            if XTUserManger.xt_share().xt_user?.xt_is_aduit == true {
+            if UserSession.shared.currentUser?.isAudit == true {
                 performApply(productId: productId, from: controller, source: source)
             } else {
                 ensureLocationAccess(from: controller, includeCancelAction: true) { [weak controller] in
@@ -75,7 +75,7 @@ final class LoanEntryCoordinator {
             return
         }
 
-        guard XTLocationManger.xt_share().xt_canLocation() else {
+        guard XTLocationManager.shared.xt_canLocation() else {
             showLocationAlert(from: controller, includeCancelAction: includeCancelAction)
             return
         }
@@ -91,9 +91,11 @@ final class LoanEntryCoordinator {
     }
 
     private func ensureLoggedIn(from controller: XTBaseVC, retry: @escaping () -> Void) -> Bool {
-        guard !XTUserManger.xt_isLogin() else { return true }
-        XTUtility.xt_login(retry)
-        return false
+        guard UserSession.shared.isLoggedIn else {
+            XTUtility.xt_login(retry)
+            return false
+        }
+        return true
     }
 
     private func showLocationAlert(from controller: XTBaseVC, includeCancelAction: Bool) {

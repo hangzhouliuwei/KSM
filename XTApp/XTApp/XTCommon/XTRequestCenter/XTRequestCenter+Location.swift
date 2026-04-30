@@ -10,7 +10,7 @@ import Foundation
 extension XTRequestCenter {
     @objc(xt_location:)
     func xt_location(_ block: XTBoolBlock?) {
-        let locationManager = XTLocationManger.xt_share()
+        let locationManager = XTLocationManager.shared
         guard locationManager.xt_startLocation() else {
             block?(false)
             return

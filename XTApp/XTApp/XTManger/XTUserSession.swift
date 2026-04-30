@@ -70,7 +70,8 @@ extension UserModel {
     var xt_realname: String? { realName }
     var xt_token: String? { token }
     var xt_userSessionid: String? { sessionId }
-    var xt_is_aduit: Bool { isAudit }
+    var xt_is_audit: Bool { isAudit }
+    var xt_is_aduit: Bool { xt_is_audit }
 }
 
 // MARK: - UserSession Manager
@@ -128,6 +129,7 @@ final class UserSession: SessionManaging {
 // These typealiases and wrappers allow existing call-sites to migrate incrementally.
 
 typealias XTUserModel = UserModel
+typealias XTUserManager = UserSession
 typealias XTUserManger = UserSession
 
 extension UserSession {
@@ -148,7 +150,11 @@ extension UserSession {
         saveUser(from: dictionary as? [String: Any] ?? [:])
     }
 
-    func xt_loginOut() {
+    func xt_logout() {
         logout()
+    }
+
+    func xt_loginOut() {
+        xt_logout()
     }
 }

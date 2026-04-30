@@ -52,10 +52,10 @@ class XTSetVC: XTBaseVC, UITableViewDelegate, UITableViewDataSource {
             tableView.topAnchor.constraint(equalTo: xt_navView.bottomAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
-        creatModel()
+        createModel()
     }
 
-    @objc func creatModel() {
+    @objc func createModel() {
         list.removeAll()
         list.append(XTCellModel.xt_cellClassName("XTSetIconCell", height: 251, model: nil))
         list.append(XTCellModel.xt_cellClassName("XTSetCell", height: 48, model: ["title": "Website", "content": "https://www.providence-lending-corp.com"]))
@@ -66,7 +66,7 @@ class XTSetVC: XTBaseVC, UITableViewDelegate, UITableViewDataSource {
         list.append(XTCellModel.xt_cellClassName("XTSpaceCell", height: 65, model: nil))
 
         let logout = XTCellModel.xt_cellClassName("XTLoginOutCell", height: 48, model: nil)
-        (logout.indexCell as? XTLoginOutCell)?.block = { [weak self] in self?.nextLoginOut() }
+        (logout.indexCell as? XTLogoutCell)?.block = { [weak self] in self?.confirmLogout() }
         list.append(logout)
         list.append(XTCellModel.xt_cellClassName("XTSpaceCell", height: 22, model: nil))
 
@@ -96,10 +96,10 @@ class XTSetVC: XTBaseVC, UITableViewDelegate, UITableViewDataSource {
         tableView.deselectRow(at: indexPath, animated: true)
     }
 
-    @objc func nextLoginOut() {
+    @objc func confirmLogout() {
         showAlt("Are you sure you want to\n leave this software?") {
             XTLogoutApi().xt_startRequestSuccess { _, _ in
-                XTUserManger.xt_share().xt_loginOut()
+                UserSession.shared.logout()
             } failure: { _, _ in
             } error: { _ in
             }
@@ -109,7 +109,7 @@ class XTSetVC: XTBaseVC, UITableViewDelegate, UITableViewDataSource {
     @objc func nextCancelAccount() {
         showAlt("Are you sure you want to\n cancel account?") {
             XTDelAccountApi().xt_startRequestSuccess { _, _ in
-                XTUserManger.xt_share().xt_loginOut()
+                UserSession.shared.logout()
             } failure: { _, _ in
             } error: { _ in
             }

@@ -86,13 +86,13 @@ class XTFirstVC: XTBaseVC, UITableViewDelegate, UITableViewDataSource {
     @objc func goFirst() {
         viewModel.getFirstSuccess { [weak self] in
             self?.tableView.refreshControl?.endRefreshing()
-            self?.creatCellModel()
+            self?.createCellModel()
         } failure: { [weak self] in
             self?.tableView.refreshControl?.endRefreshing()
         }
     }
 
-    @objc func creatCellModel() {
+    @objc func createCellModel() {
         guard let indexModel = viewModel.indexModel else { return }
         if let icon = indexModel.iconModel {
             XTAssistiveView.xt_share().xt_showIcon(icon.iconURL ?? "", url: icon.targetURL ?? "")

@@ -63,8 +63,8 @@ class XTHtmlVC: XTBaseVC, WKUIDelegate, WKNavigationDelegate, WKScriptMessageHan
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        if NSString.xt_isEmpty(XTLocationManger.xt_share().xt_longitude) || NSString.xt_isEmpty(XTLocationManger.xt_share().xt_latitude) {
-            XTLocationManger.xt_share().xt_startLocation()
+        if NSString.xt_isEmpty(XTLocationManager.shared.xt_longitude) || NSString.xt_isEmpty(XTLocationManager.shared.xt_latitude) {
+            XTLocationManager.shared.xt_startLocation()
         }
         view.addSubview(webView)
         xt_navView.addSubview(progress)
@@ -100,9 +100,9 @@ class XTHtmlVC: XTBaseVC, WKUIDelegate, WKNavigationDelegate, WKScriptMessageHan
         case "six001":
             XTDevice.xt_getIdfaShowAlt(false) { [weak self] idfa in
                 let dic: [String: Any] = [
-                    "boomsixofoNc": XT_Object_To_Stirng(XTLocationManger.xt_share().xt_latitude),
+                    "boomsixofoNc": XT_Object_To_Stirng(XTLocationManager.shared.xt_latitude),
                     "cacosixtomyNc": XT_Object_To_Stirng(XTDevice.xt_share().xt_idfv),
-                    "unevsixoutNc": XT_Object_To_Stirng(XTLocationManger.xt_share().xt_longitude),
+                    "unevsixoutNc": XT_Object_To_Stirng(XTLocationManager.shared.xt_longitude),
                     "spdisixlleNc": XT_Object_To_Stirng(idfa)
                 ]
                 let js = "six002(\(XTUtility.xt_objectToJSONString(dic) ?? "{}"))"

@@ -10,8 +10,8 @@ import Foundation
 
 @objcMembers
 @objc(XTLocationManger)
-class XTLocationManger: NSObject, CLLocationManagerDelegate {
-    private static let shared = XTLocationManger()
+class XTLocationManager: NSObject, CLLocationManagerDelegate {
+    static let shared = XTLocationManager()
     private var managerStorage: CLLocationManager?
 
     dynamic var xt_latitude: String?
@@ -23,7 +23,7 @@ class XTLocationManger: NSObject, CLLocationManagerDelegate {
     @objc(LBSInfoBlock)
     dynamic var lbsInfoBlock: (([AnyHashable: Any], Bool) -> Void)?
 
-    @objc class func xt_share() -> XTLocationManger {
+    @objc class func xt_share() -> XTLocationManager {
         shared
     }
 

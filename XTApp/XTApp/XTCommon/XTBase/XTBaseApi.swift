@@ -49,9 +49,10 @@ class XTBaseApi: YTKRequest {
             dic["dedesixningNc"] = xtBaseString(XTDevice.xt_share().xt_sysVersion)
             dic["feicsixidalNc"] = "ph"
             dic["prgnsixenoloneNc"] = Bundle.main.bundleIdentifier ?? ""
-            if XTUserManger.xt_isLogin() {
-                dic["ghstsixNc"] = xtBaseString(XTUserManger.xt_share().xt_user?.xt_userSessionid)
-                dic["raiosixiodineNc"] = xtBaseString(XTUserManger.xt_share().xt_user?.xt_phone)
+            let session = UserSession.shared
+            if session.isLoggedIn {
+                dic["ghstsixNc"] = xtBaseString(session.currentUser?.xt_userSessionid)
+                dic["raiosixiodineNc"] = xtBaseString(session.currentUser?.phone)
             }
             headerStorage = dic
         }

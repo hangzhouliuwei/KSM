@@ -92,7 +92,7 @@ class XTMyHeadView: UIView {
         ])
 
         let phoneLab = xtHeadLabel(
-            text: xtPhonePrivacy(XTUserManger.xt_share().xt_user?.xt_phone),
+            text: xtPhonePrivacy(UserSession.shared.currentUser?.phone),
             font: .systemFont(ofSize: 20, weight: .semibold),
             color: .white
         )

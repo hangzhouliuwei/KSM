@@ -14,16 +14,16 @@ func xtVerifyPoint(productId: String, startTime: String, type: String) -> [Strin
         "deamsixatoryNc": XT_Object_To_Stirng(startTime),
         "munisixumNc": XT_Object_To_Stirng(productId),
         "hyrasixrthrosisNc": type,
-        "boomsixofoNc": XT_Object_To_Stirng(XTLocationManger.xt_share().xt_latitude),
+        "boomsixofoNc": XT_Object_To_Stirng(XTLocationManager.shared.xt_latitude),
         "unulsixyNc": XT_Object_To_Stirng(XTUtility.xt_share().xt_nowTimeStamp()),
         "cacosixtomyNc": XT_Object_To_Stirng(XTDevice.xt_share().xt_idfv),
-        "unevsixoutNc": XT_Object_To_Stirng(XTLocationManger.xt_share().xt_longitude)
+        "unevsixoutNc": XT_Object_To_Stirng(XTLocationManager.shared.xt_longitude)
     ]
 }
 
 func xtVerifyEnsureLocation() {
-    if NSString.xt_isEmpty(XTLocationManger.xt_share().xt_longitude) || NSString.xt_isEmpty(XTLocationManger.xt_share().xt_latitude) {
-        XTLocationManger.xt_share().xt_startLocation()
+    if NSString.xt_isEmpty(XTLocationManager.shared.xt_longitude) || NSString.xt_isEmpty(XTLocationManager.shared.xt_latitude) {
+        XTLocationManager.shared.xt_startLocation()
     }
 }
 

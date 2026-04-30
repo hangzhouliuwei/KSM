@@ -61,7 +61,7 @@ class XTLoginVC: XTBaseVC, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         startTime = XTUtility.xt_share().xt_nowTimeStamp()
-        XTLocationManger.xt_share().xt_startLocation()
+        XTLocationManager.shared.xt_startLocation()
         xt_bkBtn.isHidden = true
         xt_navView.backgroundColor = .clear
         setupUI()

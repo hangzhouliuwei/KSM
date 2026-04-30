@@ -66,7 +66,7 @@ class XTCancelCell: XTCell {
 
 @objcMembers
 @objc(XTLoginOutCell)
-class XTLoginOutCell: XTCell {
+class XTLogoutCell: XTCell {
     dynamic var block: XTBlock?
 
     private lazy var submitBtn: UIButton = {

@@ -85,7 +85,7 @@ class XTOrderVC: XTBaseVC, UIScrollViewDelegate {
         segView.block = { [weak self] index in
             guard let self else { return }
             self.scrollView.setContentOffset(CGPoint(x: self.scrollView.width * CGFloat(index), y: 0), animated: true)
-            self.creatView(index)
+            self.createView(index)
         }
 
         view.addSubview(scrollView)
@@ -103,11 +103,11 @@ class XTOrderVC: XTBaseVC, UIScrollViewDelegate {
         view.layoutIfNeeded()
         scrollView.contentSize = CGSize(width: view.width * CGFloat(segList.count), height: scrollView.height)
         scrollView.setContentOffset(CGPoint(x: scrollView.width * CGFloat(viewIndex), y: 0), animated: false)
-        creatView(viewIndex)
+        createView(viewIndex)
     }
 
-    @objc(creatView:)
-    func creatView(_ index: Int) {
+    @objc(createView:)
+    func createView(_ index: Int) {
         if let existing = scrollView.viewWithTag(viewTag + index) as? XTOrderView {
             existing.xt_reload()
             return
@@ -128,7 +128,7 @@ class XTOrderVC: XTBaseVC, UIScrollViewDelegate {
         let index = Int(scrollView.contentOffset.x / max(scrollView.frame.width, 1))
         viewIndex = index
         segView.reloadSeg(index)
-        creatView(viewIndex)
+        createView(viewIndex)
     }
 }
 

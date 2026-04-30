@@ -46,10 +46,10 @@ final class XTLoginFlowCoordinator {
             "deamsixatoryNc": XT_Object_To_Stirng(startTime),
             "munisixumNc": "1",
             "hyrasixrthrosisNc": "21",
-            "boomsixofoNc": XT_Object_To_Stirng(XTLocationManger.xt_share().xt_latitude),
+            "boomsixofoNc": XT_Object_To_Stirng(XTLocationManager.shared.xt_latitude),
             "unulsixyNc": XT_Object_To_Stirng(XTUtility.xt_share().xt_nowTimeStamp()),
             "cacosixtomyNc": XT_Object_To_Stirng(XTDevice.xt_share().xt_idfv),
-            "unevsixoutNc": XT_Object_To_Stirng(XTLocationManger.xt_share().xt_longitude)
+            "unevsixoutNc": XT_Object_To_Stirng(XTLocationManager.shared.xt_longitude)
         ]
         let params: [String: Any] = [
             "stwasixrdessNc": phone,
