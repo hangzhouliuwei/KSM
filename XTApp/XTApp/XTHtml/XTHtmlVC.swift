@@ -155,14 +155,14 @@ class XTHtmlVC: XTBaseVC, WKUIDelegate, WKNavigationDelegate, WKScriptMessageHan
     }
 
     private func checkApply(_ productId: String) {
-        LoanEntryCoordinator.shared.startApplication(productId: productId, from: self, source: .html)
+        XTLoanEntryCoordinator.shared.startApplication(productId: productId, from: self, source: .html)
     }
 
     private func goApply(_ productId: String) {
-        LoanEntryCoordinator.shared.performApply(productId: productId, from: self, source: .html)
+        XTLoanEntryCoordinator.shared.performApply(productId: productId, from: self, source: .html)
     }
 
     private func goDetail(_ productId: String) {
-        LoanFlowCoordinator.shared.continueAfterDetail(productId: productId, loadingView: view)
+        XTLoanFlowCoordinator.shared.continueAfterDetail(productId: productId, loadingView: view)
     }
 }

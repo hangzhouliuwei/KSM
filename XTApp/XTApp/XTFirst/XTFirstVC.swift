@@ -160,23 +160,23 @@ class XTFirstVC: XTBaseVC, UITableViewDelegate, UITableViewDataSource {
 
     @objc(checkApply:)
     func checkApply(_ productId: String?) {
-        LoanEntryCoordinator.shared.startApplication(productId: productId, from: self, source: .home)
+        XTLoanEntryCoordinator.shared.startApplication(productId: productId, from: self, source: .home)
     }
 
     @objc(checkLBS:isList:)
     func checkLBS(_ block: XTBlock?, isList: Bool) {
-        LoanEntryCoordinator.shared.ensureLocationAccess(from: self, skip: isList) {
+        XTLoanEntryCoordinator.shared.ensureLocationAccess(from: self, skip: isList) {
             block?()
         }
     }
 
     @objc(goApply:)
     func goApply(_ productId: String) {
-        LoanEntryCoordinator.shared.performApply(productId: productId, from: self, source: .home)
+        XTLoanEntryCoordinator.shared.performApply(productId: productId, from: self, source: .home)
     }
 
     @objc(goDetail:)
     func goDetail(_ productId: String) {
-        LoanFlowCoordinator.shared.continueAfterDetail(productId: productId, loadingView: view)
+        XTLoanFlowCoordinator.shared.continueAfterDetail(productId: productId, loadingView: view)
     }
 }

@@ -55,17 +55,17 @@ final class FirstViewModel {
     }
 
     func xt_apply(_ productId: String, success: ((Int, String, Bool) -> Void)?, failure: XTBlock?) {
-        LoanFlowCoordinator.shared.loadApplyDecision(productId, success: { decision in
+        XTLoanFlowCoordinator.shared.loadApplyDecision(productId, success: { decision in
             success?(decision.uploadType, decision.url, decision.isList)
         }, failure: failure)
     }
 
     func xt_detail(_ productId: String, success: ((String, String) -> Void)?, failure: XTBlock?) {
-        LoanFlowCoordinator.shared.loadDetail(productId, success: success, failure: failure)
+        XTLoanFlowCoordinator.shared.loadDetail(productId, success: success, failure: failure)
     }
 
     func xt_push(_ orderId: String, success: ((String) -> Void)?, failure: XTBlock?) {
-        LoanFlowCoordinator.shared.loadPushURL(orderId, success: success, failure: failure)
+        XTLoanFlowCoordinator.shared.loadPushURL(orderId, success: success, failure: failure)
     }
 }
 

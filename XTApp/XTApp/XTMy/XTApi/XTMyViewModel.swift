@@ -71,13 +71,13 @@ final class MyViewModel {
     }
 
     func xt_detail(_ productId: String, success: ((String?, String?) -> Void)?, failure: XTBlock?) {
-        LoanFlowCoordinator.shared.loadDetail(productId, success: { code, orderId in
+        XTLoanFlowCoordinator.shared.loadDetail(productId, success: { code, orderId in
             success?(code, orderId)
         }, failure: failure)
     }
 
     func xt_push(_ orderId: String, success: ((String?) -> Void)?, failure: XTBlock?) {
-        LoanFlowCoordinator.shared.loadPushURL(orderId, success: { url in
+        XTLoanFlowCoordinator.shared.loadPushURL(orderId, success: { url in
             success?(url)
         }, failure: failure)
     }

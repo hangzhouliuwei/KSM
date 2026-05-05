@@ -18,11 +18,11 @@
 		E10B30012F71000100000001 /* XTMyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10B30002F71000100000001 /* XTMyVC.swift */; };
 		E10B30032F71000100000001 /* XTSetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10B30022F71000100000001 /* XTSetVC.swift */; };
 		E10B30052F71000100000001 /* XTOrderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10B30042F71000100000001 /* XTOrderVC.swift */; };
-		E10B10092F70000200000001 /* LoanEntryCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10B10102F70000200000001 /* LoanEntryCoordinator.swift */; };
-		E10B10072F70000100000001 /* LoanFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10B10082F70000100000001 /* LoanFlowCoordinator.swift */; };
-		E10B10012F6E000100000001 /* AppDependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10B10002F6E000100000001 /* AppDependencyContainer.swift */; };
-		E10B10032F6E000100000001 /* LaunchCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10B10022F6E000100000001 /* LaunchCoordinator.swift */; };
-		E10B10052F6E000100000001 /* RootRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10B10042F6E000100000001 /* RootRouter.swift */; };
+		E10B10092F70000200000001 /* XTLoanEntryCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10B10102F70000200000001 /* XTLoanEntryCoordinator.swift */; };
+		E10B10072F70000100000001 /* XTLoanFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10B10082F70000100000001 /* XTLoanFlowCoordinator.swift */; };
+		E10B10012F6E000100000001 /* XTAppDependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10B10002F6E000100000001 /* XTAppDependencyContainer.swift */; };
+		E10B10032F6E000100000001 /* XTLaunchCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10B10022F6E000100000001 /* XTLaunchCoordinator.swift */; };
+		E10B10052F6E000100000001 /* XTRootRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10B10042F6E000100000001 /* XTRootRouter.swift */; };
 		E10B70012F74000100000001 /* XTApiShared.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10B70002F74000100000001 /* XTApiShared.swift */; };
 		E10B70032F74000100000001 /* XTAuthenticationApis.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10B70022F74000100000001 /* XTAuthenticationApis.swift */; };
 		E10B70052F74000100000001 /* XTDeviceTrackingApis.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10B70042F74000100000001 /* XTDeviceTrackingApis.swift */; };
@@ -241,9 +241,9 @@
 		DAA9C30F5E297CA00AF5060B /* UIImage+XTCategory.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIImage+XTCategory.swift"; sourceTree = "<group>"; };
 		E10B00002F6D000100000001 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E10B00032F6D000100000001 /* XTApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "XTApp-Bridging-Header.h"; sourceTree = "<group>"; };
-		E10B10002F6E000100000001 /* AppDependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDependencyContainer.swift; sourceTree = "<group>"; };
-		E10B10022F6E000100000001 /* LaunchCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchCoordinator.swift; sourceTree = "<group>"; };
-		E10B10042F6E000100000001 /* RootRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootRouter.swift; sourceTree = "<group>"; };
+		E10B10002F6E000100000001 /* XTAppDependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XTAppDependencyContainer.swift; sourceTree = "<group>"; };
+		E10B10022F6E000100000001 /* XTLaunchCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XTLaunchCoordinator.swift; sourceTree = "<group>"; };
+		E10B10042F6E000100000001 /* XTRootRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XTRootRouter.swift; sourceTree = "<group>"; };
 		E10B40002F71000200000001 /* XTLoginCodeVC.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = XTLoginCodeVC.swift; sourceTree = "<group>"; };
 		E10B40022F71000200000001 /* XTLoginVC.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = XTLoginVC.swift; sourceTree = "<group>"; };
 		E10B50002F72000100000001 /* XTFirstVC.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = XTFirstVC.swift; sourceTree = "<group>"; };
@@ -253,8 +253,8 @@
 		E10B30002F71000100000001 /* XTMyVC.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = XTMyVC.swift; sourceTree = "<group>"; };
 		E10B30022F71000100000001 /* XTSetVC.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = XTSetVC.swift; sourceTree = "<group>"; };
 		E10B30042F71000100000001 /* XTOrderVC.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = XTOrderVC.swift; sourceTree = "<group>"; };
-		E10B10102F70000200000001 /* LoanEntryCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanEntryCoordinator.swift; sourceTree = "<group>"; };
-		E10B10082F70000100000001 /* LoanFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanFlowCoordinator.swift; sourceTree = "<group>"; };
+		E10B10102F70000200000001 /* XTLoanEntryCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XTLoanEntryCoordinator.swift; sourceTree = "<group>"; };
+		E10B10082F70000100000001 /* XTLoanFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XTLoanFlowCoordinator.swift; sourceTree = "<group>"; };
 		E10B20002F6F000100000001 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		E10B20022F6F000100000001 /* AppAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAPI.swift; sourceTree = "<group>"; };
 		E10B70002F74000100000001 /* XTApiShared.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = XTApiShared.swift; sourceTree = "<group>"; };
@@ -293,11 +293,11 @@
 		E10B10062F6E000100000001 /* App */ = {
 			isa = PBXGroup;
 			children = (
-				E10B10002F6E000100000001 /* AppDependencyContainer.swift */,
-				E10B10022F6E000100000001 /* LaunchCoordinator.swift */,
-				E10B10042F6E000100000001 /* RootRouter.swift */,
-				E10B10102F70000200000001 /* LoanEntryCoordinator.swift */,
-				E10B10082F70000100000001 /* LoanFlowCoordinator.swift */,
+				E10B10002F6E000100000001 /* XTAppDependencyContainer.swift */,
+				E10B10022F6E000100000001 /* XTLaunchCoordinator.swift */,
+				E10B10042F6E000100000001 /* XTRootRouter.swift */,
+				E10B10102F70000200000001 /* XTLoanEntryCoordinator.swift */,
+				E10B10082F70000100000001 /* XTLoanFlowCoordinator.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -847,11 +847,11 @@
 			files = (
 				E10B20012F6F000100000001 /* NetworkService.swift in Sources */,
 				E10B20032F6F000100000001 /* AppAPI.swift in Sources */,
-				E10B10092F70000200000001 /* LoanEntryCoordinator.swift in Sources */,
-				E10B10072F70000100000001 /* LoanFlowCoordinator.swift in Sources */,
-				E10B10012F6E000100000001 /* AppDependencyContainer.swift in Sources */,
-				E10B10032F6E000100000001 /* LaunchCoordinator.swift in Sources */,
-				E10B10052F6E000100000001 /* RootRouter.swift in Sources */,
+				E10B10092F70000200000001 /* XTLoanEntryCoordinator.swift in Sources */,
+				E10B10072F70000100000001 /* XTLoanFlowCoordinator.swift in Sources */,
+				E10B10012F6E000100000001 /* XTAppDependencyContainer.swift in Sources */,
+				E10B10032F6E000100000001 /* XTLaunchCoordinator.swift in Sources */,
+				E10B10052F6E000100000001 /* XTRootRouter.swift in Sources */,
 				E10B00132F6D000100000001 /* XTMyModels.swift in Sources */,
 				E10B00012F6D000100000001 /* AppDelegate.swift in Sources */,
 				E10B00112F6D000100000001 /* XTFirstModels.swift in Sources */,

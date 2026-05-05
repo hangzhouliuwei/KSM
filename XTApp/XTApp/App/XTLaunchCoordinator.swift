@@ -1,19 +1,19 @@
 //
-//  LaunchCoordinator.swift
+//  XTLaunchCoordinator.swift
 //  XTApp
 //
 
 import Foundation
 
-final class LaunchCoordinator {
+final class XTLaunchCoordinator {
     private let sessionManager: SessionManaging
-    private let rootRouter: RootRouting
+    private let rootRouter: XTRootRouting
     private let notificationCenter: NotificationCenter
     private var logoutObserver: NSObjectProtocol?
 
     init(
         sessionManager: SessionManaging,
-        rootRouter: RootRouting,
+        rootRouter: XTRootRouting,
         notificationCenter: NotificationCenter = .default
     ) {
         self.sessionManager = sessionManager
@@ -45,7 +45,7 @@ final class LaunchCoordinator {
     }
 
     private func routeToCurrentSession() {
-        let destination: AppRootDestination = sessionManager.isLoggedIn ? .main : .login
+        let destination: XTAppRootDestination = sessionManager.isLoggedIn ? .main : .login
         rootRouter.setRoot(destination, animated: false)
     }
 }

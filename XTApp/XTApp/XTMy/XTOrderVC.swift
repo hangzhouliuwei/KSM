@@ -273,12 +273,12 @@ class XTOrderView: UIView, UITableViewDelegate, UITableViewDataSource {
             XTRoute.xt_share().goHtml(model.xt_loanDetailUrl ?? "", success: nil)
             return
         }
-        LoanFlowCoordinator.shared.continueAfterDetail(productId: model.xt_productId ?? "", loadingView: self)
+        XTLoanFlowCoordinator.shared.continueAfterDetail(productId: model.xt_productId ?? "", loadingView: self)
     }
 
     @objc(xt_push_productId:orderId:)
     func xt_push_productId(_ productId: String?, orderId: String?) {
-        LoanFlowCoordinator.shared.openPush(orderId: orderId ?? "", loadingView: self)
+        XTLoanFlowCoordinator.shared.openPush(orderId: orderId ?? "", loadingView: self)
     }
 
     @objc private func applyNow() {

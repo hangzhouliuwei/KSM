@@ -1,27 +1,27 @@
 //
-//  AppDependencyContainer.swift
+//  XTAppDependencyContainer.swift
 //  XTApp
 //
 
 import UIKit
 
-final class AppDependencyContainer {
+final class XTAppDependencyContainer {
     let sessionManager: SessionManaging
 
     init(sessionManager: SessionManaging = UserSession.shared) {
         self.sessionManager = sessionManager
     }
 
-    func makeRootRouter(window: UIWindow?) -> RootRouter {
-        RootRouter(
+    func makeRootRouter(window: UIWindow?) -> XTRootRouter {
+        XTRootRouter(
             window: window,
             mainViewControllerFactory: { XTTabBarController() },
             loginViewControllerFactory: { Self.makeViewController(named: "XTLoginCodeVC") }
         )
     }
 
-    func makeLaunchCoordinator(rootRouter: RootRouting) -> LaunchCoordinator {
-        LaunchCoordinator(sessionManager: sessionManager, rootRouter: rootRouter)
+    func makeLaunchCoordinator(rootRouter: XTRootRouting) -> XTLaunchCoordinator {
+        XTLaunchCoordinator(sessionManager: sessionManager, rootRouter: rootRouter)
     }
 
     private static func makeViewController(named name: String) -> UIViewController {

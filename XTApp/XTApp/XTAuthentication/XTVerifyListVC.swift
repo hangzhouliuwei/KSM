@@ -56,7 +56,7 @@ class XTVerifyListVC: XTBaseVC {
     }
 
     @objc func xt_push() {
-        LoanFlowCoordinator.shared.openPush(orderId: orderId, loadingView: view, removeCurrentController: self)
+        XTLoanFlowCoordinator.shared.openPush(orderId: orderId, loadingView: view, removeCurrentController: self)
     }
 
     @objc func xt_UI() {

@@ -14,9 +14,9 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
     @objc var window: UIWindow?
     @objc var xt_nv: XTNavigationController?
-    private var dependencyContainer: AppDependencyContainer?
-    private var rootRouter: RootRouter?
-    private var launchCoordinator: LaunchCoordinator?
+    private var dependencyContainer: XTAppDependencyContainer?
+    private var rootRouter: XTRootRouter?
+    private var launchCoordinator: XTLaunchCoordinator?
 
     func application(
         _ application: UIApplication,
@@ -48,7 +48,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     private func configureAppFlow(window: UIWindow) {
-        let dependencyContainer = AppDependencyContainer()
+        let dependencyContainer = XTAppDependencyContainer()
         let rootRouter = dependencyContainer.makeRootRouter(window: window)
         rootRouter.onNavigationControllerChange = { [weak self] navigationController in
             self?.xt_nv = navigationController

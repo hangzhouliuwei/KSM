@@ -226,7 +226,7 @@ final class VerifyViewModel {
     }
 
     func xt_push(_ orderId: String, success: ((String?) -> Void)?, failure: XTBlock?) {
-        LoanFlowCoordinator.shared.loadPushURL(orderId, success: { url in
+        XTLoanFlowCoordinator.shared.loadPushURL(orderId, success: { url in
             success?(url)
         }, failure: failure)
     }

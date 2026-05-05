@@ -1,21 +1,21 @@
 //
-//  RootRouter.swift
+//  XTRootRouter.swift
 //  XTApp
 //
 
 import UIKit
 
-enum AppRootDestination {
+enum XTAppRootDestination {
     case login
     case main
 }
 
-protocol RootRouting: AnyObject {
+protocol XTRootRouting: AnyObject {
     var navigationController: XTNavigationController? { get }
-    func setRoot(_ destination: AppRootDestination, animated: Bool)
+    func setRoot(_ destination: XTAppRootDestination, animated: Bool)
 }
 
-final class RootRouter: RootRouting {
+final class XTRootRouter: XTRootRouting {
     private weak var window: UIWindow?
     private let mainViewControllerFactory: () -> UIViewController
     private let loginViewControllerFactory: () -> UIViewController
@@ -38,7 +38,7 @@ final class RootRouter: RootRouting {
         self.loginViewControllerFactory = loginViewControllerFactory
     }
 
-    func setRoot(_ destination: AppRootDestination, animated: Bool) {
+    func setRoot(_ destination: XTAppRootDestination, animated: Bool) {
         guard let window else { return }
 
         let rootController = makeNavigationController(for: destination)
@@ -62,7 +62,7 @@ final class RootRouter: RootRouting {
         )
     }
 
-    private func makeNavigationController(for destination: AppRootDestination) -> XTNavigationController {
+    private func makeNavigationController(for destination: XTAppRootDestination) -> XTNavigationController {
         let rootViewController: UIViewController
 
         switch destination {

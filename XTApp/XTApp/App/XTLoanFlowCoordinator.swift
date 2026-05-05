@@ -1,44 +1,45 @@
 //
-//  LoanFlowCoordinator.swift
+//  XTLoanFlowCoordinator.swift
 //  XTApp
 //
 
 import UIKit
 
-struct LoanApplyDecision {
+struct XTLoanApplyDecision {
     let uploadType: Int
     let url: String
     let isList: Bool
+
+    var requiresDeviceReport: Bool {
+        uploadType == 2
+    }
 }
 
-final class LoanFlowCoordinator {
-    static let shared = LoanFlowCoordinator()
+final class XTLoanFlowCoordinator {
+    static let shared = XTLoanFlowCoordinator()
 
     private let network: NetworkService
+    private enum ResponseKey {
+        static let uploadType = "flcNsixc"
+        static let jumpURL = "relosixomNc"
+        static let isList = "detrsixogyrateNc"
+        static let topInfo = "heissixtopNc"
+        static let loanInfo = "leonsixishNc"
+        static let verifyCode = "excuse"
+        static let orderId = "cokesixtNc"
+    }
 
     init(network: NetworkService = .shared) {
         self.network = network
     }
 
-    func loadApplyDecision(_ productId: String, success: ((LoanApplyDecision) -> Void)?, failure: XTBlock?) {
+    func loadApplyDecision(_ productId: String, success: ((XTLoanApplyDecision) -> Void)?, failure: XTBlock?) {
         network.apply(productId: productId) { result in
             switch result {
             case .success(let response):
-                guard let data = response.data else {
-                    failure?()
-                    return
-                }
-                let uploadType = Int(XT_Object_To_Stirng(data["flcNsixc"])) ?? 0
-                let url = XT_Object_To_Stirng(data["relosixomNc"])
-                let isList: Bool
-                if let boolVal = data["detrsixogyrateNc"] as? Bool {
-                    isList = boolVal
-                } else if let intVal = data["detrsixogyrateNc"] as? Int {
-                    isList = intVal != 0
-                } else {
-                    isList = false
-                }
-                success?(LoanApplyDecision(uploadType: uploadType, url: url, isList: isList))
+                self.handleDataResponse(response.data, success: { data in
+                    success?(self.makeApplyDecision(from: data))
+                }, failure: failure)
             case .failure:
                 failure?()
             }
@@ -49,16 +50,10 @@ final class LoanFlowCoordinator {
         network.detail(productId: productId) { result in
             switch result {
             case .success(let response):
-                guard let data = response.data else {
-                    failure?()
-                    return
-                }
-                let topInfo = data["heissixtopNc"] as? [String: Any]
-                let loanInfo = data["leonsixishNc"] as? [String: Any]
-                success?(
-                    XT_Object_To_Stirng(topInfo?["excuse"]),
-                    XT_Object_To_Stirng(loanInfo?["cokesixtNc"])
-                )
+                self.handleDataResponse(response.data, success: { data in
+                    let detail = self.makeDetail(from: data)
+                    success?(detail.code, detail.orderId)
+                }, failure: failure)
             case .failure:
                 failure?()
             }
@@ -69,11 +64,9 @@ final class LoanFlowCoordinator {
         network.push(orderId: orderId) { result in
             switch result {
             case .success(let response):
-                guard let data = response.data else {
-                    failure?()
-                    return
-                }
-                success?(XT_Object_To_Stirng(data["relosixomNc"]))
+                self.handleDataResponse(response.data, success: { data in
+                    success?(XT_Object_To_Stirng(data[ResponseKey.jumpURL]))
+                }, failure: failure)
             case .failure:
                 failure?()
             }
@@ -123,5 +116,40 @@ final class LoanFlowCoordinator {
                 removeCurrentController?.xtVerifyRemoveSelf()
             }
         })
+    }
+
+    private func handleDataResponse(_ data: [String: Any]?, success: ([String: Any]) -> Void, failure: XTBlock?) {
+        guard let data else {
+            failure?()
+            return
+        }
+        success(data)
+    }
+
+    private func makeApplyDecision(from data: [String: Any]) -> XTLoanApplyDecision {
+        XTLoanApplyDecision(
+            uploadType: Int(XT_Object_To_Stirng(data[ResponseKey.uploadType])) ?? 0,
+            url: XT_Object_To_Stirng(data[ResponseKey.jumpURL]),
+            isList: boolValue(from: data[ResponseKey.isList])
+        )
+    }
+
+    private func makeDetail(from data: [String: Any]) -> (code: String, orderId: String) {
+        let topInfo = data[ResponseKey.topInfo] as? [String: Any]
+        let loanInfo = data[ResponseKey.loanInfo] as? [String: Any]
+        return (
+            XT_Object_To_Stirng(topInfo?[ResponseKey.verifyCode]),
+            XT_Object_To_Stirng(loanInfo?[ResponseKey.orderId])
+        )
+    }
+
+    private func boolValue(from value: Any?) -> Bool {
+        if let boolValue = value as? Bool {
+            return boolValue
+        }
+        if let intValue = value as? Int {
+            return intValue != 0
+        }
+        return false
     }
 }

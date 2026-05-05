@@ -199,6 +199,6 @@ class XTVerifyFaceVC: XTBaseVC {
 
     @objc(goNext:)
     func goNext(_ str: String?) {
-        LoanFlowCoordinator.shared.routeNext(code: str, productId: productId, orderId: orderId, loadingView: view, removeCurrentController: self)
+        XTLoanFlowCoordinator.shared.routeNext(code: str, productId: productId, orderId: orderId, loadingView: view, removeCurrentController: self)
     }
 }
