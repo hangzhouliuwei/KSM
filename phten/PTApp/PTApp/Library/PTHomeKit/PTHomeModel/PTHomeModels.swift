@@ -5,6 +5,7 @@
 
 import Foundation
 
+@objc(PTHomeBaseModel)
 @objcMembers
 class PTHomeBaseModel: PTBaseModel {
     dynamic var level: Int = 0
@@ -12,6 +13,7 @@ class PTHomeBaseModel: PTBaseModel {
     dynamic var cellHigh: Int = 0
 }
 
+@objc(PTHomeApplyModel)
 @objcMembers
 class PTHomeApplyModel: PTBaseModel {
     dynamic var retenloomNc: String = ""
@@ -19,18 +21,21 @@ class PTHomeApplyModel: PTBaseModel {
     dynamic var detentrogyrateNc: Bool = false
 }
 
+@objc(PTHomeIetenNcModel)
 @objcMembers
 class PTHomeIetenNcModel: PTHomeBaseModel {
     dynamic var intentantNc: String = ""
     dynamic var kitenchiNc: String = ""
 }
 
+@objc(PTHomeBannerItemModel)
 @objcMembers
 class PTHomeBannerItemModel: PTHomeBaseModel {
     dynamic var retenloomNc: String = ""
     dynamic var artenisNc: String = ""
 }
 
+@objc(PTHomeBannerModel)
 @objcMembers
 class PTHomeBannerModel: PTHomeBaseModel {
     dynamic var ittenlianizeNc: String = ""
@@ -46,11 +51,12 @@ class PTHomeBannerModel: PTHomeBaseModel {
     }
 }
 
+@objc(PTHomeLargeEcardItemModel)
 @objcMembers
 class PTHomeLargeEcardItemModel: PTHomeBaseModel {
     dynamic var retengnNc: String = ""
     dynamic var motenosyllabismNc: String = ""
-    dynamic var sitenhoutteNc: String = ""
+    dynamic var sitenhouetteNc: String = ""
     dynamic var matenanNc: String = ""
     dynamic var sptenfflicateNc: String = ""
     dynamic var eatenholeNc: String = ""
@@ -63,6 +69,7 @@ class PTHomeLargeEcardItemModel: PTHomeBaseModel {
     dynamic var cotendogNc: String = ""
 }
 
+@objc(PTHomeLargeEcardModel)
 @objcMembers
 class PTHomeLargeEcardModel: PTHomeBaseModel {
     dynamic var ittenlianizeNc: String = ""
@@ -78,11 +85,12 @@ class PTHomeLargeEcardModel: PTHomeBaseModel {
     }
 }
 
+@objc(PTHomeProductListModel)
 @objcMembers
 class PTHomeProductListModel: PTHomeBaseModel {
     dynamic var retengnNc: String = ""
     dynamic var motenosyllabismNc: String = ""
-    dynamic var sitenhoutteNc: String = ""
+    dynamic var sitenhouetteNc: String = ""
     dynamic var eatenholeNc: String = ""
     dynamic var cotentenderNc: String = ""
     dynamic var sptenfflicateNc: String = ""
@@ -94,6 +102,7 @@ class PTHomeProductListModel: PTHomeBaseModel {
     }
 }
 
+@objc(PTHomeProductModel)
 @objcMembers
 class PTHomeProductModel: PTHomeBaseModel {
     dynamic var ittenlianizeNc: String = ""
@@ -109,6 +118,7 @@ class PTHomeProductModel: PTHomeBaseModel {
     }
 }
 
+@objc(PTHomeRepayRealModel)
 @objcMembers
 class PTHomeRepayRealModel: PTHomeBaseModel {
     dynamic var frtenwnNc: String = ""
@@ -125,6 +135,7 @@ class PTHomeRepayRealModel: PTHomeBaseModel {
     }
 }
 
+@objc(PTHomeRepayModel)
 @objcMembers
 class PTHomeRepayModel: PTHomeBaseModel {
     dynamic var gutengoyleNc: [PTHomeRepayRealModel] = []
@@ -144,11 +155,12 @@ class PTHomeRepayModel: PTHomeBaseModel {
     }
 }
 
+@objc(PTHomeSmallCardItemModel)
 @objcMembers
 class PTHomeSmallCardItemModel: PTHomeBaseModel {
     dynamic var retengnNc: String = ""
     dynamic var motenosyllabismNc: String = ""
-    dynamic var sitenhoutteNc: String = ""
+    dynamic var sitenhouetteNc: String = ""
     dynamic var matenanNc: String = ""
     dynamic var sptenfflicateNc: String = ""
     dynamic var eatenholeNc: String = ""
@@ -162,6 +174,7 @@ class PTHomeSmallCardItemModel: PTHomeBaseModel {
     dynamic var detenensiveNc: String = ""
 }
 
+@objc(PTHomeSmallCardModel)
 @objcMembers
 class PTHomeSmallCardModel: PTHomeBaseModel {
     dynamic var ittenlianizeNc: String = ""
@@ -177,12 +190,14 @@ class PTHomeSmallCardModel: PTHomeBaseModel {
     }
 }
 
+@objc(PTRidingLanternItemModel)
 @objcMembers
 class PTRidingLanternItemModel: PTHomeBaseModel {
     dynamic var thtenckleafNc: String = ""
     dynamic var eptengynyNc: String = ""
 }
 
+@objc(PTRidingLanternModel)
 @objcMembers
 class PTRidingLanternModel: PTHomeBaseModel {
     dynamic var ittenlianizeNc: String = ""

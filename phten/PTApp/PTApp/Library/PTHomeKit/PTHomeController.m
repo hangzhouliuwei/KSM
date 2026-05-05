@@ -32,7 +32,7 @@
 
 #import <CoreLocation/CoreLocation.h>
 #import "PTAuthentRouterManager.h"
-#import "PTAuthenticationController.h"
+#import "PTAuthenticationKit.h"
 #import "WMDragView.h"
 #import "PTHomePopView.h"
 @interface PTHomeController ()<QMUITableViewDataSource,QMUITableViewDelegate,PTHomeViewModelProtocol>

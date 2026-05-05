@@ -19,7 +19,7 @@
 #import "PTHomeGceApplyService.h"
 #import "PTDeviceService.h"
 #import "PTHomeGCeDetailService.h"
-#import "PTAuthenticationModel.h"
+#import "PTAuthenticationKit.h"
 #import "PTHomeGCePushService.h"
 #import "PTHomePopApi.h"
 @implementation PTHomeViewModel

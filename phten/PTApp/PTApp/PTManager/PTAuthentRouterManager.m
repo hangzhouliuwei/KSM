@@ -10,7 +10,7 @@
 #import "PTDeviceService.h"
 #import "PTWebViewController.h"
 
-#import "PTAuthenticationController.h"
+#import "PTAuthenticationKit.h"
 #import "PTBasicVerifyVC.h"
 #import "PTBasicVerifyVC.h"
 #import "PTContactVerifyVC.h"
